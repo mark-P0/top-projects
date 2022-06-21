@@ -11,7 +11,9 @@ A static HTML website for a few recipe pages.
 
 ## Template
 
-Refer to the file `./recipes/.template.html` for a basic structure to be followed by each recipe page.
+Refer to the file `./utilities/template.html` for a basic structure to be followed by each recipe page.
+
+HTML table rows for ingredients can be created using the Python script in `./utilities/ingredients_parser.ipynb`
 
 ## Disclaimer
 
