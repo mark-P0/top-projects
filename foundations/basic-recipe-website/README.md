@@ -4,17 +4,17 @@ This is a static website project using pure HTML as is customary with beginners 
 
 - Emmet
 - Prettier
-- [Mozilla HTML docs](https://developer.mozilla.org/en-US/docs/Web/HTML)
-- HTML Preview (_VSCode extension_)
+- [Mozilla Web docs](https://developer.mozilla.org/en-US/docs/Web/)
+- Live Server (_VSCode extension_)
 
 ## Roadmap
 
-- [x] Build initial basic HTML version
+- [x] Build initial plain HTML version
+- [x] Build styled version with basic CSS
 - [ ] ...
-- [ ] Beautify the website
-  - Rebuild in React
+- [ ] Rebuild in React(?)
 
-## Template
+## Templating
 
 Refer to the file `./utilities/template.html` for a basic structure to be followed by each recipe page.
 
