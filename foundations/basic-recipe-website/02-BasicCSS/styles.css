@@ -161,6 +161,14 @@ li::marker {
 
 /* Link styles */
 
+a {
+  /*  Couldn't find a convenient way to remove `text-decoration`
+   *  from section header ID links, so they will be removed from
+   *  all links for now.
+   */
+  text-decoration: none;
+}
+
 a:link,
 a:visited,
 _ {
@@ -176,6 +184,6 @@ a:hover {
 a:focus,
 a:active,
 _ {
-  background: hsl(25, 20%, 80%);
   color: hsl(25, 20%, 20%);
+  background: hsl(25, 20%, 80%);
 }
