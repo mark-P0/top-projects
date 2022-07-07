@@ -8,6 +8,7 @@
  *  https://stackoverflow.com/questions/6169666/how-to-resize-an-image-to-fit-in-the-browser-window
  *  https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Lists_and_Counters/Consistent_list_indentation
  *  https://stackoverflow.com/questions/4549475/bulleted-list-with-different-indentation
+ *  https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Styling_links
  */
 
 /* Sticky header/footers, and growing content */
@@ -60,7 +61,7 @@ footer {
   background-color: hsl(25, 20%, 42%);
 
   text-align: center;
-  color: white;
+  color: hsl(25, 20%, 80%);
 
   border-radius: 24px 24px 0 0;
 }
@@ -150,4 +151,25 @@ _ {
 li {
   padding-left: 8px;
   padding-right: 8px;
+}
+
+/* Link styles */
+
+a:link,
+a:visited,
+_ {
+  color: hsl(25, 20%, 100%);
+  /* background: hsl(25, 20%, 80%); */
+}
+
+a:hover {
+  color: hsl(25, 20%, 20%);
+  /* background: hsl(25, 20%, 40%); */
+}
+
+a:focus,
+a:active,
+_ {
+  background: hsl(25, 20%, 80%);
+  color: hsl(25, 20%, 20%);
 }
