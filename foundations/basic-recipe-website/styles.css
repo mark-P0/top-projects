@@ -1,0 +1,34 @@
+html,
+body,
+_ {
+  /* Full page size */
+  width: 100%;
+  height: 100%;
+
+  /* Reset browser (Firefox) styles */
+  /* padding: 0; */
+  margin: 0;
+
+  /* Debug */
+  /* background-color: red; */
+}
+
+.container,
+body,
+_ {
+  /* Enable flexbox */
+  display: flex;
+
+  /*  Flex by default displays children in a row,
+      whereas regular HTML goes in a column "top-bottom"
+   */
+  flex-direction: column;
+
+  /* Centering */
+  align-items: center;
+  justify-content: center;
+
+  /* Debug */
+  /* border: 1px solid red; */
+  /* background-color: red; */
+}

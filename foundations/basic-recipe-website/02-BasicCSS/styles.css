@@ -1,0 +1,190 @@
+/*  With much help from the following resources:
+ *
+ *  https://developer.mozilla.org/en-US/docs/Web/CSS/Layout_cookbook/Sticky_footers
+ *  https://www.schemecolor.com/wp-content/themes/colorsite/include/cc5.php?color0=bfaa8c&color1=d1c0a8&color2=e8ded1&color3=a0816c&color4=c8ad7e&pn=Beige%20Neutrals
+ *  https://stackoverflow.com/questions/29966499/border-radius-in-percentage-and-pixels-px-or-em
+ *  https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+ *  https://www.w3schools.com/html/html5_semantic_elements.asp
+ *  https://stackoverflow.com/questions/6169666/how-to-resize-an-image-to-fit-in-the-browser-window
+ *  https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Lists_and_Counters/Consistent_list_indentation
+ *  https://stackoverflow.com/questions/4549475/bulleted-list-with-different-indentation
+ *  https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Styling_links
+ *  https://stackoverflow.com/questions/23610151/can-you-style-ordered-list-numbers
+ *  https://stackoverflow.com/questions/32102747/how-to-make-a-back-to-top-button-using-css-and-html-only
+ */
+
+/* Sticky header/footers, and growing content */
+
+html,
+body,
+_ {
+  /* Full page size */
+  height: 100%;
+
+  /* Reset browser (Firefox) styles */
+  margin-top: 0;
+  margin-bottom: 0;
+
+  /* Debug */
+  /* background-color: red; */
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+
+  background-color: hsl(25, 20%, 80%);
+}
+
+header,
+footer,
+_ {
+  flex-shrink: 0;
+}
+
+section {
+  flex-grow: 1;
+}
+
+/* Heading(s) style */
+
+header,
+h1,
+h2,
+th,
+_ {
+  color: hsl(25, 20%, 25%);
+  text-align: center;
+}
+
+/* Footer style */
+
+footer {
+  background-color: hsl(25, 20%, 42%);
+
+  text-align: center;
+  color: hsl(25, 20%, 80%);
+
+  border-radius: 24px 24px 0 0;
+}
+
+/* Section(s) style */
+
+section {
+  background-color: hsl(25, 20%, 66%);
+
+  text-align: left;
+  padding: 0 12px;
+
+  border-radius: 24px;
+  margin-bottom: 24px;
+}
+
+/* "Home page"-specific */
+
+section.home-content {
+  display: flex;
+  justify-content: center;
+}
+
+/* Table styles */
+
+table {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  border-collapse: collapse;
+
+  /* background-color: red; */
+}
+
+th,
+td,
+_ {
+  border: 2px solid hsl(25, 20%, 25%);
+  padding: 0 16px;
+}
+
+th {
+  text-align: center;
+}
+
+tr {
+  text-align: left;
+}
+
+/* Recipe description */
+
+#description {
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+}
+
+#description em.figure-caption {
+  font-size: smaller;
+}
+
+#description #img-container {
+  height: 100%;
+}
+
+#description img {
+  max-width: 90%;
+  max-height: 33vh;
+
+  border: 2px solid hsl(25, 20%, 42%);
+}
+
+/* List indentations */
+
+ul,
+ol,
+_ {
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+li {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+li::marker {
+  font-weight: bold;
+  color: hsl(25, 20%, 25%);
+}
+
+/* Link styles */
+
+a {
+  /*  Couldn't find a convenient way to remove `text-decoration`
+   *  from section header ID links, so they will be removed from
+   *  all links for now.
+   */
+  text-decoration: none;
+}
+
+a:link,
+a:visited,
+_ {
+  color: hsl(25, 20%, 100%);
+  /* background: hsl(25, 20%, 80%); */
+}
+
+a:hover {
+  color: hsl(25, 20%, 20%);
+  /* background: hsl(25, 20%, 40%); */
+}
+
+a:focus,
+a:active,
+_ {
+  color: hsl(25, 20%, 20%);
+  background: hsl(25, 20%, 80%);
+}
