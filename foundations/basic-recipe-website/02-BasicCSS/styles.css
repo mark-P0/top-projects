@@ -9,6 +9,7 @@
  *  https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Lists_and_Counters/Consistent_list_indentation
  *  https://stackoverflow.com/questions/4549475/bulleted-list-with-different-indentation
  *  https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Styling_links
+ *  https://stackoverflow.com/questions/23610151/can-you-style-ordered-list-numbers
  */
 
 /* Sticky header/footers, and growing content */
@@ -151,6 +152,11 @@ _ {
 li {
   padding-left: 8px;
   padding-right: 8px;
+}
+
+li::marker {
+  font-weight: bold;
+  color: hsl(25, 20%, 25%);
 }
 
 /* Link styles */
