@@ -1,0 +1,66 @@
+/*  With much help from the following resources:
+ *
+ *  https://developer.mozilla.org/en-US/docs/Web/CSS/Layout_cookbook/Sticky_footers
+ *  https://www.schemecolor.com/wp-content/themes/colorsite/include/cc5.php?color0=bfaa8c&color1=d1c0a8&color2=e8ded1&color3=a0816c&color4=c8ad7e&pn=Beige%20Neutrals
+ *  https://stackoverflow.com/questions/29966499/border-radius-in-percentage-and-pixels-px-or-em
+ *  https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+ */
+
+html,
+body,
+_ {
+  /* Full page size */
+  height: 100%;
+
+  /* Reset browser (Firefox) styles */
+  margin-top: 0;
+  margin-bottom: 0;
+
+  /* Debug */
+  /* background-color: red; */
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+
+  text-align: center;
+
+  background-color: hsl(25, 20%, 80%);
+}
+
+header,
+footer,
+_ {
+  flex-shrink: 0;
+}
+
+header {
+  color: hsl(25, 20%, 25%);
+}
+
+footer {
+  background-color: hsl(25, 20%, 42%);
+  color: white;
+  padding: 0 2%;
+  border-radius: 24px 24px 0 0;
+  margin-top: 24px;
+}
+
+.content {
+  /* As flex child */
+  flex-grow: 1;
+
+  /* As flex parent */
+  display: flex;
+  justify-content: center;
+
+  border-radius: 24px;
+  background-color: hsl(25, 20%, 66%);
+  padding: 0 12px;
+}
+
+.content-inner {
+  /* Override `body`-wide setting */
+  text-align: left;
+}
