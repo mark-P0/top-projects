@@ -14,9 +14,10 @@ The following software resources has been indispensable to this end:
 
 ## Roadmap
 
-- [ ] Build the design as is
+- [x] Build the design as is
 - [ ] Substitute actual content into the design
   - e.g. images, logos, fonts, color schemes
+  - Use this as a GitHub Pages profile landing page?
 
 ## Design
 
