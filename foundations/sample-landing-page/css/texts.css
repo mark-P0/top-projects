@@ -69,3 +69,9 @@ _ {
 .welcome-image-placeholder {
   color: #f9faf8;
 }
+
+.button-action {
+  color: #f9faf8;
+  font-weight: bold;
+  font-size: 18px;
+}

@@ -2,7 +2,9 @@
   background-color: #1f2937;
 }
 
-.bg-action {
+.bg-action,
+.button-action,
+_ {
   background-color: #3882f6;
 }
 
@@ -10,7 +12,7 @@
   background-color: #e5e7eb;
 }
 
-/* Specific elements */
+/* Other specific elements */
 
 .welcome-image-placeholder {
   /* Extracted with PPT eyedropper tool */
