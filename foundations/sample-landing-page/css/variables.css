@@ -1,0 +1,33 @@
+/*  CSS Custom Properties, i.e. "variables"
+ *  https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
+ */
+:root {
+  /*  Background colors
+   */
+  --bg-dark: #1f2937;
+  --bg-light: white;
+  --bg-accent: #3882f6;
+  --bg-quote: #e5e7eb;
+  /* Extracted with PPT eyedropper tool */
+  --bg-placeholder: rgb(109, 116, 125);
+
+  /*  Text colors
+   */
+  --text-darkest: var(--bg-dark);
+  --text-darker: hsl(215, 28%, 42%);
+  --text-lighter: var(--bg-quote);
+  --text-lightest: #f9faf8;
+  --text-accent: var(--bg-accent);
+
+  /*  Text sizes
+   */
+  --text-smallest: 18px;
+  --text-smaller: 24px;
+  --text-larger: 36px;
+  --text-largest: 48px;
+
+  /*  Text styles
+   */
+  --text-bold: 900;
+  --text-light: 300;
+}

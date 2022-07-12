@@ -24,19 +24,6 @@ a:hover {
   max-width: 960px;
 }
 
-.button-action {
-  width: 128px;
-  height: 36px;
-  /* padding: 8px 30px; */
-
-  border-radius: 8px;
-  border: none;
-}
-
-.button-action-outline {
-  border: 2px solid white;
-}
-
 /* Header */
 #header {
   box-sizing: border-box;
@@ -165,7 +152,7 @@ a:hover {
   max-width: 800px;
 }
 
-#quote .text-quote-credit {
+#quote .quote-credit {
   text-align: end;
 }
 
@@ -188,6 +175,19 @@ a:hover {
   justify-content: space-around;
   gap: 38px;
   flex-wrap: wrap;
+}
+
+.action-button {
+  width: 128px;
+  height: 36px;
+  /* padding: 8px 30px; */
+
+  border-radius: 8px;
+  border: none;
+}
+
+.action-button-outline {
+  border: 2px solid white;
 }
 
 /* Footer */

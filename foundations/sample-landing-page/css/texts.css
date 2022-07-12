@@ -5,8 +5,8 @@
  *  - Roboto Regular (400)
  *  - Roboto Black (900)
  *    - Will be used as "extra-bold" font
- *    - "Extra-bold" === 800 only
- *  - Roboto Light Italic (300)
+ *    - "Extra-bold" is actually 800 only
+ *  - Roboto Light (300) Italic
  *
  *  Specify as:
  *    ```css
@@ -24,69 +24,91 @@ html {
   font-family: 'Roboto', sans-serif;
 }
 
-.text-hero {
-  font-size: 48px;
+/* Header section */
+.header-logo,
+.action-header,
+_ {
+  font-size: var(--text-smaller);
+  color: var(--text-lightest);
+
+  /* Not specified, but looks bold in the design */
+  font-weight: bold;
+  font-weight: var(--text-bold);
+}
+
+.header-link,
+.welcome-hero-secondary,
+.action-secondary,
+.footer-text,
+_ {
+  font-size: var(--text-smallest);
+  color: var(--text-lighter);
+}
+
+/* Welcome section */
+.welcome-hero {
+  font-size: var(--text-largest);
   /*  Extra-bold
    *  Roboto font only has 900 weight variant,
    *  and so this is used even if "extra-bold"
    *  actually corresponds to 800 weight
    */
-  font-weight: 900;
-  color: #f9faf8;
+  font-weight: var(--text-bold);
+  color: var(--text-lightest);
 }
 
-.text-header-link,
-.text-hero-secondary,
-.text-action-secondary,
-.footer-text,
-_ {
-  font-size: 18px;
-  color: #e5e7eb;
+.welcome-hero-secondary {
+  /* Reuses `.header-link` */
 }
-
-.text-header-logo,
-.text-action-header,
-_ {
-  font-size: 24px;
-  color: #f9faf8;
-
-  /* Not specified, but looks bold in the design */
-  font-weight: bold;
-}
-
-.information-header {
-  font-size: 36px;
-  font-weight: 900;
-  color: #1f2937;
-}
-
-.text-info-subtext {
-  /* Same hue and saturation with quote text */
-  color: hsl(215, 28%, 42%);
-}
-
-.text-quote {
-  font-size: 36px;
-  /* Light (300) italic */
-  font-weight: 300;
-  font-style: italic;
-  color: #1f2937;
-}
-
-.text-quote-credit {
-  font-size: 24px;
-  font-weight: bold;
-  color: #1f2937;
-}
-
-/* Specific standalone elements */
 
 .welcome-image-placeholder {
-  color: #f9faf8;
+  color: var(--text-lightest);
 }
 
-.button-action {
-  color: #f9faf8;
-  font-weight: bold;
-  font-size: 16px;
+/* Action section */
+.action-button {
+  color: var(--text-lightest);
+  font-weight: var(--text-bold);
+  font-size: var(--text-smallest);
+}
+
+/* Information section */
+.information-header {
+  font-size: var(--text-larger);
+  font-weight: var(--text-bold);
+  color: var(--text-darkest);
+}
+
+.information-subtext {
+  /* Same hue and saturation with quote text */
+  color: var(--text-darker);
+}
+
+/* Quote section */
+.quote-actual {
+  font-size: var(--text-larger);
+  /* Light (300) italic */
+  font-weight: var(--text-light);
+  font-style: italic;
+  color: var(--text-darkest);
+}
+
+.quote-credit {
+  font-size: var(--text-smaller);
+  font-weight: var(--text-bold);
+  color: var(--text-darkest);
+}
+
+/* Action section */
+.action-header {
+  /* Reuses `.header-logo` */
+}
+
+.action-secondary {
+  /* Resuses `.header-link` */
+}
+
+/* Footer section */
+.footer-text {
+  /* Resuses `.header-link` */
 }
