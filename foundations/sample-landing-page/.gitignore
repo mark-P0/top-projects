@@ -1,0 +1,5 @@
+## Other miscellaneous files used locally are stored here.
+.exclude
+
+## A PowerPoint `.pptx` file is saved in the `./misc/` directory for holding the base designs for this project. This generates a temporary file whenever opened, which will be ignored.
+misc/~$*.pptx
