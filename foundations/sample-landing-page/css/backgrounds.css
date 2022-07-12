@@ -2,6 +2,10 @@
   background-color: #1f2937;
 }
 
+.bg-light {
+  background-color: white;
+}
+
 .bg-action,
 .button-action,
 _ {
