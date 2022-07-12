@@ -45,6 +45,9 @@ _ {
 .text-header-logo {
   font-size: 24px;
   color: #f9faf8;
+
+  /* Not specified, but looks bold in the design */
+  font-weight: bold;
 }
 
 .text-info-header {
