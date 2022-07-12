@@ -1,0 +1,62 @@
+/*  "Roboto" font
+*
+ *  Imported from Google Fonts
+ *
+ *  - Roboto Regular (400)
+ *  - Roboto Black (900)
+ *    - Will be used as "extra-bold" font
+ *    - "Extra-bold" === 800 only
+ *  - Roboto Light Italic (300)
+ *
+ *  Specify as:
+ *    ```css
+ *    font-family: "Roboto";
+ *    ```
+ *
+ *  Resources:
+ *    https://fonts.google.com/specimen/Roboto
+ *    https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight#common_weight_name_mapping
+ */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,900;1,300&display=swap');
+
+html {
+  /* Default to "Roboto" font */
+  font-family: 'Roboto', sans-serif;
+}
+
+.text-hero {
+  font-size: 48px;
+  /*  Extra-bold
+   *  Roboto font only has 900 weight variant,
+   *  and so this is used even if "extra-bold"
+   *  actually corresponds to 800 weight
+   */
+  font-weight: 900;
+  color: #f9faf8;
+}
+
+.text-hero-secondary,
+.text-header-link,
+_ {
+  font-size: 18px;
+  color: #e5e7eb;
+}
+
+.text-header-logo {
+  font-size: 24px;
+  color: #f9faf8;
+}
+
+.text-info-header {
+  font-size: 36px;
+  font-weight: 900;
+  color: #1f2937;
+}
+
+.text-quote {
+  font-size: 36px;
+  /* Light (300) italic */
+  font-weight: 300;
+  font-style: italic;
+  color: #1f2937;
+}
