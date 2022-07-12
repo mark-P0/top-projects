@@ -23,23 +23,19 @@ header nav a:hover {
 .common-padding-side {
   /* padding: 0 256px; */
 
-  padding-left: 224px;
-  padding-right: 224px;
-}
-
-/* Flexbox 2-col endings */
-header,
-_ {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  padding-left: 216px;
+  padding-right: 216px;
 }
 
 /* Header */
 header {
   /* padding: 8px 0; */
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 16px;
+  /* padding-bottom: 16px; */
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .header-link-list {
@@ -54,7 +50,7 @@ header {
   padding-bottom: 128px;
 
   display: flex;
-  gap: 32px;
+  gap: 42px;
 }
 
 #welcome .welcome-main {
@@ -79,7 +75,7 @@ header {
 }
 
 #welcome .button-action {
-  padding: 10px 30px;
+  padding: 8px 30px;
   border: none;
   border-radius: 8px;
 }
