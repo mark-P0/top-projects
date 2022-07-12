@@ -63,3 +63,9 @@ _ {
   font-style: italic;
   color: #1f2937;
 }
+
+/* Specific elements */
+
+.welcome-image-placeholder {
+  color: #f9faf8;
+}

@@ -9,3 +9,10 @@
 .bg-quote {
   background-color: #e5e7eb;
 }
+
+/* Specific elements */
+
+.welcome-image-placeholder {
+  /* Extracted with PPT eyedropper tool */
+  background-color: rgb(109, 116, 125);
+}
