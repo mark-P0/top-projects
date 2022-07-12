@@ -20,11 +20,8 @@ a:hover {
 }
 
 /* Common styles */
-.common-padding-side {
-  /* padding: 0 256px; */
-
-  padding-left: 216px;
-  padding-right: 216px;
+.common-width {
+  max-width: 960px;
 }
 
 .button-action {
@@ -42,13 +39,24 @@ a:hover {
 
 /* Header */
 #header {
-  /* padding: 8px 0; */
-  padding-top: 16px;
-  /* padding-bottom: 16px; */
+  box-sizing: border-box;
+  padding: 0 32px;
 
+  display: flex;
+  justify-content: center;
+}
+
+#header #header-inner {
+  padding-top: 16px;
+
+  /* As flex item */
+  flex: 1;
+
+  /* As flex container */
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 #header .header-link-list {
@@ -59,11 +67,20 @@ a:hover {
 
 /* "Welcome" section  */
 #welcome {
+  box-sizing: border-box;
+  padding: 0 32px;
+
+  display: flex;
+  justify-content: center;
+}
+
+#welcome #welcome-inner {
   padding-top: 128px;
   padding-bottom: 128px;
 
   display: flex;
   gap: 42px;
+  flex-wrap: wrap;
 }
 
 #welcome .welcome-main {
@@ -89,6 +106,14 @@ a:hover {
 
 /* Information section */
 #information {
+  box-sizing: border-box;
+  padding: 0 32px;
+
+  display: flex;
+  justify-content: center;
+}
+
+#information #information-inner {
   padding-top: 32px;
   padding-bottom: 128px;
 
@@ -98,8 +123,15 @@ a:hover {
   gap: 36px;
 }
 
+#information .information-header {
+  text-align: center;
+}
+
 #information .information-card-group {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   gap: 42px;
 }
 
@@ -120,7 +152,17 @@ a:hover {
 
 /* Quote section */
 #quote {
-  padding: 124px 300px;
+  box-sizing: border-box;
+  padding: 0 32px;
+
+  display: flex;
+  justify-content: center;
+}
+
+#quote #quote-inner {
+  /* padding: 124px 300px; */
+  padding: 124px 0;
+  max-width: 800px;
 }
 
 #quote .text-quote-credit {
@@ -129,12 +171,15 @@ a:hover {
 }
 
 /* "Call to Action" section */
-#action-call {
-  padding-top: 100px;
-  padding-bottom: 100px;
+#action {
+  box-sizing: border-box;
+  padding: 100px 32px;
+
+  display: flex;
+  justify-content: center;
 }
 
-#action-call-inner {
+#action-inner {
   padding: 42px 64px;
   border-radius: 8px;
 
@@ -143,6 +188,7 @@ a:hover {
   align-items: center;
   justify-content: space-around;
   gap: 38px;
+  flex-wrap: wrap;
 }
 
 /* Footer */
