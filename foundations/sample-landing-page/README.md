@@ -17,7 +17,22 @@ The following software resources has been indispensable to this end:
 - [x] Build the design as is
 - [ ] Substitute actual content into the design
   - e.g. images, logos, fonts, color schemes
-  - Use this as a GitHub Pages profile landing page?
+- [ ] Transform into GitHub Pages profile landing page
+  - Combine header and welcome sections
+  - Set background as original GitHub Pages background
+  - Set header links as on-page ID links, and social media links
+    - GitHub
+    - LinkedIn
+    - Portfolio
+    - Resume
+  - Set information section as portfolio
+    - JS
+    - Py
+  - Add favorite quote? Other people's recommendations? Client feedback?
+    - Technical / Soft skills?
+  - Set action section as resume link
+    - Or "Connect with me"?
+  - Footer link to original repo
 
 ## Design
 
