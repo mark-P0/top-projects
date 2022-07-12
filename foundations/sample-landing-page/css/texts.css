@@ -37,6 +37,7 @@ html {
 
 .text-hero-secondary,
 .text-header-link,
+#footer,
 _ {
   font-size: 18px;
   color: #e5e7eb;
@@ -64,7 +65,7 @@ _ {
   color: #1f2937;
 }
 
-/* Specific elements */
+/* Specific standalone elements */
 
 .welcome-image-placeholder {
   color: #f9faf8;

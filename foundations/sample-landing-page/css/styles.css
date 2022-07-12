@@ -79,3 +79,13 @@ header {
   border: none;
   border-radius: 8px;
 }
+
+/* Footer */
+#footer {
+  padding-top: 42px;
+  padding-bottom: 42px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
