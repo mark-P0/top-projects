@@ -166,8 +166,12 @@ a:hover {
 }
 
 #action-inner {
+  box-sizing: border-box;
   padding: 42px 64px;
   border-radius: 8px;
+
+  /* As flex item */
+  flex: 1;
 
   /* As flex container */
   display: flex;
