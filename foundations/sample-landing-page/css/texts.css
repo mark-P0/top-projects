@@ -35,8 +35,8 @@ html {
   color: #f9faf8;
 }
 
-.text-hero-secondary,
 .text-header-link,
+.text-hero-secondary,
 .text-action-secondary,
 #footer,
 _ {
@@ -58,6 +58,11 @@ _ {
   font-size: 36px;
   font-weight: 900;
   color: #1f2937;
+}
+
+.text-info-subtext {
+  /* Same hue and saturation with quote text */
+  color: hsl(215, 28%, 42%);
 }
 
 .text-quote {
