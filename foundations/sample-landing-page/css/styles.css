@@ -87,6 +87,16 @@ header {
   align-items: center;
 }
 
+/* Quote section */
+#quote {
+  padding: 124px 300px;
+}
+
+#quote .text-quote-credit {
+  text-align: end;
+  margin-right: 32px;
+}
+
 /* "Call to Action" section */
 #action-call {
   padding-top: 100px;

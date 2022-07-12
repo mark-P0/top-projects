@@ -68,6 +68,12 @@ _ {
   color: #1f2937;
 }
 
+.text-quote-credit {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1f2937;
+}
+
 /* Specific standalone elements */
 
 .welcome-image-placeholder {
