@@ -37,13 +37,16 @@ html {
 
 .text-hero-secondary,
 .text-header-link,
+.text-action-secondary,
 #footer,
 _ {
   font-size: 18px;
   color: #e5e7eb;
 }
 
-.text-header-logo {
+.text-header-logo,
+.text-action-header,
+_ {
   font-size: 24px;
   color: #f9faf8;
 
@@ -74,5 +77,5 @@ _ {
 .button-action {
   color: #f9faf8;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 16px;
 }

@@ -27,6 +27,19 @@ header nav a:hover {
   padding-right: 216px;
 }
 
+.button-action {
+  width: 128px;
+  height: 36px;
+  /* padding: 8px 30px; */
+
+  border-radius: 8px;
+  border: none;
+}
+
+.button-action-outline {
+  border: 2px solid white;
+}
+
 /* Header */
 header {
   /* padding: 8px 0; */
@@ -74,10 +87,21 @@ header {
   align-items: center;
 }
 
-#welcome .button-action {
-  padding: 8px 30px;
-  border: none;
+/* "Call to Action" section */
+#action-call {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+#action-call-inner {
+  padding: 32px 64px;
   border-radius: 8px;
+
+  /* As flex container */
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 38px;
 }
 
 /* Footer */
