@@ -23,8 +23,8 @@ header nav a:hover {
 .common-padding-side {
   /* padding: 0 256px; */
 
-  padding-left: 248px;
-  padding-right: 248px;
+  padding-left: 224px;
+  padding-right: 224px;
 }
 
 /* Flexbox 2-col endings */
@@ -35,13 +35,51 @@ _ {
   justify-content: space-between;
 }
 
-/* Header-specific */
+/* Header */
 header {
-  padding: 8px 0;
+  /* padding: 8px 0; */
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 
 .header-link-list {
   display: flex;
   align-items: center;
   gap: 24px;
+}
+
+/* "Welcome" section  */
+#welcome {
+  padding-top: 128px;
+  padding-bottom: 128px;
+
+  display: flex;
+  gap: 32px;
+}
+
+#welcome .welcome-main {
+  /* As flex item */
+  flex: 1;
+
+  /* As flex container */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+#welcome .welcome-image-placeholder {
+  /* As flex item */
+  flex: 1;
+
+  /* As flex container */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#welcome .button-action {
+  padding: 10px 30px;
+  border: none;
+  border-radius: 8px;
 }
