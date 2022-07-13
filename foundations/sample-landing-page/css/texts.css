@@ -80,7 +80,6 @@ _ {
 }
 
 .information-subtext {
-  /* Same hue and saturation with quote text */
   color: var(--text-darker);
 }
 

@@ -14,6 +14,7 @@
   /*  Text colors
    */
   --text-darkest: var(--bg-dark);
+  /* Same hue and saturation with quote text (--bg-dark) */
   --text-darker: hsl(215, 28%, 42%);
   --text-lighter: var(--bg-quote);
   --text-lightest: #f9faf8;
