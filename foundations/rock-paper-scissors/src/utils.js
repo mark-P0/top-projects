@@ -46,6 +46,19 @@ const utils = {
 
     return element;
   },
+
+  capitalizeString: function (string) {
+    /*  Capitalizes first character of `string` and lowers everything else
+     *
+     *  Raise error when `string` is empty?
+     */
+
+    const firstChar = string[0].toUpperCase();
+    const remainingChars = string.slice(1).toLowerCase();
+    const result = firstChar + remainingChars;
+
+    return result;
+  },
 };
 
 /*  Bind function `this` references to the same object.
