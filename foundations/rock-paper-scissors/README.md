@@ -8,7 +8,7 @@ A JavaScript project implementing the game "_Rock, Paper, Scissors_"
 
 ## Versions
 
-- [ ] Console-based
+- [x] Console-based
 - [ ] Graphical user interface (GUI)
 
 ## Packages • Extensions
