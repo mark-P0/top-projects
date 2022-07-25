@@ -15,11 +15,30 @@ function getComputerChoice() {
   return computerChoice;
 }
 
-function getPlayerChoice() {
-  const result = getComputerChoice();
-  console.warn('Player choice still randomized!');
+function getPlayerChoice(
+  promptMsgDefault = 'Rock, Paper, or Scissors?\n[See console for game output]'
+) {
+  const { capitalizeString } = utils;
 
-  return result;
+  let userInput = '';
+  let userInputCapitalized = '';
+  let promptMsg = promptMsgDefault;
+
+  while (true) {
+    userInput = prompt(promptMsg);
+    userInputCapitalized = capitalizeString(userInput);
+
+    if (CHOICES.includes(userInputCapitalized)) break;
+
+    /* prettier-ignore */
+    promptMsg = [
+      `Input "${userInput}" is invalid!`,
+      promptMsgDefault,
+    ].join('\n\n')
+  }
+
+  /* Use enum version of `CHOICES` instead? */
+  return userInputCapitalized;
 }
 
 function playRound(playerSelection, computerSelection) {
