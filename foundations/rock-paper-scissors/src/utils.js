@@ -4,6 +4,12 @@ const utils = {
     upper = 10,
     isUpperInclusive = false,
   } = {}) {
+    /*  Get a random integer from `lower` up to `upper`
+     *  Normally `upper`-exclusive, but can be changed with `isUpperInclusive` flag
+     *
+     *  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+     */
+
     const range = upper - lower;
     if (isUpperInclusive) range++;
 
@@ -13,6 +19,11 @@ const utils = {
   },
 
   getRandomElement: function (array) {
+    /*  Get a random member of `array`
+     *
+     *  Raise error when `array` is empty?
+     */
+
     const elementIdx = this.getRandomInteger({ lower: 0, upper: array.length });
     const element = array[elementIdx];
 
