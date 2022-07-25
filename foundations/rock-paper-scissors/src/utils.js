@@ -1,10 +1,10 @@
 const utils = {
-  getRandomInteger: function ({
+  getRandomFloat: function ({
     lower = 0,
     upper = 10,
     isUpperInclusive = false,
   } = {}) {
-    /*  Get a random integer from `lower` up to `upper`
+    /*  Get a random "decimal" from `lower` up to `upper`
      *  Normally `upper`-exclusive, but can be changed with `isUpperInclusive` flag
      *
      *  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
@@ -13,7 +13,24 @@ const utils = {
     const range = upper - lower;
     if (isUpperInclusive) range++;
 
-    const result = Math.floor(Math.random() * range + lower);
+    const result = Math.random() * range + lower;
+
+    return result;
+  },
+
+  getRandomInteger: function ({
+    lower = 0,
+    upper = 10,
+    isUpperInclusive = false,
+  } = {}) {
+    /*  Get a random integer from `lower` up to `upper`
+     *  Essentially the same as `getRandomFloat()`, but removes the "decimal" parts
+     *
+     *  `Math.floor()` or `Math.trunc()`?
+     */
+
+    const resultFloat = this.getRandomFloat({ lower, upper, isUpperInclusive });
+    const result = Math.floor(resultFloat);
 
     return result;
   },
