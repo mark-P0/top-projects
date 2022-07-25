@@ -22,16 +22,12 @@ function playRound(playerSelection, computerSelection) {
    */
   const playerSelIdxNext = (playerSelIdx + 1) % CHOICES.length;
 
-  let result;
-
-  /* prettier-ignore */
-  if (playerSelIdx === computerSelIdx) {
-    result = `It's a tie! You both played ${playerSelection}`;
-  } else if (playerSelIdxNext === computerSelIdx) {
-    result = `You Lose! ${computerSelection} beats ${playerSelection}`;
-  } else {
-    result = `You Win! ${playerSelection} beats ${computerSelection}`;
-  }
+  const result =
+    playerSelIdx === computerSelIdx
+      ? `It's a tie! You both played ${playerSelection}`
+      : playerSelIdxNext === computerSelIdx
+      ? `You Lose! ${computerSelection} beats ${playerSelection}`
+      : `You Win! ${playerSelection} beats ${computerSelection}`;
 
   return result;
 }
