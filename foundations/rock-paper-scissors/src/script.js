@@ -9,14 +9,41 @@ function getComputerChoice() {
   return computerChoice;
 }
 
+function playRound(playerSelection, computerSelection) {
+  const playerSelIdx = CHOICES.indexOf(playerSelection);
+  const computerSelIdx = CHOICES.indexOf(computerSelection);
+
+  /*  The game choices' relationships are such that,
+      given `choice` as `CHOICES[idx]`,
+      `choice` is beaten by `CHOICES[(idx + 1) % CHOICES.length]`
+      i.e. the choice "next" to them
+
+      `playerSelIdxNext` will be used to compare to `computerSelIdx`
+   */
+  const playerSelIdxNext = (playerSelIdx + 1) % CHOICES.length;
+
+  let result;
+
+  /* prettier-ignore */
+  if (playerSelIdx === computerSelIdx) {
+    result = `It's a tie! You both played ${playerSelection}`;
+  } else if (playerSelIdxNext === computerSelIdx) {
+    result = `You Lose! ${computerSelection} beats ${playerSelection}`;
+  } else {
+    result = `You Win! ${playerSelection} beats ${computerSelection}`;
+  }
+
+  return result;
+}
+
 /*  */
 
-const { getRandomInteger, getRandomElement } = utils;
-
-let _ = [
-  /*  */
-  getRandomInteger({ lower: 0, upper: 100 }),
-  getRandomElement(['Rock', 'Paper', 'Scissors']),
-  getComputerChoice(),
-];
-console.log(_);
+for (const playerChoice of CHOICES) {
+  for (const computerChoice of CHOICES) {
+    console.log([
+      playerChoice,
+      computerChoice,
+      playRound(playerChoice, computerChoice),
+    ]);
+  }
+}
