@@ -115,3 +115,17 @@ function game(rounds = 5) {
 
 console.warn('Console game is disabled! Rounds set to 0');
 game(0);
+
+/*  */
+
+const selectionListener = (event) => {
+  const { target } = event;
+  const { textContent } = target;
+
+  console.log(textContent);
+};
+
+const selectionButtons = document.querySelectorAll('.selection');
+console.log(selectionButtons);
+for (const button of selectionButtons)
+  button.addEventListener('click', selectionListener);
