@@ -7,7 +7,7 @@ const Choices = {
 const Participant = {
   PLAYER: 'Player',
   COMPUTER: 'Computer',
-  NONE: undefined,
+  NONE: '',
 };
 
 export default { Choices, Participant };

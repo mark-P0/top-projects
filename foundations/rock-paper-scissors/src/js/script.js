@@ -13,6 +13,16 @@ const Game = {
   },
 };
 
+const Selectors = {
+  tableBody: '#result table tbody',
+  tableRow: {
+    header: '#row-header',
+    [Participant.COMPUTER]: '#row-computer',
+    [Participant.PLAYER]: '#row-player',
+  },
+  tableScoreCell: '.score',
+};
+
 /*  */
 
 function getComputerChoice() {
@@ -61,12 +71,20 @@ function playRound(playerChoice) {
 
 /*  */
 
+function decideGameWinner() {
+  const computerScore = Game.scores[Participant.COMPUTER];
+  const playerScore = Game.scores[Participant.PLAYER];
+
+  if (computerScore > playerScore) Game.winner = Participant.COMPUTER;
+  else if (computerScore < playerScore) Game.winner = Participant.PLAYER;
+  else Game.winner = Participant.NONE;
+}
+
 function updateGameObject(roundWinner) {
   const { roundCurrent, roundMax, scores } = Game;
 
   if (roundCurrent === roundMax) {
-    /* TODO: Turn into an event listener? */
-
+    decideGameWinner();
     return;
   }
 
@@ -81,6 +99,43 @@ function updateUIMessage(roundMessage) {
   messageElement.textContent = roundMessage;
 }
 
+function updateUITable(playerChoice, computerChoice) {
+  /*  i.e. add new column
+   */
+
+  const headerRowSel = Selectors.tableRow.header;
+  const headerRow = document.querySelector(headerRowSel);
+  const newHeaderRound = document.createElement('th');
+  newHeaderRound.textContent = `Round ${Game.roundCurrent}`;
+  headerRow.appendChild(newHeaderRound);
+
+  const computerRowSel = Selectors.tableRow[Participant.COMPUTER];
+  const computerRow = document.querySelector(computerRowSel);
+  const computerChoiceCell = document.createElement('td');
+  computerChoiceCell.textContent = computerChoice;
+  computerRow.appendChild(computerChoiceCell);
+
+  const playerRowSel = Selectors.tableRow[Participant.PLAYER];
+  const playerRow = document.querySelector(playerRowSel);
+  const playerChoiceCell = document.createElement('td');
+  playerChoiceCell.textContent = playerChoice;
+  playerRow.appendChild(playerChoiceCell);
+}
+
+function updateUIScore() {
+  const { PLAYER, COMPUTER } = Participant;
+
+  for (const participant of [PLAYER, COMPUTER]) {
+    const rowSel = Selectors.tableRow[participant];
+    const scoreSel = Selectors.tableScoreCell;
+
+    const scoreCellElement = document.querySelector(`${rowSel} ${scoreSel}`);
+    const scoreValue = Game.scores[participant];
+
+    scoreCellElement.textContent = scoreValue;
+  }
+}
+
 /*  */
 
 const selectionListener = (event) => {
@@ -90,7 +145,11 @@ const selectionListener = (event) => {
   const roundResult = playRound(playerChoice);
   const { _, computerChoice, winner, message } = roundResult;
 
+  if (Game.winner !== undefined) return;
+
+  updateUITable(playerChoice, computerChoice);
   updateGameObject(winner);
+  updateUIScore();
   updateUIMessage(message);
 
   console.log(roundResult);
@@ -100,4 +159,6 @@ const selectionListener = (event) => {
 const selectionButtons = document.querySelectorAll('.selection');
 for (const button of selectionButtons)
   button.addEventListener('click', selectionListener);
+
+console.clear();
 console.log(Game);
