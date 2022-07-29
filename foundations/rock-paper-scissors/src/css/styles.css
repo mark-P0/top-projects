@@ -48,10 +48,10 @@ body {
 }
 
 table {
-  /* display: flex; */
-  /* justify-content: center; */
-  /* align-items: center; */
-  /* text-align: center; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 
   border-collapse: collapse;
 }
@@ -61,10 +61,8 @@ td,
 _ {
   border: 1px solid gainsboro;
   padding: 0 1rem;
-  text-align: center;
 }
 
-.score,
-_ {
+.score {
   background-color: whitesmoke;
 }
