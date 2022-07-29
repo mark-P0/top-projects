@@ -1,15 +1,13 @@
-const enums = {
-  Choices: {
-    ROCK: '✊🏼',
-    PAPER: '🖐🏼',
-    SCISSORS: '✌🏼',
-  },
-
-  Participant: {
-    PLAYER: 'Player',
-    COMPUTER: 'Computer',
-    NONE: undefined,
-  },
+const Choices = {
+  ROCK: '✊🏼',
+  PAPER: '🖐🏼',
+  SCISSORS: '✌🏼',
 };
 
-export default enums;
+const Participant = {
+  PLAYER: 'Player',
+  COMPUTER: 'Computer',
+  NONE: undefined,
+};
+
+export default { Choices, Participant };
