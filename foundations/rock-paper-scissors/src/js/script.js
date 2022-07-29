@@ -21,6 +21,7 @@ const Selectors = {
     [Participant.PLAYER]: '#row-player',
   },
   tableScoreCell: '.score',
+  prompt: '#prompt',
 };
 
 /*  */
@@ -80,11 +81,37 @@ function decideGameWinner() {
   else Game.winner = Participant.NONE;
 }
 
+function finalizeGame(alertMsgRetry = 'Would you like to try again?') {
+  for (const button of selectionButtons) button.disabled = true;
+
+  const alertMsgRemarks =
+    Game.winner === Participant.PLAYER
+      ? '🎉 You won the game! Congratulations!'
+      : Game.winner === Participant.PLAYER
+      ? '💩 You lost! Better luck next time!'
+      : '🤝🏼 You tied with the computer!';
+
+  const alertMsg = `${alertMsgRemarks}\n\n${alertMsgRetry}`;
+  if (confirm(alertMsg)) reloadPage();
+
+  const prompt = document.querySelector(Selectors.prompt);
+  for (const child of prompt.children) prompt.removeChild(child);
+
+  const promptRefresh = document.createElement('a');
+  promptRefresh.textContent = 'Try again';
+  promptRefresh.href = '.';
+  promptRefresh.style.fontWeight = 'bold';
+  prompt.appendChild(promptRefresh);
+}
+
+/*  */
+
 function updateGameObject(roundWinner) {
   const { roundCurrent, roundMax, scores } = Game;
 
   if (roundCurrent === roundMax) {
     decideGameWinner();
+    finalizeGame();
     return;
   }
 
