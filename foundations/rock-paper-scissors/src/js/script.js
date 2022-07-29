@@ -51,15 +51,22 @@ function playRound(playerChoice) {
 
 /*  */
 
+function updateUIMessage(roundMessage) {
+  const messageElement = document.querySelector('#result #message');
+  messageElement.textContent = roundMessage;
+}
+
 const selectionListener = (event) => {
   const { target } = event;
   const { textContent: playerChoice } = target;
 
   const roundResult = playRound(playerChoice);
+  const { _, computerChoice, winner, message } = roundResult;
+
   console.log(roundResult);
+  updateUIMessage(message);
 };
 
 const selectionButtons = document.querySelectorAll('.selection');
-console.log(selectionButtons);
 for (const button of selectionButtons)
   button.addEventListener('click', selectionListener);
