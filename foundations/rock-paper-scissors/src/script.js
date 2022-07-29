@@ -82,12 +82,11 @@ function game(rounds = 5) {
     const playerChoice = getPlayerChoice();
     const computerChoice = getComputerChoice();
 
-    console.log(
-      [
-        `Your play:       ${playerChoice}`,
-        `Computer's play: ${computerChoice}`,
-      ].join('\n')
-    );
+    const choicesFeedback = [
+      `Your play:       ${playerChoice}`,
+      `Computer's play: ${computerChoice}`,
+    ].join('\n');
+    console.log(choicesFeedback);
 
     const [resultMsg, roundWinner] = playRound(playerChoice, computerChoice);
 
@@ -114,4 +113,5 @@ function game(rounds = 5) {
   console.log(scores);
 }
 
-game();
+console.warn('Console game is disabled! Rounds set to 0');
+game(0);
