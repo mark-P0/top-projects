@@ -3,6 +3,8 @@ import utils from './utils.js';
 
 const { Choices, Participant } = enums;
 
+/*  */
+
 function getComputerChoice() {
   const { getRandomElement } = utils;
   const computerChoiceKey = getRandomElement(Object.keys(Choices));
@@ -10,39 +12,51 @@ function getComputerChoice() {
 
   return computerChoice;
 }
-console.log(getComputerChoice());
 
-function playRound(playerSelection, computerSelection) {
-  const playerSelIdx = Choices.indexOf(playerSelection);
-  const computerSelIdx = Choices.indexOf(computerSelection);
+function getChoiceWinner(playerSelection, computerSelection) {
+  const choiceValues = Object.values(Choices);
+  const playerSelIdx = choiceValues.indexOf(playerSelection);
+  const computerSelIdx = choiceValues.indexOf(computerSelection);
 
   /*  The game choices' relationships are such that,
-      given `choice` as `Choices[idx]`,
-      `choice` is beaten by `Choices[(idx + 1) % Choices.length]`
+      given `choice` as `choiceValues[idx]`,
+      `choice` is beaten by `choiceValues[(idx + 1) % choiceValues.length]`
       i.e. the choice "next" to them
 
       `playerSelIdxNext` will be used to compare to `computerSelIdx`
    */
-  const playerSelIdxNext = (playerSelIdx + 1) % Choices.length;
+  const playerSelIdxNext = (playerSelIdx + 1) % choiceValues.length;
 
   /* prettier-ignore */
   const result =
-    playerSelIdx === computerSelIdx
-      ? [`It's a tie! You both played ${playerSelection}`, Participant.NONE]
-      : playerSelIdxNext === computerSelIdx
-      ? [`You Lose! ${computerSelection} beats ${playerSelection}`, Participant.COMPUTER]
-      : [`You Win! ${playerSelection} beats ${computerSelection}`, Participant.PLAYER]
+    playerSelIdx === computerSelIdx ? Participant.NONE
+    : playerSelIdxNext === computerSelIdx ? Participant.COMPUTER
+    : Participant.PLAYER
 
   return result;
+}
+
+function playRound(playerChoice) {
+  const computerChoice = getComputerChoice();
+  const winner = getChoiceWinner(playerChoice, computerChoice);
+
+  /* prettier-ignore */
+  const message =
+    winner === Participant.PLAYER ? `You Win! ${playerChoice} beats ${computerChoice}`
+    : winner === Participant.COMPUTER ? `You Lose! ${computerChoice} beats ${playerChoice}`
+    : `It's a tie! You both played ${playerChoice}`
+
+  return { playerChoice, computerChoice, winner, message };
 }
 
 /*  */
 
 const selectionListener = (event) => {
   const { target } = event;
-  const { textContent } = target;
+  const { textContent: playerChoice } = target;
 
-  console.log(textContent);
+  const roundResult = playRound(playerChoice);
+  console.log(roundResult);
 };
 
 const selectionButtons = document.querySelectorAll('.selection');
