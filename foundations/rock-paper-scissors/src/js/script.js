@@ -62,12 +62,17 @@ function playRound(playerChoice) {
 /*  */
 
 function decideGameWinner() {
-  const computerScore = Game.scores[Participant.COMPUTER];
-  const playerScore = Game.scores[Participant.PLAYER];
+  const { PLAYER, COMPUTER, NONE } = Participant;
+  const { scores } = Game;
 
-  if (computerScore > playerScore) Game.winner = Participant.COMPUTER;
-  else if (computerScore < playerScore) Game.winner = Participant.PLAYER;
-  else Game.winner = Participant.NONE;
+  const computerScore = scores[COMPUTER];
+  const playerScore = scores[PLAYER];
+
+  /* prettier-ignore */
+  Game.winner =
+    (computerScore > playerScore) ? COMPUTER
+    : (computerScore < playerScore) ? PLAYER
+    : NONE
 }
 
 function finalizeGame() {
