@@ -12,16 +12,16 @@ const Participant = {
 
 const RoundMessage = {
   WIN: (winningChoice, losingChoice) =>
-    `You Win! ${winningChoice} beats ${losingChoice}`,
+    `Round Win! ${winningChoice} beats ${losingChoice}`,
   LOSE: (winningChoice, losingChoice) =>
-    `You Lose! ${winningChoice} beats ${losingChoice}`,
-  TIE: (commonChoice) => `It's a tie! You both played ${commonChoice}`,
+    `Round Lose! ${winningChoice} beats ${losingChoice}`,
+  TIE: (commonChoice) => `Round tie! You both played ${commonChoice}`,
 };
 
 const FinalMessage = {
-  WIN: '🎉 You won the game! Congratulations!',
-  LOSE: '💩 You lost! Better luck next time!',
-  TIE: '🤝🏼 You tied with the computer!',
+  WIN: '🎉 The game is yours! Congratulations!',
+  LOSE: '💩 The game is lost! Better luck next time!',
+  TIE: '🤝🏼 You tied the game!',
   PROMPT: 'Try Again',
 };
 

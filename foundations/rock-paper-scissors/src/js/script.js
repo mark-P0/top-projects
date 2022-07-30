@@ -80,15 +80,19 @@ function finalizeGame() {
   for (const button of selectionButtons) button.disabled = true;
 
   /* Add a final message */
-  const finalMsg =
-    Game.winner === Participant.PLAYER
-      ? FinalMessage.WIN
-      : Game.winner === Participant.COMPUTER
-      ? FinalMessage.LOSE
-      : FinalMessage.TIE;
-
   const finalMsgPara = document.querySelector(Selectors.FINAL_MESSAGE);
-  finalMsgPara.textContent = finalMsg;
+
+  finalMsgPara.style.fontWeight = 'bold';
+  if (Game.winner === Participant.PLAYER) {
+    finalMsgPara.textContent = FinalMessage.WIN;
+    finalMsgPara.style.color = 'green';
+  } else if (Game.winner === Participant.COMPUTER) {
+    finalMsgPara.textContent = FinalMessage.LOSE;
+    finalMsgPara.style.color = 'red';
+  } else {
+    finalMsgPara.textContent = FinalMessage.TIE;
+    finalMsgPara.style.color = 'gray';
+  }
 
   /* Remove prompt text */
   const prompt = document.querySelector(Selectors.PROMPT);
