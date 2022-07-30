@@ -98,7 +98,7 @@ function finalizeGame() {
 
   /* Add refresh link to prompt location */
   const promptRefresh = document.createElement('a');
-  promptRefresh.textContent = 'Try again';
+  promptRefresh.textContent = 'Try Again';
   promptRefresh.href = '.'; // Go to current page; effectively refresh
   promptRefresh.style.fontWeight = 'bold';
   prompt.appendChild(promptRefresh);
