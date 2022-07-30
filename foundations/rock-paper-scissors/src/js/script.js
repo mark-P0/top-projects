@@ -1,7 +1,7 @@
 import enums from './enums.js';
 import utils from './utils.js';
 
-const { Choices, Participant } = enums;
+const { Choices, Participant, RoundMessage, FinalMessage } = enums;
 
 const Game = {
   roundMax: 5,
@@ -59,9 +59,9 @@ function playRound(playerChoice) {
 
   /* prettier-ignore */
   const message =
-    winner === Participant.PLAYER ? `You Win! ${playerChoice} beats ${computerChoice}`
-    : winner === Participant.COMPUTER ? `You Lose! ${computerChoice} beats ${playerChoice}`
-    : `It's a tie! You both played ${playerChoice}`
+    winner === Participant.PLAYER ? RoundMessage.WIN(playerChoice, computerChoice)
+    : winner === Participant.COMPUTER ? RoundMessage.LOSE(computerChoice, playerChoice)
+    : RoundMessage.TIE(playerChoice)
 
   return { playerChoice, computerChoice, winner, message };
 }
@@ -84,10 +84,10 @@ function finalizeGame() {
   /* Add a final message */
   const finalMsg =
     Game.winner === Participant.PLAYER
-      ? '🎉 You won the game! Congratulations!'
+      ? FinalMessage.WIN
       : Game.winner === Participant.COMPUTER
-      ? '💩 You lost! Better luck next time!'
-      : '🤝🏼 You tied with the computer!';
+      ? FinalMessage.LOSE
+      : FinalMessage.TIE;
 
   const finalMsgPara = document.querySelector(Selectors.finalMessage);
   finalMsgPara.textContent = finalMsg;
@@ -98,7 +98,7 @@ function finalizeGame() {
 
   /* Add refresh link to prompt location */
   const promptRefresh = document.createElement('a');
-  promptRefresh.textContent = 'Try Again';
+  promptRefresh.textContent = FinalMessage.PROMPT;
   promptRefresh.href = '.'; // Go to current page; effectively refresh
   promptRefresh.style.fontWeight = 'bold';
   prompt.appendChild(promptRefresh);
