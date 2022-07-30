@@ -21,6 +21,7 @@ const Selectors = {
     [Participant.PLAYER]: '#row-player',
   },
   tableScoreCell: '.score',
+  finalMessage: '#final',
   prompt: '#prompt',
 };
 
@@ -82,24 +83,28 @@ function decideGameWinner() {
 }
 
 function finalizeGame(alertMsgRetry = 'Would you like to try again?') {
+  /* Disable buttons */
   for (const button of selectionButtons) button.disabled = true;
 
-  const alertMsgRemarks =
+  /* Add a final message */
+  const finalMsg =
     Game.winner === Participant.PLAYER
       ? '🎉 You won the game! Congratulations!'
-      : Game.winner === Participant.PLAYER
+      : Game.winner === Participant.COMPUTER
       ? '💩 You lost! Better luck next time!'
       : '🤝🏼 You tied with the computer!';
 
-  const alertMsg = `${alertMsgRemarks}\n\n${alertMsgRetry}`;
-  if (confirm(alertMsg)) reloadPage();
+  const finalMsgPara = document.querySelector(Selectors.finalMessage);
+  finalMsgPara.textContent = finalMsg;
 
+  /* Remove prompt text */
   const prompt = document.querySelector(Selectors.prompt);
   for (const child of prompt.children) prompt.removeChild(child);
 
+  /* Add refresh link to prompt location */
   const promptRefresh = document.createElement('a');
   promptRefresh.textContent = 'Try again';
-  promptRefresh.href = '.';
+  promptRefresh.href = '.'; // Go to current page; effectively refresh
   promptRefresh.style.fontWeight = 'bold';
   prompt.appendChild(promptRefresh);
 }
@@ -109,16 +114,16 @@ function finalizeGame(alertMsgRetry = 'Would you like to try again?') {
 function updateGameObject(roundWinner) {
   const { roundCurrent, roundMax, scores } = Game;
 
+  if (scores.hasOwnProperty(roundWinner)) scores[roundWinner] += 1;
+
   if (roundCurrent === roundMax) {
     decideGameWinner();
     finalizeGame();
-    return;
+
+    console.log(scores);
+  } else {
+    Game.roundCurrent += 1;
   }
-
-  Game.roundCurrent += 1; // Prefix needed to mutate object itself
-
-  if (!scores.hasOwnProperty(roundWinner)) return;
-  scores[roundWinner] += 1;
 }
 
 function updateUIMessage(roundMessage) {
@@ -172,20 +177,12 @@ const selectionListener = (event) => {
   const roundResult = playRound(playerChoice);
   const { _, computerChoice, winner, message } = roundResult;
 
-  if (Game.winner !== undefined) return;
-
   updateUITable(playerChoice, computerChoice);
   updateGameObject(winner);
   updateUIScore();
   updateUIMessage(message);
-
-  console.log(roundResult);
-  console.log(Game);
 };
 
 const selectionButtons = document.querySelectorAll('.selection');
 for (const button of selectionButtons)
   button.addEventListener('click', selectionListener);
-
-console.clear();
-console.log(Game);
