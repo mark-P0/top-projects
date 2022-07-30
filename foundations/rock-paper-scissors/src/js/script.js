@@ -15,12 +15,7 @@ const Game = {
 
 const Selectors = {
   tableBody: '#result table tbody',
-  tableRow: {
-    header: '#row-header',
-    [Participant.COMPUTER]: '#row-computer',
-    [Participant.PLAYER]: '#row-player',
-  },
-  tableScoreCell: '.score',
+  roundMessage: '#result #message',
   finalMessage: '#final',
   prompt: '#prompt',
 };
@@ -35,7 +30,7 @@ function getComputerChoice() {
   return computerChoice;
 }
 
-function getChoiceWinner(playerSelection, computerSelection) {
+function getRoundWinner(playerSelection, computerSelection) {
   const choiceValues = Object.values(Choices);
   const playerSelIdx = choiceValues.indexOf(playerSelection);
   const computerSelIdx = choiceValues.indexOf(computerSelection);
@@ -60,7 +55,7 @@ function getChoiceWinner(playerSelection, computerSelection) {
 
 function playRound(playerChoice) {
   const computerChoice = getComputerChoice();
-  const winner = getChoiceWinner(playerChoice, computerChoice);
+  const winner = getRoundWinner(playerChoice, computerChoice);
 
   /* prettier-ignore */
   const message =
@@ -120,50 +115,41 @@ function updateGameObject(roundWinner) {
     decideGameWinner();
     finalizeGame();
   } else {
-    Game.roundCurrent += 1;
+    Game.roundCurrent += 1; // Prefix needed to mutate object itself
   }
 }
 
 function updateUIMessage(roundMessage) {
-  const messageElement = document.querySelector('#result #message');
+  const messageElement = document.querySelector(Selectors.roundMessage);
   messageElement.textContent = roundMessage;
 }
 
-function updateUITable(playerChoice, computerChoice) {
-  /*  i.e. add new column
+function updateUITable(playerChoice, computerChoice, roundWinner) {
+  /*  i.e. add new row
    */
 
-  const headerRowSel = Selectors.tableRow.header;
-  const headerRow = document.querySelector(headerRowSel);
-  const newHeaderRound = document.createElement('th');
-  newHeaderRound.textContent = `Round ${Game.roundCurrent}`;
-  headerRow.appendChild(newHeaderRound);
+  const table = document.querySelector(Selectors.tableBody);
+  const row = document.createElement('tr');
+  const rowCells = Array.from({ length: 2 }).map(() =>
+    document.createElement('td')
+  );
+  const [playerCol, computerCol] = rowCells;
 
-  const computerRowSel = Selectors.tableRow[Participant.COMPUTER];
-  const computerRow = document.querySelector(computerRowSel);
-  const computerChoiceCell = document.createElement('td');
-  computerChoiceCell.textContent = computerChoice;
-  computerRow.appendChild(computerChoiceCell);
+  playerCol.textContent = playerChoice;
+  computerCol.textContent = computerChoice;
 
-  const playerRowSel = Selectors.tableRow[Participant.PLAYER];
-  const playerRow = document.querySelector(playerRowSel);
-  const playerChoiceCell = document.createElement('td');
-  playerChoiceCell.textContent = playerChoice;
-  playerRow.appendChild(playerChoiceCell);
-}
-
-function updateUIScore() {
-  const { PLAYER, COMPUTER } = Participant;
-
-  for (const participant of [PLAYER, COMPUTER]) {
-    const rowSel = Selectors.tableRow[participant];
-    const scoreSel = Selectors.tableScoreCell;
-
-    const scoreCellElement = document.querySelector(`${rowSel} ${scoreSel}`);
-    const scoreValue = Game.scores[participant];
-
-    scoreCellElement.textContent = scoreValue;
+  if (roundWinner === Participant.PLAYER)
+    playerCol.style.backgroundColor = 'green';
+  else if (roundWinner === Participant.COMPUTER)
+    computerCol.style.backgroundColor = 'green';
+  else {
+    playerCol.style.backgroundColor = 'gray';
+    computerCol.style.backgroundColor = 'gray';
   }
+
+  table.hidden = false; // Only actually needs one call
+  for (const cell of rowCells) row.appendChild(cell);
+  table.appendChild(row);
 }
 
 /*  */
@@ -175,10 +161,9 @@ const selectionListener = (event) => {
   const roundResult = playRound(playerChoice);
   const { _, computerChoice, winner, message } = roundResult;
 
-  updateUITable(playerChoice, computerChoice);
-  updateGameObject(winner);
-  updateUIScore();
+  updateUITable(playerChoice, computerChoice, winner);
   updateUIMessage(message);
+  updateGameObject(winner);
 };
 
 const selectionButtons = document.querySelectorAll('.selection');

@@ -22,16 +22,24 @@
     <section id="result">
       <!-- prettier-ignore -->
       <table>
-        <tr id="row-header">    <th>&nbsp;</th>   <th class="score">Score</th>  </tr>
-        <tr id="row-computer">  <td>Computer</td> <td class="score">0</td>      </tr>
-        <tr id="row-player">    <td>Player</td>   <td class="score">0</td>      </tr>
+        <!--
+          `<table>` elements have an implied `<tbody>`
+          `<table>` itself cannot be `hidden`
+         -->
+        <tbody hidden>
+          <tr>  <th>Player</th> <th>Computer</th>  </tr>
+          <!-- Dynamically add round rows via JS -->
+
+        </tbody>
       </table>
 
-      <p id="message">&nbsp;</p>
-      <p id="final">&nbsp;</p>
+      <section>
+        <p id="message">&nbsp;</p>
+        <p id="final">&nbsp;</p>
+      </section>
     </section>
 
-    <section>
+    <section id="user">
       <p id="prompt"><strong>Your play?</strong></p>
 
       <section id="selections">

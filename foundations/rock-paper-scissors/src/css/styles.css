@@ -63,6 +63,21 @@ _ {
   padding: 0 1rem;
 }
 
-.score {
-  background-color: whitesmoke;
+/*  */
+
+header {
+  margin-bottom: 1rem;
+}
+
+#result {
+  max-height: 24rem;
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#user {
+  margin-bottom: 4rem;
 }
