@@ -1,4 +1,4 @@
-# Rock, Paper, Scissors!
+# [Rock, Paper, Scissors!](https://mark-p0.github.io/rock-paper-scissors/)
 
 <!--
   Play a game of "rock, paper, scissors" with the computer
@@ -9,7 +9,7 @@ A JavaScript project implementing the game "_Rock, Paper, Scissors_"
 ## Versions
 
 - [x] Console-based
-- [ ] Graphical user interface (GUI)
+- [x] Graphical user interface (GUI)
 
 ## Packages • Extensions
 
