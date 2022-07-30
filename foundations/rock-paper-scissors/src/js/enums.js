@@ -15,7 +15,7 @@ const RoundMessage = {
     `Round Win! ${winningChoice} beats ${losingChoice}`,
   LOSE: (winningChoice, losingChoice) =>
     `Round Lose! ${winningChoice} beats ${losingChoice}`,
-  TIE: (commonChoice) => `Round tie! You both played ${commonChoice}`,
+  TIE: (commonChoice) => `Round Tie! You both played ${commonChoice}`,
 };
 
 const FinalMessage = {
