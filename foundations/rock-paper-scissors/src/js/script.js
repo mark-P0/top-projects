@@ -77,7 +77,7 @@ function decideGameWinner() {
   else Game.winner = Participant.NONE;
 }
 
-function finalizeGame(alertMsgRetry = 'Would you like to try again?') {
+function finalizeGame() {
   /* Disable buttons */
   for (const button of selectionButtons) button.disabled = true;
 
