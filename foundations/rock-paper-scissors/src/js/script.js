@@ -1,7 +1,7 @@
 import enums from './enums.js';
 import utils from './utils.js';
 
-const { Choices, Participant, RoundMessage, FinalMessage } = enums;
+const { Choices, Participant, RoundMessage, FinalMessage, Selectors } = enums;
 
 const Game = {
   roundMax: 5,
@@ -11,13 +11,6 @@ const Game = {
     [Participant.COMPUTER]: 0,
     [Participant.PLAYER]: 0,
   },
-};
-
-const Selectors = {
-  tableBody: '#result table tbody',
-  roundMessage: '#result #message',
-  finalMessage: '#final',
-  prompt: '#prompt',
 };
 
 /*  */
@@ -89,11 +82,11 @@ function finalizeGame() {
       ? FinalMessage.LOSE
       : FinalMessage.TIE;
 
-  const finalMsgPara = document.querySelector(Selectors.finalMessage);
+  const finalMsgPara = document.querySelector(Selectors.FINAL_MESSAGE);
   finalMsgPara.textContent = finalMsg;
 
   /* Remove prompt text */
-  const prompt = document.querySelector(Selectors.prompt);
+  const prompt = document.querySelector(Selectors.PROMPT);
   for (const child of prompt.children) prompt.removeChild(child);
 
   /* Add refresh link to prompt location */
@@ -120,7 +113,7 @@ function updateGameObject(roundWinner) {
 }
 
 function updateUIMessage(roundMessage) {
-  const messageElement = document.querySelector(Selectors.roundMessage);
+  const messageElement = document.querySelector(Selectors.ROUND_MESSAGE);
   messageElement.textContent = roundMessage;
 }
 
@@ -128,7 +121,7 @@ function updateUITable(playerChoice, computerChoice, roundWinner) {
   /*  i.e. add new row
    */
 
-  const table = document.querySelector(Selectors.tableBody);
+  const table = document.querySelector(Selectors.TABLE_BODY);
   const row = document.createElement('tr');
   const rowCells = Array.from({ length: 2 }).map(() =>
     document.createElement('td')
@@ -166,6 +159,6 @@ const selectionListener = (event) => {
   updateGameObject(winner);
 };
 
-const selectionButtons = document.querySelectorAll('.selection');
+const selectionButtons = document.querySelectorAll(Selectors.BUTTON);
 for (const button of selectionButtons)
   button.addEventListener('click', selectionListener);

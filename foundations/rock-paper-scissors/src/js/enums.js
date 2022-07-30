@@ -25,4 +25,12 @@ const FinalMessage = {
   PROMPT: 'Try Again',
 };
 
-export default { Choices, Participant, RoundMessage, FinalMessage };
+const Selectors = {
+  TABLE_BODY: '#result table tbody',
+  ROUND_MESSAGE: '#result #message',
+  FINAL_MESSAGE: '#final',
+  PROMPT: '#prompt',
+  BUTTON: '.selection',
+};
+
+export default { Choices, Participant, RoundMessage, FinalMessage, Selectors };
