@@ -119,8 +119,6 @@ function updateGameObject(roundWinner) {
   if (roundCurrent === roundMax) {
     decideGameWinner();
     finalizeGame();
-
-    console.log(scores);
   } else {
     Game.roundCurrent += 1;
   }
