@@ -1,1 +1,1 @@
-console.log('Hello from Etch-A-Sketch!');
+import grid from './grid.js';

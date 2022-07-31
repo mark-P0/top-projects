@@ -3,8 +3,8 @@ import utils from './utils.js';
 const Grid = document.querySelector('#grid');
 Grid.customProps = {
   /* TODO: Transform to enums? */
-  // colorType: 'normal',
-  colorType: 'random',
+  colorType: 'normal',
+  // colorType: 'random',
 };
 
 /*  */
@@ -215,3 +215,5 @@ function initGridCells() {
 }
 
 initGridCells();
+
+export default { createGrid };
