@@ -41,4 +41,18 @@ function addResizeListener() {
 
   resizeButton.addEventListener('click', callback);
 }
+
+function addResetListener() {
+  const resetButton = document.querySelector('#reset');
+
+  const callback = () => {
+    grid.recreateGrid();
+  };
+
+  resetButton.addEventListener('click', callback);
+}
+
+/*  */
+
 addResizeListener();
+addResetListener();
