@@ -16,12 +16,54 @@ function createGridCell(cellSize) {
   element.style.width = cellSizePx;
   element.style.height = cellSizePx;
 
+  /* Add on-hover listener */
+  const hoverCallback = (event) => {
+    element.style.backgroundColor = 'black';
+  };
+  element.addEventListener('mouseover', hoverCallback);
+  element.customProps = { hoverCallback };
+
+  /* Create grid cell as an object */
   const object = {
     element,
   };
 
   return object;
 }
+
+function addGridTouchListener() {
+  /*  Simulate on-hover effect on touchscreen
+   *  Elements cannot track touches on themselves;
+   *  thus, the grid must listen to touches within itself,
+   *  locate what element is "below" these touch,
+   *  access them and perform actions accordingly.
+   *
+   *  If the touch began outside the grid, this will not be fired.
+   *
+   *  Massive credits to this gist: https://gist.github.com/VehpuS/6fd5dca2ea8cd0eb0471
+   *  Though I also had a similar idea in mind
+   *  Apparently, a much simpler way does not natively exist (apart from jQuery maybe?)
+   */
+
+  Grid.addEventListener('touchmove', (event) => {
+    /* Get touch representation and its coordinates */
+    const touch = event.touches[0];
+    const { clientX: x, clientY: y } = touch;
+
+    /* Attempt to locate grid cell "touched" */
+    const cell = document.elementFromPoint(x, y);
+
+    /* Each grid cell should have a custom object property that contains the callbacks needed */
+    if (!cell.hasOwnProperty('customProps')) return;
+
+    /* Call the on-hover callback of the cell */
+    const { hoverCallback } = cell.customProps;
+    hoverCallback();
+  });
+}
+addGridTouchListener();
+
+/*  */
 
 function createGrid(gridSize) {
   /*  Create a grid of size `gridSize` x `gridSize`

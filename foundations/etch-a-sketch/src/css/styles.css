@@ -38,8 +38,10 @@ body {
    */
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 
-  border: 2px solid silver;
+  /* border: 2px solid silver; */
   /* background-color: gainsboro; */
 }
 
@@ -58,9 +60,13 @@ body {
    */
   box-sizing: border-box;
 
-  border: 1px solid gainsboro;
+  border: 1px solid silver;
   /* background-color: gainsboro; */
 }
+
+/* .grid-cell:hover { */
+/* background-color: black; */
+/* } */
 
 .grid-cell-filled {
   background-color: silver;
