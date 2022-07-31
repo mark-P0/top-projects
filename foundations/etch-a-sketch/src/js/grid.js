@@ -2,6 +2,7 @@ import utils from './utils.js';
 
 const Grid = document.querySelector('#grid');
 Grid.customProps = {
+  size: 16,
   /* TODO: Transform to enums? */
   colorType: 'normal',
   // colorType: 'random',
@@ -165,7 +166,7 @@ addGridTouchListener();
 
 /*  */
 
-function createGrid(gridSize) {
+function recreateGrid() {
   /*  Create a grid of size `gridSize` x `gridSize`
    */
 
@@ -177,6 +178,7 @@ function createGrid(gridSize) {
       https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model/Determining_the_dimensions_of_elements
    */
   const { clientWidth: gridWidth, clientHeight: gridHeight } = Grid;
+  const { size: gridSize } = Grid.customProps;
 
   /* Assert that the grid dimensions are the same, for a box-y size */
   if (gridWidth !== gridHeight) {
@@ -211,9 +213,12 @@ function initGridCells() {
    *  Create a webpage with a 16x16 grid of square `div`s.
    */
 
-  createGrid(16);
+  const { size } = Grid.customProps; // Size of 16 already initialized as custom prop
+  if (size !== 16) throw 'Unexpected initial grid size.';
+
+  recreateGrid();
 }
 
 initGridCells();
 
-export default { createGrid };
+export default { Grid, recreateGrid };

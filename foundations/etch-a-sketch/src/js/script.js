@@ -31,8 +31,12 @@ function addResizeListener() {
   const resizeButton = document.querySelector('#resize');
 
   const callback = () => {
+    const { Grid, recreateGrid } = grid;
+    const { customProps } = Grid;
+
     const newSize = getNewGridSize();
-    grid.createGrid(newSize);
+    customProps.size = newSize;
+    recreateGrid();
   };
 
   resizeButton.addEventListener('click', callback);
