@@ -53,8 +53,11 @@ function addGridTouchListener() {
     /* Attempt to locate grid cell "touched" */
     const cell = document.elementFromPoint(x, y);
 
-    /* Each grid cell should have a custom object property that contains the callbacks needed */
-    if (!cell.hasOwnProperty('customProps')) return;
+    /*  Each grid cell should have a custom object property that contains the callbacks needed
+        Optional chaining short-circuits this callback when the captured element is non-existent,
+        e.g. out-of-bounds touch in devtools
+     */
+    if (!cell?.hasOwnProperty('customProps')) return;
 
     /* Call the on-hover callback of the cell */
     const { hoverCallback } = cell.customProps;
