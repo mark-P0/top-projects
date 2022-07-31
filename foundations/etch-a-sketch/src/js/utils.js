@@ -12,4 +12,18 @@ function removeAllChildren(parent) {
   parent.replaceChildren();
 }
 
-export default { removeAllChildren };
+function* zip(...iterables) {
+  /* TODO: Check if all are iterables */
+  // ...
+
+  /* Get minimum length of iterables */
+  const iterablesLengths = iterables.map(({ length }) => length);
+  const length = Math.min(...iterablesLengths);
+
+  /* Get common-index values of iterables */
+  for (let idx = 0; idx < length; idx++) {
+    yield iterables.map((iterable) => iterable[idx]);
+  }
+}
+
+export default { removeAllChildren, zip };

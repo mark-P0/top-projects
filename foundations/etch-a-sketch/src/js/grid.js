@@ -1,29 +1,92 @@
 import utils from './utils.js';
 
 const Grid = document.querySelector('#grid');
+Grid.customProps = {
+  /* TODO: Transform to enums? */
+  colorType: 'normal',
+  // colorType: 'random',
+};
 
 /*  */
+
+function parseRGBString(rgbString, pattern = /rgb\(\d*, \d*, \d*\)/g) {
+  /*  Parse RGB values from `rgbString`
+   *  `rgbString` must be of `pattern` format
+   *
+   *  https://stackoverflow.com/questions/10970958/get-a-color-component-from-an-rgb-string-in-javascript
+   */
+
+  const regexMatches = rgbString.match(pattern);
+  if (regexMatches === null) {
+    throw `Error parsing RGB values from: ${rgbString}`;
+  }
+
+  const nonValues = /[^\d,]/g;
+  const digits = rgbString
+    .replace(nonValues, '')
+    .split(',')
+    .map((digitStr) => Number.parseInt(digitStr));
+
+  return digits;
+}
+
+function darkenRGB(rgbValues, baseValues, percentReduction = 10) {
+  const { zip } = utils;
+
+  const percent = percentReduction / 100;
+  const darkened = Array.from(zip(rgbValues, baseValues)).map((pair) => {
+    let [current, base] = pair;
+    current -= base * percent; // Reduce by % of `base`
+    current = Math.trunc(current); // Drop decimal part
+    current = Math.max(current, 0); // Clamp to 0
+    return current;
+  });
+
+  return darkened;
+}
+
+function getCellBaseRGBValues() {
+  const { colorType } = Grid.customProps;
+
+  if (colorType === 'normal') return [255, 255, 255];
+
+  /* TODO: Add random color logic */
+}
 
 function createGridCell(cellSize) {
   /*  Create a cell of size `cellSize` x `cellSize`
    */
 
-  /* Create actual grid element */
+  /* Create actual cell element */
   const element = document.createElement('div');
   element.classList.add('grid-cell');
 
+  /* Initialize cell dimensions */
+  const { style } = element;
   const cellSizePx = cellSize.toString() + 'px';
-  element.style.width = cellSizePx;
-  element.style.height = cellSizePx;
+  style.width = cellSizePx;
+  style.height = cellSizePx;
+
+  /* Initialize cell color */
+  const baseValues = getCellBaseRGBValues();
+  const [r, g, b] = baseValues;
+  style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
 
   /* Add on-hover listener */
-  const hoverCallback = (event) => {
-    element.style.backgroundColor = 'black';
+  const hoverCallback = () => {
+    const rgbSource = parseRGBString(style.backgroundColor);
+    const rgbReduced = darkenRGB(rgbSource, baseValues);
+    const [r, g, b] = rgbReduced;
+    style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+
+    // console.log({ rgbSource, rgbReduced });
+    // console.log(rgbReduced);
   };
   element.addEventListener('mouseover', hoverCallback);
   element.customProps = { hoverCallback };
 
   /* Create grid cell as an object */
+  /* TODO: Return bare `element`? */
   const object = {
     element,
   };
