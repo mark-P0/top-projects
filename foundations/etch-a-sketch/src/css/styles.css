@@ -60,14 +60,5 @@ body {
    */
   box-sizing: border-box;
 
-  border: 1px solid silver;
-  /* background-color: gainsboro; */
-}
-
-/* .grid-cell:hover { */
-/* background-color: black; */
-/* } */
-
-.grid-cell-filled {
-  background-color: silver;
+  border: 1px solid gainsboro;
 }
