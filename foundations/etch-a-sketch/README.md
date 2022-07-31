@@ -1,4 +1,4 @@
-# [Etch-A-Sketch](https://mark-p0.github.io/rock-paper-scissors/)
+# [Etch-A-Sketch](https://mark-p0.github.io/etch-a-sketch/)
 
 <!--
   Digital Etch-A-Sketch toy using web languages.
