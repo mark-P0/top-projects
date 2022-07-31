@@ -3,8 +3,8 @@ import utils from './utils.js';
 const Grid = document.querySelector('#grid');
 Grid.customProps = {
   /* TODO: Transform to enums? */
-  colorType: 'normal',
-  // colorType: 'random',
+  // colorType: 'normal',
+  colorType: 'random',
 };
 
 /*  */
@@ -54,23 +54,26 @@ function increaseAlpha(alpha, percentIncrease = 10) {
 }
 
 function getCellBaseRGBValues() {
+  const { colorType } = Grid.customProps;
+  const { getRandomInteger } = utils;
+
   /*  RGB is True Color (24-bit)
       Each color field has 8 bits
       (2 ** 8) === 256 === 0xFF
    */
   const MAX_FIELD_VALUE = 0xff;
-
-  const { colorType } = Grid.customProps;
+  const randomFieldValue = () =>
+    getRandomInteger({
+      lower: 0,
+      upper: MAX_FIELD_VALUE,
+    });
 
   let baseValues;
   if (colorType === 'normal') {
-    // baseValues = Array(3).fill(MAX_FIELD_VALUE);
     baseValues = Array(3).fill(0);
-  }
-  // else if (colorType === 'random') {
-  // /* TODO: Add random color logic */
-  // }
-  else {
+  } else if (colorType === 'random') {
+    baseValues = Array.from({ length: 3 }, randomFieldValue);
+  } else {
     throw 'Color type unsupported! Please check.';
   }
 

@@ -1,3 +1,51 @@
+function getRandomFloat({
+  lower = 0,
+  upper = 10,
+  isUpperInclusive = false,
+} = {}) {
+  /*  Get a random "decimal" from `lower` up to `upper`
+   *  Normally `upper`-exclusive, but can be changed with `isUpperInclusive` flag
+   *
+   *  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+   */
+
+  const range = upper - lower;
+  if (isUpperInclusive) range++;
+
+  const result = Math.random() * range + lower;
+
+  return result;
+}
+
+function getRandomInteger({
+  lower = 0,
+  upper = 10,
+  isUpperInclusive = false,
+} = {}) {
+  /*  Get a random integer from `lower` up to `upper`
+   *  Essentially the same as `getRandomFloat()`, but removes the "decimal" parts
+   *
+   *  `Math.floor()` or `Math.trunc()`?
+   */
+
+  const resultFloat = getRandomFloat({ lower, upper, isUpperInclusive });
+  const result = Math.floor(resultFloat);
+
+  return result;
+}
+
+function getRandomElement(array) {
+  /*  Get a random member of `array`
+   *
+   *  Raise error when `array` is empty?
+   */
+
+  const elementIdx = getRandomInteger({ lower: 0, upper: array.length });
+  const element = array[elementIdx];
+
+  return element;
+}
+
 function removeAllChildren(parent) {
   /*  Removes all child nodes of the `parent` element
    *
@@ -26,4 +74,4 @@ function* zip(...iterables) {
   }
 }
 
-export default { removeAllChildren };
+export default { getRandomInteger, removeAllChildren };
