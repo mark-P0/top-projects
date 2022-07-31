@@ -45,7 +45,7 @@ function addGridTouchListener() {
    *  Apparently, a much simpler way does not natively exist (apart from jQuery maybe?)
    */
 
-  Grid.addEventListener('touchmove', (event) => {
+  const callback = (event) => {
     /* Get touch representation and its coordinates */
     const touch = event.touches[0];
     const { clientX: x, clientY: y } = touch;
@@ -59,7 +59,17 @@ function addGridTouchListener() {
     /* Call the on-hover callback of the cell */
     const { hoverCallback } = cell.customProps;
     hoverCallback();
-  });
+  };
+
+  /*  Address Chrome violation regarding scroll-blocking `'touchmove'` event
+      https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
+      https://chromestatus.com/feature/5745543795965952
+   */
+  const options = {
+    passive: true,
+  };
+
+  Grid.addEventListener('touchmove', callback, options);
 }
 addGridTouchListener();
 
