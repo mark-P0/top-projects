@@ -9,7 +9,10 @@ Grid.customProps = {
 
 /*  */
 
-function parseRGBString(rgbString, pattern = /rgb\(\d*, \d*, \d*\)/g) {
+function parseRGBString(
+  rgbString,
+  pattern = /rgba\(\d*, \d*, \d*, 0?\.?\d*\)/g
+) {
   /*  Parse RGB values from `rgbString`
    *  `rgbString` must be of `pattern` format
    *
@@ -18,39 +21,60 @@ function parseRGBString(rgbString, pattern = /rgb\(\d*, \d*, \d*\)/g) {
 
   const regexMatches = rgbString.match(pattern);
   if (regexMatches === null) {
-    throw `Error parsing RGB values from: ${rgbString}`;
+    throw `Error parsing RGBA values from: ${rgbString}`;
   }
 
-  const nonValues = /[^\d,]/g;
   const digits = rgbString
-    .replace(nonValues, '')
+    .slice(5, -1)
     .split(',')
-    .map((digitStr) => Number.parseInt(digitStr));
+    .map((digitStr) => Number.parseFloat(digitStr));
 
   return digits;
 }
 
-function darkenRGB(rgbValues, baseValues, percentReduction = 10) {
-  const { zip } = utils;
+function increaseAlpha(alpha, percentIncrease = 10) {
+  /*  Cell color transition goes from `neutral` to `color`,
+   *  where `neutral` and `color` defaults to `white` and `black`
+   *
+   *  Controlling this process via alpha "inverts" the flow.
+   *  The grid is colored `neutral`,
+   *  each cell is colored with `color`,
+   *  and the alpha of each cell going from 0 to 100
+   *  simulates the `neutral` to `color` flow
+   *
+   *  Alpha was used so that `color` can be anything.
+   */
 
-  const percent = percentReduction / 100;
-  const darkened = Array.from(zip(rgbValues, baseValues)).map((pair) => {
-    let [current, base] = pair;
-    current -= base * percent; // Reduce by % of `base`
-    current = Math.trunc(current); // Drop decimal part
-    current = Math.max(current, 0); // Clamp to 0
-    return current;
-  });
+  const percentDecimal = percentIncrease / 100;
 
-  return darkened;
+  let alphaIncreased;
+  alphaIncreased = alpha + percentDecimal;
+  alphaIncreased = Math.min(alphaIncreased, 0.99); // Clamp at 0.99 because alpha of 1 turns `rgba` to `rgb`
+  return alphaIncreased;
 }
 
 function getCellBaseRGBValues() {
+  /*  RGB is True Color (24-bit)
+      Each color field has 8 bits
+      (2 ** 8) === 256 === 0xFF
+   */
+  const MAX_FIELD_VALUE = 0xff;
+
   const { colorType } = Grid.customProps;
 
-  if (colorType === 'normal') return [255, 255, 255];
+  let baseValues;
+  if (colorType === 'normal') {
+    // baseValues = Array(3).fill(MAX_FIELD_VALUE);
+    baseValues = Array(3).fill(0);
+  }
+  // else if (colorType === 'random') {
+  // /* TODO: Add random color logic */
+  // }
+  else {
+    throw 'Color type unsupported! Please check.';
+  }
 
-  /* TODO: Add random color logic */
+  return baseValues;
 }
 
 function createGridCell(cellSize) {
@@ -70,17 +94,14 @@ function createGridCell(cellSize) {
   /* Initialize cell color */
   const baseValues = getCellBaseRGBValues();
   const [r, g, b] = baseValues;
-  style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+  style.backgroundColor = `rgba(${r}, ${g}, ${b}, 0)`;
 
   /* Add on-hover listener */
   const hoverCallback = () => {
-    const rgbSource = parseRGBString(style.backgroundColor);
-    const rgbReduced = darkenRGB(rgbSource, baseValues);
-    const [r, g, b] = rgbReduced;
-    style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
-
-    // console.log({ rgbSource, rgbReduced });
-    // console.log(rgbReduced);
+    const rgbaValues = parseRGBString(style.backgroundColor);
+    const alphaCurrent = rgbaValues[rgbaValues.length - 1];
+    const alpha = increaseAlpha(alphaCurrent);
+    style.backgroundColor = `rgba(${r}, ${g}, ${b}, ${alpha})`;
   };
   element.addEventListener('mouseover', hoverCallback);
   element.customProps = { hoverCallback };

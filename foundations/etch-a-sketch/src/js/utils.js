@@ -26,4 +26,4 @@ function* zip(...iterables) {
   }
 }
 
-export default { removeAllChildren, zip };
+export default { removeAllChildren };
