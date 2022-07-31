@@ -6,12 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="./src/css/styles.css" />
-    <script src="./src/js/script.js"></script>
+    <script>
+      /* DELETEME */
+      console.clear();
+    </script>
+    <script defer type="module" src="./src/js/script.js"></script>
+    <script defer type="module" src="./src/js/grid.js"></script>
 
     <title>✍🏼</title>
   </head>
 
   <body>
-    <h1>Etch-A-Sketch</h1>
+    <header>
+      <h1>Etch-A-Sketch</h1>
+    </header>
+
+    <section id="grid">
+      <!--
+        Grid cells are dynamically added
+        These are for testing only, and are automatically removed
+       -->
+      <div class="grid-cell"></div>
+      <div class="grid-cell grid-cell-filled"></div>
+    </section>
+
+    <footer>
+      <!-- prettier-ignore -->
+      <p>
+        <em>Created by Mark </em>
+        • <a href="https://mark-p0.github.io/">Website</a>
+        • <a href="https://github.com/mark-P0/">GitHub</a>
+      </p>
+    </footer>
   </body>
 </html>

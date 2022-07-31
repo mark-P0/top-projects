@@ -5,9 +5,63 @@ _ {
   box-sizing: border-box;
   margin: 0;
   height: 100%;
+
+  /* background-color: bisque; */
 }
 
+/*  */
+
 body {
+  max-width: 32rem;
+  margin: 0 auto;
+
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  /* background-color: coral; */
+}
+
+/*  */
+
+#grid {
+  height: 16rem;
+  width: 16rem;
+  box-sizing: border-box;
+
+  /*  Given an NxN grid, `#grid` element will have NxN children as its cells.
+      Normally, flexbox will display all of these in a single row,
+      but enabling wrapping should allow these cells to fill the grid.
+      As such, each cell must be precisely sized such that
+      they are of size `width / N` and `height / N`.
+   */
+  display: flex;
+  flex-wrap: wrap;
+
+  border: 2px solid silver;
+  /* background-color: gainsboro; */
+}
+
+.grid-cell {
+  /*  Actual `width` and `height` are dynamically defined
+      These are for testing only!
+   */
+  height: 12px;
+  width: 12px;
+
+  /*  Apparently not inherited...
+      Allows visualization of each cell without overflowing
+      Automatically subtracts border sizes from dynamically set dimensions
+
+      May not actually be needed as the cells will only be highlighted
+   */
+  box-sizing: border-box;
+
+  border: 1px solid gainsboro;
+  /* background-color: gainsboro; */
+}
+
+.grid-cell-filled {
+  background-color: silver;
 }
