@@ -68,4 +68,4 @@ initGridCells();
 ////////////////
 ////////////////
 
-export default { GridProperties, recreateGrid };
+export default { recreateGrid };
