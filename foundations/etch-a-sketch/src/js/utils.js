@@ -96,4 +96,32 @@ function getCSSRule(sheetName, selector) {
   return cssRule;
 }
 
-export default { getRandomInteger, removeAllChildren, getCSSRule };
+function parseRGBString(
+  rgbString,
+  pattern = /rgba\(\d*, \d*, \d*, 0?\.?\d*\)/g
+) {
+  /*  Parse RGB values from `rgbString`
+   *  `rgbString` must be of `pattern` format
+   *
+   *  https://stackoverflow.com/questions/10970958/get-a-color-component-from-an-rgb-string-in-javascript
+   */
+
+  const regexMatches = rgbString.match(pattern);
+  if (regexMatches === null) {
+    throw `Error parsing RGBA values from: ${rgbString}`;
+  }
+
+  const digits = rgbString
+    .slice(5, -1)
+    .split(',')
+    .map((digitStr) => Number.parseFloat(digitStr));
+
+  return digits;
+}
+
+export default {
+  getRandomInteger,
+  removeAllChildren,
+  getCSSRule,
+  parseRGBString,
+};
