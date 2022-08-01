@@ -75,7 +75,6 @@ body {
   justify-content: center;
   align-items: center;
 
-  /* border: 1px solid silver; */
   background-color: white;
 }
 
@@ -93,6 +92,4 @@ body {
       May not actually be needed as the cells will only be highlighted
    */
   box-sizing: border-box;
-
-  border: 1px solid gainsboro;
 }

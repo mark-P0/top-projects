@@ -60,8 +60,10 @@ function initGridCells() {
 
   const { size } = GridProperties; // Size of 16 already initialized as custom prop
   if (size !== 16) throw 'Unexpected initial grid size.';
-
   recreateGrid();
+
+  /* Initialize border styles for grid box and individual cells */
+  GridProperties.applyBorderStyles();
 }
 initGridCells();
 

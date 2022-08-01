@@ -74,4 +74,26 @@ function* zip(...iterables) {
   }
 }
 
-export default { getRandomInteger, removeAllChildren };
+function getCSSRule(sheetName, selector) {
+  let stylesheet;
+  for (const sheet of document.styleSheets) {
+    if (sheet.href.endsWith(sheetName)) {
+      stylesheet = sheet;
+      break;
+    }
+  }
+
+  const { rules } = stylesheet;
+
+  let cssRule;
+  for (const rule of rules) {
+    if (rule.selectorText === selector) {
+      cssRule = rule;
+      break;
+    }
+  }
+
+  return cssRule;
+}
+
+export default { getRandomInteger, removeAllChildren, getCSSRule };
