@@ -1,5 +1,7 @@
 import Utils from '../utils.js';
+import { ColorTypes } from '../enums.js';
 import GridProperties from './grid-properties.js';
+import RGBGenerator from './rgb-generator.js';
 
 ////////////////
 ////////////////
@@ -26,33 +28,6 @@ function increaseAlpha(alpha, percentIncrease = 10) {
   return alphaIncreased;
 }
 
-function getCellBaseRGBValues() {
-  const { colorType } = GridProperties;
-  const { getRandomInteger } = Utils;
-
-  /*  RGB is True Color (24-bit)
-      Each color field has 8 bits
-      (2 ** 8) === 256 === 0xFF
-   */
-  const MAX_FIELD_VALUE = 0xff;
-  const randomFieldValue = () =>
-    getRandomInteger({
-      lower: 0,
-      upper: MAX_FIELD_VALUE,
-    });
-
-  let baseValues;
-  if (colorType === 'normal') {
-    baseValues = Array(3).fill(0);
-  } else if (colorType === 'random') {
-    baseValues = Array.from({ length: 3 }, randomFieldValue);
-  } else {
-    throw 'Color type unsupported! Please check.';
-  }
-
-  return baseValues;
-}
-
 function createGridCell(cellSize) {
   /*  Create a cell of size `cellSize` x `cellSize`
    */
@@ -68,14 +43,17 @@ function createGridCell(cellSize) {
   style.height = cellSizePx;
 
   /* Initialize cell color */
-  const baseValues = getCellBaseRGBValues();
+  const baseValues = RGBGenerator.getRGB();
   const [r, g, b] = baseValues;
   style.backgroundColor = `rgba(${r}, ${g}, ${b}, 0)`;
 
   /* Add on-hover listener */
-  const hoverCallback = () => {
+  const hoverCallback = (event) => {
+    const { target: element } = event;
+    const { style } = element;
+
     const rgbaValues = Utils.parseRGBString(style.backgroundColor);
-    const alphaCurrent = rgbaValues[rgbaValues.length - 1];
+    const [r, g, b, alphaCurrent] = rgbaValues;
     const alpha = increaseAlpha(alphaCurrent);
     style.backgroundColor = `rgba(${r}, ${g}, ${b}, ${alpha})`;
   };

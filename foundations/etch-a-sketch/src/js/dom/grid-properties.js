@@ -1,4 +1,5 @@
 import Utils from '../utils.js';
+import { ColorTypes } from '../enums.js';
 
 ////////////////
 ////////////////
@@ -36,9 +37,8 @@ const properties = {
     }
   },
 
-  /* TODO: Transform to enums? */
-  colorType: 'normal',
-  // colorType: 'random',
+  /* Color types */
+  colorType: ColorTypes.GRAYSCALE, // Default to grayscale cell colors
 };
 
 ////////////////
