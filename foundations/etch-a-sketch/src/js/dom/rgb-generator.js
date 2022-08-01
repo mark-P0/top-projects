@@ -23,10 +23,10 @@ const RGBGenerator = {
   getRandomRGB() {
     return Array.from({ length: 3 }, () => this.randomFieldValue());
   },
-  singleRandomColor: undefined, // Initialized after this object
-  randomizeSingleRandomColor() {
-    this.singleRandomColor = this.getRandomRGB();
-    return this.singleRandomColor;
+  singleColor: undefined, // Initialized after this object
+  randomizeSingleColor() {
+    this.singleColor = this.getRandomRGB();
+    return this.singleColor;
   },
 
   /* Generator API */
@@ -35,17 +35,16 @@ const RGBGenerator = {
 
     while (true) {
       const { colorType } = GridProperties;
+      const { GRAYSCALE, RANDOM_SINGLE, RANDOM, USER } = ColorTypes;
 
-      if (colorType === ColorTypes.GRAYSCALE) {
+      if (colorType === GRAYSCALE) {
         yield Array(3).fill(0);
-      } else if (colorType === ColorTypes.RANDOM_SINGLE) {
-        yield this.singleRandomColor;
-      } else if (colorType === ColorTypes.RANDOM) {
+      } else if (colorType === RANDOM_SINGLE) {
+        yield this.singleColor;
+      } else if (colorType === RANDOM) {
         yield this.getRandomRGB();
-      }
-
-      if (!(colorType === ColorTypes.RANDOM_SINGLE)) {
-        this.randomizeSingleRandomColor();
+      } else if (colorType === USER) {
+        yield this.singleColor;
       }
     }
   },
@@ -56,7 +55,8 @@ const RGBGenerator = {
 };
 
 /* Initialize single random color */
-RGBGenerator.singleRandomColor = RGBGenerator.getRandomRGB();
+RGBGenerator.singleColor = RGBGenerator.getRandomRGB();
+// console.log(RGBGenerator.singleColor);
 
 /* Initialize generator API */
 RGBGenerator.generator = RGBGenerator.generatorAPI();

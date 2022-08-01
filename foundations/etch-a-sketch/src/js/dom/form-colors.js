@@ -18,6 +18,9 @@ function addPickerListener() {
     if (!pickerRadio.checked) return;
 
     const pickerValue = pickerElement.value;
+    const pickerValueConverted = Utils.convertHexToRGB(pickerValue, true);
+    RGBGenerator.singleColor = pickerValueConverted;
+    GridProperties.colorType = ColorTypes.USER;
 
     /* Iterate through each cell */
     for (const cell of GridElement.children) {
@@ -27,7 +30,7 @@ function addPickerListener() {
       const alpha = currentRGBA[currentRGBA.length - 1];
 
       /* Apply new color to a cell */
-      const baseValues = Utils.convertHexToRGB(pickerValue, true);
+      const baseValues = RGBGenerator.getRGB();
       const [r, g, b] = baseValues;
       cell.style.backgroundColor = `rgba(${r}, ${g}, ${b}, ${alpha})`;
     }
@@ -85,7 +88,7 @@ function addToggleListener(selector, colorType) {
     GridProperties.colorType = colorType;
 
     if (colorType === ColorTypes.RANDOM_SINGLE) {
-      RGBGenerator.randomizeSingleRandomColor();
+      RGBGenerator.randomizeSingleColor();
     }
 
     /* Iterate through each cell */
