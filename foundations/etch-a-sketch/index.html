@@ -6,10 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="./src/css/styles.css" />
-    <script>
-      /* DELETEME */
-      console.clear();
-    </script>
     <script defer type="module" src="./src/js/script.js"></script>
 
     <title>✍🏼</title>
@@ -23,8 +19,23 @@
     <section id="main">
       <div id="input">
         <form id="color">
-          <fieldset>
+          <fieldset id="color-field">
             <legend>Color</legend>
+
+            <div>
+              <input type="radio" name="color-input" id="color-grayscale" />
+              <label for="color-grayscale">Grayscale</label>
+            </div>
+
+            <div>
+              <input type="radio" name="color-input" id="color-random" />
+              <label for="color-random">Random</label>
+            </div>
+
+            <div>
+              <input type="radio" name="color-input" id="color-custom" />
+              <label for="color-custom">Custom</label>
+            </div>
           </fieldset>
         </form>
 
