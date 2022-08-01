@@ -15,13 +15,17 @@ function getNewGridSize(min = 1, max = 100) {
   while (true) {
     /* prettier-ignore */
     if (
-      /* `input` must be an integer */
-      Number.isInteger(input) &&
-      /* Between (including) `min` and `max` */
-      ( min <= input && input <= max )
+      Number.isInteger(input) &&       // `input` must be an integer
+      ( min <= input && input <= max ) // Between (including) `min` and `max`
     ) break
 
     input = prompt(promptMsg);
+
+    /*  `prompt()` can only return strings or `null`
+        https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt
+     */
+    if (input === null) return null;
+
     input = Number.parseInt(input);
   }
 
@@ -36,7 +40,11 @@ function addResizeListener() {
   const resizeButton = document.querySelector('#resize');
 
   const callback = () => {
-    GridProperties.size = getNewGridSize();
+    const newSize = getNewGridSize();
+
+    if (newSize === null) return;
+
+    GridProperties.size = newSize;
     Grid.recreateGrid();
   };
 
