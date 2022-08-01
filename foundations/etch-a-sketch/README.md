@@ -9,9 +9,9 @@ Project recreating a version of the [Etch-A-Sketch toy](https://en.wikipedia.org
 ## Roadmap
 
 - [x] Create a grid itself
-- [ ] Add a functional _Reset_ button
+- [x] Add a functional _Reset_ button
 - [x] Add a functional _Resize_ button
-- [ ] Add more flairs
+- [x] Add more flairs
 
 ## Disclaimer
 
