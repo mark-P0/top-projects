@@ -67,9 +67,14 @@ body {
 
 /*  */
 
-#grid {
+#grid-container {
   height: 16rem;
   width: 16rem;
+}
+
+#grid {
+  height: 100%;
+  width: 100%;
 
   /*  Given an NxN grid, `#grid` element will have NxN children as its cells.
       Normally, flexbox will display all of these in a single row,
