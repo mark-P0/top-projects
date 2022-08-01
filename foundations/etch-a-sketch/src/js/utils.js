@@ -119,9 +119,53 @@ function parseRGBString(
   return digits;
 }
 
+function convertHexToRGB(
+  hex,
+  asValues = false,
+  pattern = /#([\da-f]{3}){1,2}/gi
+) {
+  /*  Convert `hex` string of format `#rrggbb` or `#rgb`
+   *  to `rgb(r, g, b)`
+   *
+   *  https://stackoverflow.com/questions/35317643/regex-match-3-or-6-of-type
+   *  https://css-tricks.com/converting-color-spaces-in-javascript/
+   */
+
+  const regexMatches = hex.match(pattern);
+  if (regexMatches === null) {
+    throw `Error parsing hex values from: ${hex}`;
+  }
+
+  let r, g, b;
+  r = g = b = '0x';
+
+  if (hex.length === 4) {
+    r += hex[1].repeat(2);
+    g += hex[2].repeat(2);
+    b += hex[3].repeat(2);
+  } else if (hex.length === 7) {
+    r += hex.slice(1, 3);
+    g += hex.slice(3, 5);
+    b += hex.slice(5, 7);
+  } else {
+    throw `Error parsing hex values from: ${hex}`;
+  }
+
+  r = Number.parseInt(r);
+  g = Number.parseInt(g);
+  b = Number.parseInt(b);
+
+  if (asValues) {
+    return [r, g, b];
+  } else {
+    return `rgb(${r}, ${g}, ${b})`;
+  }
+}
+
 export default {
   getRandomInteger,
   removeAllChildren,
   getCSSRule,
   parseRGBString,
+  convertHexToRGB,
 };
