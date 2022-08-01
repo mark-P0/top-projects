@@ -186,7 +186,6 @@ function recreateGrid() {
   }
 
   const cellSize = gridWidth / gridSize; // `gridWidth` <-> `gridHeight`
-  console.log({ gridWidth, gridHeight, cellSize });
 
   for (let _ = 0; _ < gridSize ** 2; _++) {
     const newCellObj = createGridCell(cellSize);

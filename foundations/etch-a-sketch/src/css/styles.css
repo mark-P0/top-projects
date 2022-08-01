@@ -34,6 +34,25 @@ body {
 
 /*  */
 
+#input {
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+}
+
+#buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+/*  */
+
+#color {
+  flex: 1;
+}
+
+/*  */
+
 #grid {
   height: 16rem;
   width: 16rem;
