@@ -30,11 +30,8 @@ function recreateGrid() {
   const cellSize = gridWidth / gridSize; // `gridWidth` <-> `gridHeight`
 
   for (let _ = 0; _ < gridSize ** 2; _++) {
-    const newCellObj = GridCell.createGridCell(cellSize);
-    const { element: cellElement } = newCellObj;
-
+    const cellElement = GridCell.createGridCell(cellSize);
     // cellElement.textContent = _;
-
     GridElement.appendChild(cellElement);
   }
 }

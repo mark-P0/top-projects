@@ -60,13 +60,7 @@ function createGridCell(cellSize) {
   element.addEventListener('mouseover', hoverCallback);
   element.customProps = { hoverCallback };
 
-  /* Create grid cell as an object */
-  /* TODO: Return bare `element`? */
-  const object = {
-    element,
-  };
-
-  return object;
+  return element;
 }
 
 function addGridTouchListener() {
