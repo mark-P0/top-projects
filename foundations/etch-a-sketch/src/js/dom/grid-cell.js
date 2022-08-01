@@ -48,9 +48,10 @@ function createGridCell(cellSize) {
   style.backgroundColor = `rgba(${r}, ${g}, ${b}, 0)`;
 
   /* Add on-hover listener */
-  const hoverCallback = (event) => {
-    const { target: element } = event;
-    const { style } = element;
+  const hoverCallback = () => {
+    /*  `style` is a reference to the cell's style,
+        so this callback works even if `style` has been modified elsewhere
+     */
 
     const rgbaValues = Utils.parseRGBString(style.backgroundColor);
     const [r, g, b, alphaCurrent] = rgbaValues;
