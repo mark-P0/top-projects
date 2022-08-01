@@ -38,7 +38,12 @@ const properties = {
   },
 
   /* Color types */
-  colorType: ColorTypes.GRAYSCALE, // Default to grayscale cell colors
+  colorType: (() => {
+    const grayscaleRadio = document.querySelector('#color-grayscale');
+    grayscaleRadio.checked = true; // Tick grayscale radio button programatically
+
+    return ColorTypes.GRAYSCALE; // Default to grayscale cell colors
+  })(),
 };
 
 ////////////////
