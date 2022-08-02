@@ -6,7 +6,7 @@ import GridProperties from './grid-properties.js';
 ////////////////
 ////////////////
 
-const RGBGenerator = {
+const RGBProvider = {
   /*  RGB is True Color (24-bit)
       Each color field has 8 bits
       (2 ** 8) === 256 === 0xFF
@@ -50,11 +50,12 @@ const RGBGenerator = {
 };
 
 /* Initialize single random color */
-RGBGenerator.singleColor = RGBGenerator.getRandomRGB();
-// console.log(RGBGenerator.singleColor);
+RGBProvider.singleColor = RGBProvider.getRandomRGB();
+// RGBProvider.randomizeSingleColor();
+// console.log(RGBProvider.singleColor);
 
 ////////////////
 ////////////////
 ////////////////
 
-export default RGBGenerator;
+export default RGBProvider;

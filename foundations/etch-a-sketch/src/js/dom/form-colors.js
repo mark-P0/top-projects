@@ -1,7 +1,7 @@
 import Utils from '../utils.js';
 import { ColorTypes } from '../enums.js';
 import GridProperties from './grid-properties.js';
-import RGBGenerator from './rgb-generator.js';
+import RGBProvider from './rgb-provider.js';
 
 const GridElement = GridProperties.element;
 
@@ -19,7 +19,7 @@ function addPickerListener() {
 
     const pickerValue = pickerElement.value;
     const pickerValueConverted = Utils.convertHexToRGB(pickerValue, true);
-    RGBGenerator.singleColor = pickerValueConverted;
+    RGBProvider.singleColor = pickerValueConverted;
     GridProperties.colorType = ColorTypes.USER;
 
     /* Iterate through each cell */
@@ -30,7 +30,7 @@ function addPickerListener() {
       const alpha = currentRGBA[currentRGBA.length - 1];
 
       /* Apply new color to a cell */
-      const baseValues = RGBGenerator.getRGB();
+      const baseValues = RGBProvider.getRGB();
       const [r, g, b] = baseValues;
       cell.style.backgroundColor = `rgba(${r}, ${g}, ${b}, ${alpha})`;
     }
@@ -88,7 +88,7 @@ function addToggleListener(selector, colorType) {
     GridProperties.colorType = colorType;
 
     if (colorType === ColorTypes.RANDOM_SINGLE) {
-      RGBGenerator.randomizeSingleColor();
+      RGBProvider.randomizeSingleColor();
     }
 
     /* Iterate through each cell */
@@ -99,7 +99,7 @@ function addToggleListener(selector, colorType) {
       const alpha = currentRGBA[currentRGBA.length - 1];
 
       /* Apply new color to a cell */
-      const baseValues = RGBGenerator.getRGB();
+      const baseValues = RGBProvider.getRGB();
       const [r, g, b] = baseValues;
       cell.style.backgroundColor = `rgba(${r}, ${g}, ${b}, ${alpha})`;
     }

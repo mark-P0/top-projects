@@ -1,7 +1,7 @@
 import Utils from '../utils.js';
 import { ColorTypes } from '../enums.js';
 import GridProperties from './grid-properties.js';
-import RGBGenerator from './rgb-generator.js';
+import RGBProvider from './rgb-provider.js';
 
 ////////////////
 ////////////////
@@ -43,7 +43,7 @@ function createGridCell(cellSize) {
   style.height = cellSizePx;
 
   /* Initialize cell color */
-  const baseValues = RGBGenerator.getRGB();
+  const baseValues = RGBProvider.getRGB();
   const [r, g, b] = baseValues;
   style.backgroundColor = `rgba(${r}, ${g}, ${b}, 0)`;
 
