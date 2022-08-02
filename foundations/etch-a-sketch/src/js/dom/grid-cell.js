@@ -1,5 +1,4 @@
 import Utils from '../utils.js';
-import { ColorTypes } from '../enums.js';
 import GridProperties from './grid-properties.js';
 import RGBProvider from './rgb-provider.js';
 
