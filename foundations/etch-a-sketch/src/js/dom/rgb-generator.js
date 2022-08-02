@@ -29,38 +29,29 @@ const RGBGenerator = {
     return this.singleColor;
   },
 
-  /* Generator API */
-  *generatorAPI() {
-    /* Call `.getRGB()` to yield a next value */
+  get rgbValue() {
+    const { colorType } = GridProperties;
+    const { GRAYSCALE, RANDOM_SINGLE, RANDOM, USER } = ColorTypes;
 
-    while (true) {
-      const { colorType } = GridProperties;
-      const { GRAYSCALE, RANDOM_SINGLE, RANDOM, USER } = ColorTypes;
+    /* prettier-ignore */
+    const rgbValueMap = {
+      [GRAYSCALE]:     Array(3).fill(0),
+      [RANDOM_SINGLE]: this.singleColor,
+      [RANDOM]:        this.getRandomRGB(),
+      [USER]:          this.singleColor,
+    };
+    const rgbValue = rgbValueMap[colorType];
 
-      if (colorType === GRAYSCALE) {
-        yield Array(3).fill(0);
-      } else if (colorType === RANDOM_SINGLE) {
-        yield this.singleColor;
-      } else if (colorType === RANDOM) {
-        yield this.getRandomRGB();
-      } else if (colorType === USER) {
-        yield this.singleColor;
-      }
-    }
+    return rgbValue;
   },
-  generator: undefined, // Will be initialized below to the generator API
   getRGB() {
-    return this.generator.next().value;
+    return this.rgbValue;
   },
 };
 
 /* Initialize single random color */
 RGBGenerator.singleColor = RGBGenerator.getRandomRGB();
 // console.log(RGBGenerator.singleColor);
-
-/* Initialize generator API */
-RGBGenerator.generator = RGBGenerator.generatorAPI();
-// console.log(RGBGenerator.getRGB());
 
 ////////////////
 ////////////////
