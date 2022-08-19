@@ -12,6 +12,7 @@ const Routes = [
   /* HTML */
   { route: '/', filepath: './public/index.html' },
   { route: '/about', filepath: './public/about.html' },
+  { route: '/contact-me', filepath: './public/contact.html' },
 
   /* CSS */
   { route: '/styles.css', filepath: './public/styles.css' },
