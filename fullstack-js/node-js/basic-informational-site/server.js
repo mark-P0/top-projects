@@ -9,8 +9,14 @@ import path from 'node:path';
 
 /* Use array-based route map in preparation for URL pattern matching */
 const Routes = [
+  /* HTML */
   { route: '/', filepath: './public/index.html' },
-  { route: null, filepath: './public/404.html' }, // Will be popped
+
+  /* CSS */
+  { route: '/styles.css', filepath: './public/styles.css' },
+
+  /* 404; will be removed from this collection */
+  { route: null, filepath: './public/404.html' },
 ];
 
 /* Transform filepaths to proper absolute paths */
