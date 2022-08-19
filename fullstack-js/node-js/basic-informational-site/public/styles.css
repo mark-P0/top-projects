@@ -30,6 +30,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 1rem;
+  flex-wrap: wrap;
 
   /* background-color: lightcoral; */
 }
@@ -38,8 +39,8 @@ body {
   /* margin: 1rem; */
   /* width: 100%; */
   /* flex: 1 0 0; */
-  /* white-space: nowrap; */
-  /* min-width: max-content; */
+  white-space: nowrap;
+  min-width: max-content;
 
   /* background-color: pink; */
 }
