@@ -10,19 +10,48 @@ import path from 'node:path';
 /* Use array-based route map in preparation for URL pattern matching */
 const Routes = [
   /* HTML */
-  { route: '/', filepath: './public/index.html' },
-  { route: '/about', filepath: './public/about.html' },
-  { route: '/contact-me', filepath: './public/contact.html' },
+  {
+    route: '/',
+    filepath: './public/index.html',
+    mimeType: undefined,
+  },
+  {
+    route: '/about',
+    filepath: './public/about.html',
+    mimeType: undefined,
+  },
+  {
+    route: '/contact-me',
+    filepath: './public/contact.html',
+    mimeType: undefined,
+  },
 
   /* CSS */
-  { route: '/styles.css', filepath: './public/styles.css' },
+  {
+    route: '/styles.css',
+    filepath: './public/styles.css',
+    mimeType: undefined,
+  },
 
   /* 404; will be removed from this collection */
-  { route: null, filepath: './public/404.html' },
+  {
+    route: null,
+    filepath: './public/404.html',
+    mimeType: undefined,
+  },
 ];
 
-/* Transform filepaths to proper absolute paths */
+const MIMETypes = {
+  '.html': 'text/html',
+  '.css': 'text/css',
+};
+
 for (const route of Routes) {
+  /* Set appropriate MIME type */
+  const fileExt = path.extname(route.filepath);
+  route.mimeType = MIMETypes[fileExt];
+
+  /* Transform filepaths to proper absolute paths */
   route.filepath = new url.URL(route.filepath, import.meta.url);
   route.filepath.__actualPath = url.fileURLToPath(route.filepath);
 }
@@ -41,16 +70,14 @@ const Server = http.createServer(async (req, res) => {
   // console.log(reqURL);
 
   const route = Routes.find(({ route }) => route === reqURLBase) ?? Route404;
-  const { filepath } = route;
+  const { filepath, mimeType } = route;
 
   const filename = path.basename(filepath.__actualPath);
   const html = await fs.readFile(filepath, { encoding: 'utf-8' });
-  console.log(`Serving: ${filename}`);
+  console.log(`Serving: ${filename} • ${mimeType}`);
   // console.log(filepath);
 
-  /* TODO: Set content type */
-  // res.setHeader('Content-Type', 'text/html')
-
+  res.setHeader('Content-Type', mimeType);
   res.statusCode = route === Route404 ? 404 : 200;
   res.end(html);
 });
