@@ -1,0 +1,21 @@
+{
+  "name": "basic-informational-site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon"
+  },
+  "scripts@comment": {
+    "start": "Needed for deployment; `node . ` uses 'main' property",
+    "dev": "Arg-less `nodemon` uses the 'main' property as entrypoint"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
