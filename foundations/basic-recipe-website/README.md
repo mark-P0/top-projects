@@ -1,4 +1,4 @@
-# Basic Recipe Website
+# [Basic Recipe Website](https://mark-p0.github.io/basic-recipe-website/)
 
 This is a static website project using pure HTML as is customary with beginners to web development. The following software has been indispensable to this end:
 
