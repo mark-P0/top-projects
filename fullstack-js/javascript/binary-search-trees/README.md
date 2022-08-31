@@ -37,6 +37,10 @@ $ node ./bst.mjs
 
 3. Print out all elements in level, pre, post, and in order.
 {
+  level: [
+    5, 2, 7, 0,
+    4, 6, 9
+  ],
   preOrder: [
     5, 2, 0, 4,
     7, 6, 9
@@ -90,6 +94,11 @@ $ node ./bst.mjs
 
 8. Print out all elements in level, pre, post, and in order.
 {
+  level: [
+      9, 5, 907, 2,   7, 347,
+    967, 0,   4, 6, 125, 807,
+    917
+  ],
   preOrder: [
       9,   5,   2,   0,   4,   7,
       6, 907, 347, 125, 807, 967,

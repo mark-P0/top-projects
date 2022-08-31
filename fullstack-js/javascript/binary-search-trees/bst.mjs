@@ -336,6 +336,7 @@ function driver() {
 
   console.log(instructions);
   console.log({
+    level: tree.levelOrder(),
     preOrder: tree.preOrder(),
     postOrder: tree.postOrder(),
     inOrder: tree.inOrder(),
@@ -391,6 +392,7 @@ function driver() {
 
   console.log(instructions);
   console.log({
+    level: tree.levelOrder(),
     preOrder: tree.preOrder(),
     postOrder: tree.postOrder(),
     inOrder: tree.inOrder(),
