@@ -32,7 +32,6 @@
   flex: 1;
 
   font-family: 'Norse Bold';
-  font-size: 4rem;
 }
 #splash-banner > div {
   background-color: rgba(0, 0, 0, 0.5);
@@ -49,6 +48,7 @@
   background-position: center;
 }
 #splash-banner-text {
+  font-size: var(--banner-text-size);
   text-align: left;
 }
 
