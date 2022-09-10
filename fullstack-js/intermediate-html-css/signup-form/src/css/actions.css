@@ -1,0 +1,23 @@
+#actions {
+  font-size: small;
+  user-select: none;
+}
+
+#actions button {
+  background-color: rgb(var(--splash-accent-color));
+  color: white;
+  border-radius: calc(1rem / 3);
+  padding: 0.5rem 2.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#actions a {
+  color: rgb(var(--splash-accent-color));
+  font-weight: bold;
+  text-decoration: none;
+}
+#actions a:hover {
+  background-color: rgb(var(--splash-accent-color));
+  color: white;
+}

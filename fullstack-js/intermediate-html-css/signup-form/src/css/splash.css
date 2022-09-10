@@ -10,7 +10,6 @@
   --text-color: whitesmoke;
   --banner-text-size: 4rem;
   --attribution-highlight: 0 0 0.33rem black;
-  --link-hover-bg: rgba(255, 255, 255, 0.33);
 
   background-image: url(https://images.unsplash.com/photo-1599148401005-fe6d7497cb5e);
   background-size: cover;
@@ -69,5 +68,5 @@
   color: inherit;
 }
 #splash-attribution a:hover {
-  background-color: var(--link-hover-bg);
+  background-color: rgba(var(--splash-accent-color), 0.33);
 }

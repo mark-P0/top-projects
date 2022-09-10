@@ -4,6 +4,16 @@
 
 @import './splash.css';
 @import './flavor.css';
+@import './actions.css';
+
+:root {
+  /*  For use in an `rgb[a]()` function
+   *  e.g. background-color: rgba(var(--this), 0.5);
+   *  https://stackoverflow.com/questions/6962432/is-it-possible-to-change-only-the-alpha-of-a-rgba-background-colour-on-hover
+   *  https://stackoverflow.com/questions/40010597/how-do-i-apply-opacity-to-a-css-color-variable/41265350#41265350
+   */
+  --splash-accent-color: 57, 92, 43;
+}
 
 html {
   height: 100vh;
