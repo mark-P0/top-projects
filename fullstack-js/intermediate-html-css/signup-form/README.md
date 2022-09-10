@@ -12,6 +12,10 @@ _As provided by The Odin Project:_
 
 ![](https://cdn.statically.io/gh/TheOdinProject/curriculum/5f37d43908ef92499e95a9b90fc3cc291a95014c/html_css/project-sign-up-form/sign-up-form.png)
 
+## Credits
+
+- [Fern splash image](https://unsplash.com/photos/r0M9HrfJMBM), by [Olena Sergienko](https://unsplash.com/@olenkasergienko) (_Unsplash_)
+
 ## Disclaimer
 
 > This project was performed initially as part of [The Odin Project](https://www.theodinproject.com/).

@@ -1,0 +1,33 @@
+/*  Mainly defines page structural layout.
+ *  Fine details on separate CSS files.
+ */
+
+@import './splash.css';
+
+html {
+  height: 100vh;
+}
+
+body {
+  height: 100%;
+  display: flex;
+}
+
+#splash {
+  flex: 1;
+}
+
+#content {
+  flex: 2;
+
+  display: flex;
+  flex-direction: column;
+}
+#content > * {
+  flex: 1;
+}
+
+#flavor,
+#actions {
+  background-color: gainsboro;
+}
