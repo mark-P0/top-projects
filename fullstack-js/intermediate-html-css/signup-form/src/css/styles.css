@@ -3,9 +3,11 @@
  */
 
 @import './splash.css';
+@import './flavor.css';
 
 html {
   height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
@@ -18,16 +20,32 @@ body {
 }
 
 #content {
+  --content-color-bg: whitesmoke;
+
   flex: 2;
 
   display: flex;
   flex-direction: column;
 }
 #content > * {
-  flex: 1;
+  /*  Manually set flex-basis so that box-sizing will be respected
+   *  Not fully sure how this works...
+   *  Some links that seem to be related:
+   *  https://stackoverflow.com/questions/37353792/flex-basis-and-box-sizing
+   *  https://stackoverflow.com/questions/50394712/flex-items-wrapping-even-with-box-sizing-border-box
+   */
+  flex: 1 0 calc(100% / 3);
+
+  padding: 1rem;
+  padding-left: 2rem;
+  padding-right: 20%;
+
+  background-color: var(--content-color-bg);
+}
+#flavor {
+  padding-bottom: 2rem;
 }
 
-#flavor,
-#actions {
-  background-color: gainsboro;
+#form {
+  background-color: white;
 }
