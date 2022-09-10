@@ -30,7 +30,7 @@ body {
 }
 
 #content {
-  --content-color-bg: whitesmoke;
+  --bg-color: whitesmoke;
 
   flex: 2;
 
@@ -50,7 +50,7 @@ body {
   padding-left: 2rem;
   padding-right: 20%;
 
-  background-color: var(--content-color-bg);
+  background-color: var(--bg-color);
 }
 #flavor {
   padding-bottom: 2rem;
