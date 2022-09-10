@@ -5,3 +5,7 @@
   flex-direction: column;
   justify-content: end;
 }
+
+#flavor p {
+  margin-top: unset;
+}
