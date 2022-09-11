@@ -3,7 +3,8 @@
 
 @font-face {
   font-family: 'Norse Bold';
-  src: url(https://cdn.statically.io/gh/TheOdinProject/theodinproject/efdc2888072f409e687d31dc580595dbe4fe0ff4/app/assets/fonts/Norse-Bold.otf);
+  /* src: url(https://cdn.statically.io/gh/TheOdinProject/theodinproject/efdc2888072f409e687d31dc580595dbe4fe0ff4/app/assets/fonts/Norse-Bold.otf); */
+  src: url(/.exclude/local-files/Norse-Bold.otf);
 }
 
 #splash {
@@ -11,7 +12,8 @@
   --banner-text-size: 4rem;
   --attribution-highlight: 0 0 0.33rem black;
 
-  background-image: url(https://images.unsplash.com/photo-1599148401005-fe6d7497cb5e);
+  /* background-image: url(https://images.unsplash.com/photo-1599148401005-fe6d7497cb5e); */
+  background-image: url(/.exclude/local-files/photo-1599148401005-fe6d7497cb5e.jpg);
   background-size: cover;
   background-position: center;
 
@@ -43,7 +45,8 @@
 }
 #splash-banner-logo {
   width: var(--banner-text-size);
-  background-image: url(https://cdn.statically.io/gh/TheOdinProject/curriculum/5f37d43908ef92499e95a9b90fc3cc291a95014c/html_css/project-sign-up-form/odin-lined.png);
+  /* background-image: url(https://cdn.statically.io/gh/TheOdinProject/curriculum/5f37d43908ef92499e95a9b90fc3cc291a95014c/html_css/project-sign-up-form/odin-lined.png); */
+  background-image: url(/.exclude/local-files/odin-lined.png);
   background-size: contain;
   background-position: center;
 }
