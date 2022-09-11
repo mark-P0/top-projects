@@ -4,6 +4,7 @@
 
 @import './splash.css';
 @import './flavor.css';
+@import './form.css';
 @import './actions.css';
 
 :root {
@@ -47,15 +48,21 @@ body {
   flex: 1 0 calc(100% / 3);
 
   padding: 1rem;
-  padding-left: 2rem;
+  padding-left: max(1rem, 4%);
   padding-right: 20%;
 
   background-color: var(--bg-color);
 }
 #flavor {
-  padding-bottom: 2rem;
+  /* flex-grow: 5; */
+  padding-bottom: 1.5rem;
 }
-
 #form {
+  /* flex-grow: 4; */
+  flex-shrink: 1;
   background-color: white;
+}
+#actions {
+  /* flex-grow: 6; */
+  /* flex-shrink: 1; */
 }

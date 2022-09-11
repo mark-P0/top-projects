@@ -1,0 +1,32 @@
+#form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#form h4 {
+  margin: 0;
+}
+
+#form form {
+  --field-spacing: 3rem;
+
+  font-size: xx-small;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem var(--field-spacing);
+}
+
+#form form > * {
+  flex: 1 0 calc(50% - var(--field-spacing));
+
+  display: flex;
+  flex-direction: column;
+}
+
+#form form label {
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  font-weight: bold;
+}
