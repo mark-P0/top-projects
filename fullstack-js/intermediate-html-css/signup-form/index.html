@@ -59,6 +59,7 @@
               type="text"
               name="firstName"
               id="first-name"
+              autocomplete="given-name"
               placeholder="Thor"
             />
             <span class="feedback hidden"></span>
@@ -69,6 +70,7 @@
               type="text"
               name="lastName"
               id="last-name"
+              autocomplete="family-name"
               placeholder="Odinson"
             />
             <span class="feedback hidden"></span>
@@ -82,6 +84,7 @@
               type="email"
               name="email"
               id="email"
+              autocomplete="email"
               placeholder="thor@odinson.asg"
               required
             />
@@ -93,6 +96,7 @@
               type="tel"
               name="phoneNumber"
               id="phone-number"
+              autocomplete="tel"
               placeholder="212-970-4133"
             />
             <span class="feedback hidden"></span>
@@ -106,6 +110,7 @@
               type="password"
               name="password"
               id="password"
+              autocomplete="new-password"
               required
               pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
             />
@@ -116,7 +121,12 @@
               Confirm Password
               <strong><span aria-label="required">*</span></strong>
             </label>
-            <input type="password" id="confirm-password" required />
+            <input
+              type="password"
+              id="confirm-password"
+              autocomplete="new-password"
+              required
+            />
             <span class="feedback hidden"></span>
           </div>
         </form>
