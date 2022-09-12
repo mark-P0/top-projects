@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="/.exclude/local-files/typography.css" />
     <link rel="stylesheet" href="/.exclude/local-files/forms.css" />
 
-    <link rel="stylesheet" href="./src/css/styles.css" />
+    <link rel="stylesheet" href="/src/css/styles.css" />
+    <script defer type="module" src="/src/js/validations.js"></script>
 
     <title>Sign-Up | Odin</title>
   </head>
@@ -55,30 +56,52 @@
           <div>
             <label for="first-name">First Name</label>
             <input type="text" name="firstName" id="first-name" />
+            <span class="feedback hidden"></span>
           </div>
           <div>
             <label for="last-name">Last Name</label>
             <input type="text" name="lastName" id="last-name" />
+            <span class="feedback hidden"></span>
           </div>
           <div>
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email" />
+            <label for="email">
+              Email
+              <strong><span aria-label="required">*</span></strong>
+            </label>
+            <input type="email" name="email" id="email" required />
+            <span class="feedback hidden"></span>
           </div>
           <div>
             <label for="phone-number">Phone Number</label>
             <input type="tel" name="phoneNumber" id="phone-number" />
+            <span class="feedback hidden"></span>
           </div>
           <div>
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" />
+            <label for="password">
+              Password
+              <strong><span aria-label="required">*</span></strong>
+            </label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              required
+              pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+            />
+            <span class="feedback hidden"></span>
           </div>
           <div>
-            <label for="confirm-password">Confirm Password</label>
+            <label for="confirm-password">
+              Confirm Password
+              <strong><span aria-label="required">*</span></strong>
+            </label>
             <input
               type="password"
               name="confirmPassword"
               id="confirm-password"
+              required
             />
+            <span class="feedback hidden"></span>
           </div>
         </form>
       </div>

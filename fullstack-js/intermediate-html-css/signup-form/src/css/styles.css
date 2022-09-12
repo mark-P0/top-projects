@@ -48,14 +48,14 @@ body {
   flex: 1 0 calc(100% / 3);
 
   padding: 1rem;
-  padding-left: max(1rem, 4%);
+  padding-left: clamp(1rem, 6%, 2rem);
   padding-right: 20%;
 
   background-color: var(--bg-color);
 }
 #flavor {
   /* flex-grow: 5; */
-  padding-bottom: 1.5rem;
+  padding-bottom: clamp(1rem, 4vh, 1.5rem);
 }
 #form {
   /* flex-grow: 4; */
