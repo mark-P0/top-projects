@@ -101,14 +101,25 @@ for (const input of [Email, Password, PasswordConfirm]) {
     if (!input.isValid) {
       input.element.classList.add('invalid');
       input.feedback.classList.remove('hidden');
-      input.feedback.textContent = input.constraintMsg;
+
+      const msg = input.constraintMsg;
+      input.feedback.textContent = msg;
+      input.element.setCustomValidity(msg);
     }
   });
   input.element.addEventListener('input', () => {
+    /*  Assume is valid at first
+     *  Behind-the-scenes check uses this message and
+     *  the actual validation?
+     */
+    input.element.setCustomValidity('');
+
     if (input.isValid) {
       input.element.classList.remove('invalid');
       input.feedback.classList.add('hidden');
+
       input.feedback.textContent = '';
+      input.element.setCustomValidity('');
     }
   });
 }
