@@ -27,6 +27,12 @@ const Email = {
     if (this.value === '') return 'Please enter an email';
     return 'Email is invalid';
   },
+  get checkFocusout() {
+    return !this.isValid;
+  },
+  get checkInput() {
+    return this.isValid;
+  },
 };
 
 const Password = {
@@ -64,6 +70,12 @@ const Password = {
 
     return '';
   },
+  get checkFocusout() {
+    return !this.isValid;
+  },
+  get checkInput() {
+    return this.isValid;
+  },
 };
 
 const PasswordConfirm = {
@@ -90,6 +102,12 @@ const PasswordConfirm = {
   get constraintMsg() {
     return 'Passwords do not match';
   },
+  get checkFocusout() {
+    return !this.isValid && Password.isValid;
+  },
+  get checkInput() {
+    return this.isValid && Password.isValid;
+  },
 };
 
 for (const event of ['focusout', 'input']) {
@@ -100,7 +118,7 @@ for (const event of ['focusout', 'input']) {
 
 for (const input of [Email, Password, PasswordConfirm]) {
   input.element.addEventListener('focusout', () => {
-    if (!input.isValid) {
+    if (input.checkFocusout) {
       input.element.classList.add('invalid');
       input.feedback.classList.remove('hidden');
 
@@ -116,7 +134,7 @@ for (const input of [Email, Password, PasswordConfirm]) {
      */
     input.element.setCustomValidity('');
 
-    if (input.isValid) {
+    if (input.checkInput) {
       input.element.classList.remove('invalid');
       input.feedback.classList.add('hidden');
 
