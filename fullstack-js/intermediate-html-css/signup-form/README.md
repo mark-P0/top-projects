@@ -1,6 +1,4 @@
-<!-- # [Sign-up Form](https://mark-p0.github.io/signup-form/) -->
-
-# Sign-up Form
+# [Sign-up Form](https://mark-p0.github.io/signup-form/)
 
 <!-- Simple sign-up form using HTML and CSS -->
 
