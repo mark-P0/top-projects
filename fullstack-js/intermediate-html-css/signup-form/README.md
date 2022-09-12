@@ -15,6 +15,7 @@ _As provided by The Odin Project:_
 ## Credits
 
 - [Fern splash image](https://unsplash.com/photos/r0M9HrfJMBM), by [Olena Sergienko](https://unsplash.com/@olenkasergienko) (_Unsplash_)
+- [Password regex pattern](https://www.html5pattern.com/Passwords) from [HTML5Pattern](https://www.html5pattern.com/)
 
 ## Disclaimer
 
