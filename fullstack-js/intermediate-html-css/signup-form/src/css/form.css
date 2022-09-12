@@ -9,7 +9,7 @@
   margin: 0;
 }
 
-#form form {
+#form-actual {
   --field-spacing-hor: clamp(1rem, 8%, 3rem);
   /*  Vertical spacing will be divided into a span text and the actual spacing
    *  Text will be of `xx-small` height
@@ -25,7 +25,7 @@
   gap: var(--field-spacing-ver-effective) 0;
 }
 
-#form form > * {
+#form-actual > * {
   flex: 1 0 calc(50% - var(--field-spacing-hor));
 
   display: flex;
@@ -34,40 +34,40 @@
   padding-right: var(--field-spacing-hor);
 }
 
-#form form label {
+#form-actual label {
   color: dimgray;
   font-size: xx-small;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
   font-weight: bold;
 }
-#form form label span[aria-label='required'] {
+#form-actual label span[aria-label='required'] {
   color: red;
 }
 
-#form form input {
+#form-actual input {
   font-size: small;
   border-color: #e5e7eb;
   border-radius: 0.25rem;
 }
-#form form input:focus {
+#form-actual input:focus {
   outline: none;
   border-color: blue;
   box-shadow: 0 0.1rem 0.25rem 0.05rem gainsboro;
 }
-#form form input.invalid {
+#form-actual input.invalid {
   border-color: red;
 }
-#form form input.invalid:focus {
+#form-actual input.invalid:focus {
   outline: none;
   box-shadow: none;
 }
 
-#form form .feedback {
+#form-actual .feedback {
   color: red;
   font-size: var(--field-spacing-ver-feedback);
   height: var(--field-spacing-ver-feedback);
 }
-#form form .hidden {
+#form-actual .hidden {
   visibility: hidden;
 }
