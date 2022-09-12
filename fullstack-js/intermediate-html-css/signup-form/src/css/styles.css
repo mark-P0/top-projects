@@ -64,5 +64,5 @@ body {
 }
 #actions {
   /* flex-grow: 6; */
-  /* flex-shrink: 1; */
+  flex-shrink: 1;
 }

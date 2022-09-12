@@ -43,6 +43,9 @@
   display: flex;
   justify-content: center;
 }
+#splash-banner > div > a {
+  display: flex;
+}
 #splash-banner-logo {
   width: var(--banner-text-size);
   /* background-image: url(https://cdn.statically.io/gh/TheOdinProject/curriculum/5f37d43908ef92499e95a9b90fc3cc291a95014c/html_css/project-sign-up-form/odin-lined.png); */
@@ -67,9 +70,13 @@
     var(--attribution-highlight);
 }
 
-#splash-attribution a {
+/* Links */
+#splash a {
   color: inherit;
 }
 #splash-attribution a:hover {
   background-color: rgba(var(--splash-accent-color), 0.33);
+}
+#splash-banner a {
+  text-decoration: none;
 }
