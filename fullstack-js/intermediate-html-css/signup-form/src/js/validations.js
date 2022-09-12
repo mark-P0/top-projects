@@ -88,13 +88,15 @@ const PasswordConfirm = {
   },
 
   get constraintMsg() {
-    if (!Password.isValid) {
-      Password.element.dispatchEvent(new Event('focusout'));
-    }
-
     return 'Passwords do not match';
   },
 };
+
+for (const event of ['focusout', 'input']) {
+  Password.element.addEventListener(event, () => {
+    PasswordConfirm.element.dispatchEvent(new Event(event));
+  });
+}
 
 for (const input of [Email, Password, PasswordConfirm]) {
   input.element.addEventListener('focusout', () => {
