@@ -1,4 +1,4 @@
-# [Calculator](https://mark-p0.github.io/calculator/)
+# [Calculator](https://mark-p0.github.io/top-projects/foundations/calculator/)
 
 <!--
   A simple calculator application

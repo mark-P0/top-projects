@@ -1,4 +1,4 @@
-# [Etch-A-Sketch](https://mark-p0.github.io/etch-a-sketch/)
+# [Etch-A-Sketch](https://mark-p0.github.io/top-projects/foundations/etch-a-sketch/)
 
 <!--
   Digital Etch-A-Sketch toy using web languages.

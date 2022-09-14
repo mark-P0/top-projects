@@ -1,4 +1,4 @@
-# [Rock, Paper, Scissors!](https://mark-p0.github.io/rock-paper-scissors/)
+# [Rock, Paper, Scissors!](https://mark-p0.github.io/top-projects/foundations/rock-paper-scissors/)
 
 <!--
   Play a game of "rock, paper, scissors" with the computer

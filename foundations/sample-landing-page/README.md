@@ -1,4 +1,4 @@
-# [Landing Page](https://mark-p0.github.io/sample-landing-page/)
+# [Landing Page](https://mark-p0.github.io/top-projects/foundations/sample-landing-page/)
 
 <!-- A simple landing page using HTML and CSS -->
 
