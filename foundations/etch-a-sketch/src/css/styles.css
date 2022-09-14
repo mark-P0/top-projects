@@ -1,0 +1,116 @@
+html,
+body,
+_ {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  height: 100%;
+
+  /* background-color: bisque; */
+}
+
+/*  */
+
+body {
+  max-width: 32rem;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  /* background-color: coral; */
+}
+
+/*  */
+
+#main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/*  */
+
+#input {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+#buttons {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#buttons > div {
+  display: flex;
+  flex-direction: column;
+}
+
+/*  */
+
+#color {
+  /* flex: 3; */
+}
+
+#color-field {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  gap: 0.2rem;
+}
+
+#color-field div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/*  */
+
+#grid-container {
+  height: 16rem;
+  width: 16rem;
+}
+
+#grid {
+  height: 100%;
+  width: 100%;
+
+  /*  Given an NxN grid, `#grid` element will have NxN children as its cells.
+      Normally, flexbox will display all of these in a single row,
+      but enabling wrapping should allow these cells to fill the grid.
+      As such, each cell must be precisely sized such that
+      they are of size `width / N` and `height / N`.
+   */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  touch-action: none;
+
+  background-color: white;
+}
+
+.grid-cell {
+  /*  Actual `width` and `height` are dynamically defined
+      These are for testing only!
+   */
+  height: 12px;
+  width: 12px;
+
+  /*  Apparently not inherited...
+      Allows visualization of each cell without overflowing
+      Automatically subtracts border sizes from dynamically set dimensions
+
+      May not actually be needed as the cells will only be highlighted
+   */
+  box-sizing: border-box;
+}
