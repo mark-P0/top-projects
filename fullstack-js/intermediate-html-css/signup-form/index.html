@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- prettier-ignore -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--  Sanitize.css
+      --  No reliable way to fallback to a live link...?
+      --  This will load both local and live files at the same time, if present...
+      -->
+    <link rel="stylesheet" href="./.exclude/local-files/sanitize.css" />
+    <link rel="stylesheet" href="./.exclude/local-files/typography.css" />
+    <link rel="stylesheet" href="./.exclude/local-files/forms.css" />
+    <link rel="stylesheet" href="https://unpkg.com/sanitize.css" />
+    <link rel="stylesheet" href="https://unpkg.com/sanitize.css/typography.css" />
+    <link rel="stylesheet" href="https://unpkg.com/sanitize.css/forms.css" />
+
+    <link rel="stylesheet" href="./src/css/styles.css" />
+    <script defer type="module" src="./src/js/validations.js"></script>
+
+    <title>Sign-Up | Odin</title>
+  </head>
+
+  <body>
+    <div id="splash">
+      <div id="splash-banner">
+        <div>
+          <a href="/">
+            <div id="splash-banner-logo"></div>
+            <div id="splash-banner-text">Odin</div>
+          </a>
+        </div>
+      </div>
+      <div id="splash-attribution">
+        <p>
+          Photo by
+          <a href="https://unsplash.com/@olenkasergienko">Olena Sergienko</a> on
+          <a href="https://unsplash.com/photos/r0M9HrfJMBM">Unsplash</a>
+        </p>
+      </div>
+    </div>
+
+    <div id="content">
+      <div id="flavor">
+        <p>
+          This is not a real online service! You know you need something like
+          this in your life to help you realize your deepest dreams. Sign up
+          <em>now</em> to get started.
+        </p>
+        <p>You <em>know</em> you want to.</p>
+      </div>
+
+      <div id="form">
+        <h4>Let's do this!</h4>
+
+        <form action="#" method="post" id="form-actual">
+          <div>
+            <label for="first-name">First Name</label>
+            <input
+              type="text"
+              name="firstName"
+              id="first-name"
+              autocomplete="given-name"
+              placeholder="Thor"
+            />
+            <span class="feedback hidden"></span>
+          </div>
+          <div>
+            <label for="last-name">Last Name</label>
+            <input
+              type="text"
+              name="lastName"
+              id="last-name"
+              autocomplete="family-name"
+              placeholder="Odinson"
+            />
+            <span class="feedback hidden"></span>
+          </div>
+          <div>
+            <label for="email">
+              Email
+              <strong><span aria-label="required">*</span></strong>
+            </label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              autocomplete="email"
+              placeholder="thor@odinson.asg"
+              required
+            />
+            <span class="feedback hidden"></span>
+          </div>
+          <div>
+            <label for="phone-number">Phone Number</label>
+            <input
+              type="tel"
+              name="phoneNumber"
+              id="phone-number"
+              autocomplete="tel"
+              placeholder="212-970-4133"
+            />
+            <span class="feedback hidden"></span>
+          </div>
+          <div>
+            <label for="password">
+              Password
+              <strong><span aria-label="required">*</span></strong>
+            </label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              autocomplete="new-password"
+              required
+              pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+            />
+            <span class="feedback hidden"></span>
+          </div>
+          <div>
+            <label for="confirm-password">
+              Confirm Password
+              <strong><span aria-label="required">*</span></strong>
+            </label>
+            <input
+              type="password"
+              id="confirm-password"
+              autocomplete="new-password"
+              required
+            />
+            <span class="feedback hidden"></span>
+          </div>
+        </form>
+      </div>
+
+      <div id="actions">
+        <button type="submit" form="form-actual">Create Account</button>
+        <p>Already have an account? <a href="#">Log in</a></p>
+      </div>
+    </div>
+  </body>
+</html>

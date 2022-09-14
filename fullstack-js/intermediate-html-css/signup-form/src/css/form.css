@@ -1,0 +1,73 @@
+#form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+#form h4 {
+  margin: 0;
+}
+
+#form-actual {
+  --field-spacing-hor: clamp(1rem, 8%, 3rem);
+  /*  Vertical spacing will be divided into a span text and the actual spacing
+   *  Text will be of `xx-small` height
+   *  This will be subtracted from the set vertical spacing
+   *  The remaining will be the actual spacing
+   *  0.5625 is the ratio of `xx-small` to `1rem`
+   */
+  --field-spacing-ver-feedback: calc(1rem * 0.5625);
+  --field-spacing-ver-effective: calc(1rem * calc(1 - 0.5625));
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--field-spacing-ver-effective) 0;
+}
+
+#form-actual > * {
+  flex: 1 0 calc(50% - var(--field-spacing-hor));
+
+  display: flex;
+  flex-direction: column;
+
+  padding-right: var(--field-spacing-hor);
+}
+
+#form-actual label {
+  color: dimgray;
+  font-size: xx-small;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  font-weight: bold;
+}
+#form-actual label span[aria-label='required'] {
+  color: red;
+}
+
+#form-actual input {
+  font-size: small;
+  border-color: #e5e7eb;
+  border-radius: 0.25rem;
+}
+#form-actual input:focus {
+  outline: none;
+  border-color: blue;
+  box-shadow: 0 0.1rem 0.25rem 0.05rem gainsboro;
+}
+#form-actual input.invalid {
+  border-color: red;
+}
+#form-actual input.invalid:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+#form-actual .feedback {
+  color: red;
+  font-size: var(--field-spacing-ver-feedback);
+  height: var(--field-spacing-ver-feedback);
+}
+#form-actual .hidden {
+  visibility: hidden;
+}

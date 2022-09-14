@@ -1,0 +1,81 @@
+/*  Definitions with #splash as a parent
+ */
+
+@font-face {
+  font-family: 'Norse Bold';
+  src: url(../../.exclude/local-files/Norse-Bold.otf),
+    url(https://cdn.statically.io/gh/TheOdinProject/theodinproject/efdc2888072f409e687d31dc580595dbe4fe0ff4/app/assets/fonts/Norse-Bold.otf);
+}
+
+#splash {
+  --text-color: whitesmoke;
+  --banner-text-size: 4rem;
+  --attribution-highlight: 0 0 0.33rem black;
+
+  background-image: url(../../.exclude/local-files/photo-1599148401005-fe6d7497cb5e.jpg),
+    url(https://images.unsplash.com/photo-1599148401005-fe6d7497cb5e);
+  background-size: cover;
+  background-position: center;
+
+  text-align: center;
+  color: var(--text-color);
+
+  display: flex;
+  flex-direction: column;
+}
+#splash > * {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+#splash-banner {
+  flex: 1;
+
+  font-family: 'Norse Bold';
+}
+#splash-banner > div {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  padding: 0.25rem 1rem;
+
+  display: flex;
+  justify-content: center;
+}
+#splash-banner > div > a {
+  display: flex;
+}
+#splash-banner-logo {
+  width: var(--banner-text-size);
+  background-image: url(../../.exclude/local-files/odin-lined.png),
+    url(https://cdn.statically.io/gh/TheOdinProject/curriculum/5f37d43908ef92499e95a9b90fc3cc291a95014c/html_css/project-sign-up-form/odin-lined.png);
+  background-size: contain;
+  background-position: center;
+}
+#splash-banner-text {
+  font-size: var(--banner-text-size);
+  text-align: left;
+}
+
+#splash-attribution {
+  flex: 2;
+
+  font-size: x-small;
+
+  /*  Stack shadows for increased visibility. Bad?
+   *  https://stackoverflow.com/questions/42109416/how-to-create-a-bigger-stronger-text-shadow
+   */
+  text-shadow: var(--attribution-highlight), var(--attribution-highlight),
+    var(--attribution-highlight);
+}
+
+/* Links */
+#splash a {
+  color: inherit;
+}
+#splash-attribution a:hover {
+  background-color: rgba(var(--splash-accent-color), 0.33);
+}
+#splash-banner a {
+  text-decoration: none;
+}

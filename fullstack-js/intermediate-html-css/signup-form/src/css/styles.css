@@ -1,0 +1,70 @@
+/*  Mainly defines page structural layout.
+ *  Fine details on separate CSS files.
+ */
+
+@import './splash.css';
+@import './flavor.css';
+@import './form.css';
+@import './actions.css';
+
+:root {
+  /*  For use in an `rgb[a]()` function
+   *  e.g. background-color: rgba(var(--this), 0.5);
+   *  https://stackoverflow.com/questions/6962432/is-it-possible-to-change-only-the-alpha-of-a-rgba-background-colour-on-hover
+   *  https://stackoverflow.com/questions/40010597/how-do-i-apply-opacity-to-a-css-color-variable/41265350#41265350
+   */
+  --splash-accent-color: 57, 92, 43;
+}
+
+html {
+  height: 100vh;
+  font-family: Helvetica, Arial, sans-serif;
+  user-select: none;
+}
+
+body {
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#splash {
+  flex: 1.1;
+}
+
+#content {
+  --bg-color: whitesmoke;
+
+  flex: 1.9;
+
+  display: flex;
+  flex-direction: column;
+}
+#content > * {
+  /*  Manually set flex-basis so that box-sizing will be respected
+   *  Not fully sure how this works...
+   *  Some links that seem to be related:
+   *  https://stackoverflow.com/questions/37353792/flex-basis-and-box-sizing
+   *  https://stackoverflow.com/questions/50394712/flex-items-wrapping-even-with-box-sizing-border-box
+   */
+  flex: 1 0 calc(100% / 3);
+
+  padding: 1rem;
+  padding-left: clamp(1rem, 6%, 2rem);
+  padding-right: 20%;
+
+  background-color: var(--bg-color);
+}
+#flavor {
+  /* flex-grow: 5; */
+  padding-bottom: clamp(1rem, 4vh, 1.5rem);
+}
+#form {
+  /* flex-grow: 4; */
+  flex-shrink: 1;
+  background-color: white;
+}
+#actions {
+  /* flex-grow: 6; */
+  flex-shrink: 1;
+}
