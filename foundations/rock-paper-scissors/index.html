@@ -1,0 +1,62 @@
+<!-- Boilerplate generated with Emmet -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="./src/css/styles.css" />
+    <script src="./src/js/script.js" type="module"></script>
+
+    <title>Rock • Paper • Scissors</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>Rock • Paper • Scissors</h1>
+      <p>Play a <em>best-of-5</em> game with the computer!</p>
+    </header>
+
+    <section id="result">
+      <!-- prettier-ignore -->
+      <table>
+        <!--
+          `<table>` elements have an implied `<tbody>`
+          `<table>` itself cannot be `hidden`
+         -->
+        <tbody hidden>
+          <tr>  <th>Player</th> <th>Computer</th>  </tr>
+          <!-- Dynamically add round rows via JS -->
+
+        </tbody>
+      </table>
+
+      <section>
+        <p id="message">&nbsp;</p>
+        <p id="final">&nbsp;</p>
+      </section>
+    </section>
+
+    <section id="user">
+      <p id="prompt"><strong>Your play?</strong></p>
+
+      <section id="selections">
+        <button type="button" class="selection">✊🏼</button>
+        <button type="button" class="selection">🖐🏼</button>
+        <button type="button" class="selection">✌🏼</button>
+      </section>
+    </section>
+
+    <footer>
+      <!-- prettier-ignore -->
+      <p>
+        <em>Created by Mark </em>
+        • <a href="https://mark-p0.github.io/">Website</a>
+        • <a href="https://github.com/mark-P0/">GitHub</a>
+        <!-- <div><a href="../">Back to site landing</a></div> -->
+      </p>
+    </footer>
+  </body>
+</html>
