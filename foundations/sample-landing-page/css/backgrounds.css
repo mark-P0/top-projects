@@ -1,0 +1,26 @@
+/* Common backgrounds */
+.bg-dark {
+  background-color: var(--bg-dark);
+}
+
+.bg-light {
+  background-color: var(--bg-light);
+}
+
+.bg-quote {
+  background-color: var(--bg-quote);
+}
+
+.bg-action {
+  background-color: var(--bg-accent);
+}
+
+/* Other specific elements */
+
+.welcome-image-placeholder {
+  background-color: var(--bg-placeholder);
+}
+
+.action-button {
+  background-color: var(--bg-accent);
+}

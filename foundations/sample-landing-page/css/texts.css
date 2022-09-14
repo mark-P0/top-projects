@@ -1,0 +1,113 @@
+/*  "Roboto" font
+*
+ *  Imported from Google Fonts
+ *
+ *  - Roboto Regular (400)
+ *  - Roboto Black (900)
+ *    - Will be used as "extra-bold" font
+ *    - "Extra-bold" is actually 800 only
+ *  - Roboto Light (300) Italic
+ *
+ *  Specify as:
+ *    ```css
+ *    font-family: "Roboto";
+ *    ```
+ *
+ *  Resources:
+ *    https://fonts.google.com/specimen/Roboto
+ *    https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight#common_weight_name_mapping
+ */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,900;1,300&display=swap');
+
+html {
+  /* Default to "Roboto" font */
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Header section */
+.header-logo,
+.action-header,
+_ {
+  font-size: var(--text-smaller);
+  color: var(--text-lightest);
+
+  /* Not specified, but looks bold in the design */
+  font-weight: bold;
+  font-weight: var(--text-bold);
+}
+
+.header-link,
+.welcome-hero-secondary,
+.action-secondary,
+.footer-text,
+_ {
+  font-size: var(--text-smallest);
+  color: var(--text-lighter);
+}
+
+/* Welcome section */
+.welcome-hero {
+  font-size: var(--text-largest);
+  /*  Extra-bold
+   *  Roboto font only has 900 weight variant,
+   *  and so this is used even if "extra-bold"
+   *  actually corresponds to 800 weight
+   */
+  font-weight: var(--text-bold);
+  color: var(--text-lightest);
+}
+
+.welcome-hero-secondary {
+  /* Reuses `.header-link` */
+}
+
+.welcome-image-placeholder {
+  color: var(--text-lightest);
+}
+
+/* Action section */
+.action-button {
+  color: var(--text-lightest);
+  font-weight: var(--text-bold);
+  font-size: var(--text-smallest);
+}
+
+/* Information section */
+.information-header {
+  font-size: var(--text-larger);
+  font-weight: var(--text-bold);
+  color: var(--text-darkest);
+}
+
+.information-subtext {
+  color: var(--text-darker);
+}
+
+/* Quote section */
+.quote-actual {
+  font-size: var(--text-larger);
+  /* Light (300) italic */
+  font-weight: var(--text-light);
+  font-style: italic;
+  color: var(--text-darkest);
+}
+
+.quote-credit {
+  font-size: var(--text-smaller);
+  font-weight: var(--text-bold);
+  color: var(--text-darkest);
+}
+
+/* Action section */
+.action-header {
+  /* Reuses `.header-logo` */
+}
+
+.action-secondary {
+  /* Resuses `.header-link` */
+}
+
+/* Footer section */
+.footer-text {
+  /* Resuses `.header-link` */
+}

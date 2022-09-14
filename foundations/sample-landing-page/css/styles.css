@@ -1,0 +1,205 @@
+/* Remove/Override some default styles  */
+html,
+body,
+_ {
+  margin: 0;
+}
+
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Common styles */
+.common-width {
+  max-width: 960px;
+}
+
+/* Header */
+#header {
+  box-sizing: border-box;
+  padding: 0 32px;
+
+  display: flex;
+  justify-content: center;
+}
+
+#header #header-inner {
+  padding-top: 16px;
+
+  /* As flex item */
+  flex: 1;
+
+  /* As flex container */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+#header .header-link-list {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+/* "Welcome" section  */
+#welcome {
+  box-sizing: border-box;
+  padding: 0 32px;
+
+  display: flex;
+  justify-content: center;
+}
+
+#welcome #welcome-inner {
+  padding-top: 128px;
+  padding-bottom: 128px;
+
+  display: flex;
+  gap: 42px;
+  flex-wrap: wrap;
+}
+
+#welcome .welcome-main {
+  /* As flex item */
+  flex: 1;
+
+  /* As flex container */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+#welcome .welcome-image-placeholder {
+  /* As flex item */
+  flex: 1;
+
+  /* As flex container */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Information section */
+#information {
+  box-sizing: border-box;
+  padding: 0 32px;
+
+  display: flex;
+  justify-content: center;
+}
+
+#information #information-inner {
+  padding-top: 32px;
+  padding-bottom: 128px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+}
+
+#information .information-header {
+  text-align: center;
+}
+
+#information .information-card-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 42px;
+}
+
+#information .information-card {
+  width: 150px;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#information .information-card-figure {
+  height: 150px;
+  border: 4px solid #3882f6;
+  border-radius: 16px;
+}
+
+/* Quote section */
+#quote {
+  box-sizing: border-box;
+  padding: 0 32px;
+
+  display: flex;
+  justify-content: center;
+}
+
+#quote #quote-inner {
+  /* padding: 124px 300px; */
+  padding: 124px 0;
+  max-width: 790px;
+}
+
+#quote .quote-credit {
+  text-align: end;
+}
+
+/* "Call to Action" section */
+#action {
+  box-sizing: border-box;
+  padding: 100px 32px;
+
+  display: flex;
+  justify-content: center;
+}
+
+#action-inner {
+  box-sizing: border-box;
+  padding: 42px 64px;
+  border-radius: 8px;
+
+  /* As flex item */
+  flex: 1;
+
+  /* As flex container */
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 38px;
+  flex-wrap: wrap;
+}
+
+.action-button {
+  width: 128px;
+  height: 36px;
+  /* padding: 8px 30px; */
+
+  border-radius: 8px;
+  border: none;
+}
+
+.action-button-outline {
+  border: 2px solid white;
+}
+
+/* Footer */
+#footer {
+  padding-top: 42px;
+  padding-bottom: 42px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
