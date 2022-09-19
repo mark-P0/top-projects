@@ -1,0 +1,29 @@
+html {
+  height: 100vh;
+}
+
+body {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 1fr 4fr;
+  grid-template-areas:
+    'sidebar header'
+    'sidebar content';
+  align-content: center;
+}
+#sidebar {
+  grid-area: sidebar;
+
+  background-color: dodgerblue;
+}
+#header {
+  grid-area: header;
+
+  background-color: white;
+}
+#content {
+  grid-area: content;
+
+  background-color: gainsboro;
+}
