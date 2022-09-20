@@ -10,15 +10,17 @@
     <!-- Sanitize.css -->
     <link rel="stylesheet" href="./.exclude/local/sanitize.css/sanitize.css" />
     <link rel="stylesheet" href="./.exclude/local/sanitize.css/typography.css" />
+    <link rel="stylesheet" href="./.exclude/local/sanitize.css/forms.css" />
     <!-- Material Design Icons -->
     <link rel="stylesheet" href="./.exclude/local/material-design-icons/css/materialdesignicons.css">
     <!-- Roboto font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="./css/styles.css" />
     <link rel="stylesheet" href="./css/sidebar.css" />
+    <link rel="stylesheet" href="./css/header.css" />
 
     <title>Dashboard</title>
   </head>
@@ -64,7 +66,29 @@
       </div>
     </div>
 
-    <div id="header">header</div>
+    <div id="header">
+      <div class="header-section">
+        <label for="header-search" class="mdi mdi-magnify"></label>
+        <input type="search" name="searchQuery" id="header-search" />
+      </div>
+      <div class="header-section">
+        <span class="mdi mdi-bell-ring-outline" id="header-notif"></span>
+        <div class="user-picture"></div>
+        <div class="user-name">Morgan Oakley</div>
+      </div>
+      <div class="header-section">
+        <div class="user-picture"></div>
+        <div>
+          <div class="user-greeting">Hi there,</div>
+          <div class="user-name">Morgan Oakley (@morgan)</div>
+        </div>
+      </div>
+      <div class="header-section">
+        <button type="button">New</button>
+        <button type="button">Upload</button>
+        <button type="button">Share</button>
+      </div>
+    </div>
 
     <div id="content">content</div>
   </body>
