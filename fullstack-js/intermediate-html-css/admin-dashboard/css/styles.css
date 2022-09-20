@@ -1,11 +1,13 @@
 html {
   height: 100vh;
+
+  font-family: Roboto;
 }
 
 body {
   height: 100%;
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: minmax(min-content, 1fr) 5fr;
   grid-template-rows: 1fr 4fr;
   grid-template-areas:
     'sidebar header'
