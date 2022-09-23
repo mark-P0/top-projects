@@ -1,0 +1,80 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+#content {
+  padding: 1rem;
+  padding-top: 1.5rem;
+  padding-bottom: 2rem;
+  padding-right: 1.5rem;
+
+  display: grid;
+  grid-template-columns: 5fr 2fr;
+  grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-areas:
+    'projects announcements'
+    'projects trending';
+  gap: 1.5rem 1rem;
+}
+#content > * {
+  display: grid;
+  grid-template-rows: min-content minmax(0, 1fr);
+  gap: 0.5rem;
+}
+#content-projects {
+  grid-area: projects;
+}
+#content-announcements {
+  grid-area: announcements;
+}
+#content-trending {
+  grid-area: trending;
+}
+
+.card {
+  border-radius: 0.5rem;
+  background-color: white;
+}
+
+.text-secondary {
+  font-size: small;
+  color: gray;
+}
+
+/* Announcements */
+#content-announcements .card {
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+#content-announcements .text-secondary {
+  font-size: x-small;
+
+  /*  Limit text to specific number of lines, and append an ellipsis on truncation
+   *  The following is non-standard but apparently well-supported...
+   *  https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-line-clamp
+   *  https://stackoverflow.com/questions/3922739/limit-text-length-to-n-lines-using-css
+   */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#content-announcements article {
+  cursor: pointer;
+}
+
+/* Projects */
+#project-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 1rem;
+}

@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="./css/styles.css" />
     <link rel="stylesheet" href="./css/sidebar.css" />
     <link rel="stylesheet" href="./css/header.css" />
+    <link rel="stylesheet" href="./css/content.css" />
 
     <title>Dashboard</title>
   </head>
@@ -90,6 +91,50 @@
       </div>
     </div>
 
-    <div id="content">content</div>
+    <div id="content">
+      <section id="content-projects">
+        <h4>Your Projects</h4>
+      </section>
+
+      <!-- cspell:disable -->
+      <section id="content-announcements">
+        <h4>Announcements</h4>
+        <div id="announcement-list" class="card">
+          <article>
+            <h6>Site Maintenance</h6>
+            <p class="text-secondary">
+              Vestibulum condimentum tellus lacus, in accumsan elit maximus ac.
+              Donec henderit sodales congue more text after this should be
+              truncated
+            </p>
+          </article>
+          <hr />
+          <article>
+            <h6>Community Share Day</h6>
+            <p class="text-secondary">
+              Nam vel lectus tincidunt, rutrum nulla eu, ornare libero. Aliquam
+              dictum accumsan porttitor more text after this should be truncated
+            </p>
+          </article>
+          <hr />
+
+          <!--  This must be on overflow...
+            -->
+          <article>
+            <h6>Updated Privacy Policy</h6>
+            <p class="text-secondary">
+              Phasellus efficitur nisi eget elit consectetur, eget condimentum
+              ante auctor. Cras fringilla sagittis sem in mattis more text after
+              this should be truncated
+            </p>
+          </article>
+        </div>
+      </section>
+      <!-- cspell:enable -->
+
+      <section id="content-trending">
+        <h4>Trending</h4>
+      </section>
+    </div>
   </body>
 </html>

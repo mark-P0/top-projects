@@ -6,13 +6,23 @@ html {
 
 body {
   height: 100%;
+
+  /*  Prevent grid items resizing the grid by setting a definite minimum content
+   *  Allow "Announcements" card to overflow
+   *  Also set as it cascades down, i.e. on the:
+   *  - full-page grid
+   *  - the `content` grid
+   *  - the "Announcements" grid
+   *  https://css-tricks.com/preventing-a-grid-blowout/
+   */
   display: grid;
   grid-template-columns: minmax(min-content, 1fr) 5fr;
-  grid-template-rows: 1fr 4fr;
+  grid-template-rows: 1fr minmax(0, 5fr);
   grid-template-areas:
     'sidebar header'
     'sidebar content';
-  align-content: center;
+  align-content: start;
+  overflow: auto;
 }
 #sidebar {
   grid-area: sidebar;
