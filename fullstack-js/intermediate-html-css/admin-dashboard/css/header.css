@@ -75,7 +75,7 @@
 }
 .header-section:nth-child(3) .user-greeting {
   font-weight: 900;
-  font-size: x-small;
+  font-size: small;
 }
 .header-section:nth-child(3) .user-name {
   font-size: large;

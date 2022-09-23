@@ -12,8 +12,8 @@ p {
 #content {
   padding: 1rem;
   padding-top: 1.5rem;
-  padding-bottom: 2rem;
-  padding-right: 1.5rem;
+  padding-right: 2rem;
+  padding-bottom: 3rem;
 
   display: grid;
   grid-template-columns: 5fr 2fr;
@@ -49,10 +49,10 @@ p {
 }
 
 /* Announcements */
-#content-announcements .card {
+#announcement-list {
   overflow-y: auto;
 }
-#content-announcements .content-text-secondary {
+#announcement-list .content-text-secondary {
   font-size: x-small;
 
   /*  Limit text to specific number of lines, and append an ellipsis on truncation
@@ -66,8 +66,11 @@ p {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-#content-announcements article {
+#announcement-list article {
   cursor: pointer;
+}
+#announcement-list hr {
+  margin: 1rem 0;
 }
 
 /* Trending */
@@ -100,6 +103,56 @@ p {
 #project-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
   gap: 1rem;
+  align-items: stretch;
+
+  /*  Rudimentary blur effect on scrollable elements
+   *  Much help from:
+   *  https://web.dev/css-masking/
+   */
+  /* prettier-ignore */
+  --gradient-mask: linear-gradient(
+    transparent 0%,
+    white 2%,
+    white 98%,
+    transparent 100%
+  );
+  mask-image: var(--gradient-mask);
+  -webkit-mask-image: var(--gradient-mask);
+  margin: -0.75rem 0;
+  padding: 0.75rem 0;
+
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+#project-list::-webkit-scrollbar {
+  display: none;
+}
+#project-list .card {
+  cursor: pointer;
+
+  aspect-ratio: 3 / 2;
+  max-width: 100%;
+
+  border-left: 0.5rem solid orange;
+  padding: 1rem;
+  padding-top: 1.5rem;
+  padding-right: 1.5rem;
+
+  display: grid;
+  grid-auto-flow: row;
+  grid-auto-rows: min-content;
+  align-content: space-between;
+}
+#project-list .project-actions {
+  justify-self: end;
+
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: min-content;
+  gap: 1.5rem;
+}
+#project-list .mdi {
+  font-size: 1.25rem;
+  color: darkslategray;
 }
