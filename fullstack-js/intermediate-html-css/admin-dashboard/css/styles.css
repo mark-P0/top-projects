@@ -3,7 +3,6 @@ html {
 
   font-family: Roboto;
 }
-
 body {
   height: 100%;
 
@@ -38,4 +37,30 @@ body {
   grid-area: content;
 
   background-color: gainsboro;
+}
+
+/* Clickable elements */
+.clickable {
+  /* May be overridden per element */
+  --clickable-bg: gainsboro;
+}
+.clickable:hover {
+  transition: 0.25s;
+}
+.clickable:active {
+  background-color: var(--clickable-bg) !important;
+  transition: 0s;
+}
+
+/* Icon buttons */
+.icon-button {
+  cursor: pointer;
+
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
 }
