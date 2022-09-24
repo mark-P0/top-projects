@@ -49,10 +49,10 @@ p {
 }
 
 /* Announcements */
-#announcement-list {
+#announcements-list {
   overflow-y: auto;
 }
-#announcement-list .content-text-secondary {
+#announcements-list .content-text-secondary {
   font-size: x-small;
 
   /*  Limit text to specific number of lines, and append an ellipsis on truncation
@@ -66,10 +66,10 @@ p {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-#announcement-list article {
+#announcements-list article {
   cursor: pointer;
 }
-#announcement-list hr {
+#announcements-list hr {
   margin: 1rem 0;
 }
 
@@ -100,7 +100,7 @@ p {
 }
 
 /* Projects */
-#project-list {
+#projects-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
@@ -125,10 +125,10 @@ p {
   overflow-y: auto;
   scrollbar-width: none;
 }
-#project-list::-webkit-scrollbar {
+#projects-list::-webkit-scrollbar {
   display: none;
 }
-#project-list .card {
+#projects-list .card {
   cursor: pointer;
 
   aspect-ratio: 3 / 2;
@@ -144,7 +144,7 @@ p {
   grid-auto-rows: min-content;
   align-content: space-between;
 }
-#project-list .project-actions {
+#projects-list .project-actions {
   justify-self: end;
 
   display: grid;
@@ -152,7 +152,7 @@ p {
   grid-auto-columns: min-content;
   gap: 1rem;
 }
-#project-list .mdi {
+#projects-list .mdi {
   font-size: 1.25rem;
   color: darkslategray;
 }

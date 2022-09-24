@@ -11,3 +11,8 @@ Implementation of an administrator dashboard design for showcasing skills on CSS
 - [Sanitize.css](https://csstools.github.io/sanitize.css/)
 - [Material Design Icons](https://materialdesignicons.com/)
 - [Roboto](https://fonts.google.com/specimen/Roboto), from _Google Fonts_
+
+## Issues
+
+- [ ] Grid items move on refresh
+  - Happened after page content addition was moved to JavaScript
