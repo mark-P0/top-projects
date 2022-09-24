@@ -2,6 +2,7 @@ html {
   height: 100vh;
 
   font-family: Roboto;
+  user-select: none;
 }
 body {
   height: 100%;
