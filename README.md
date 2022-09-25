@@ -1,4 +1,4 @@
-# TOP Projects
+# [TOP Projects](https://mark-p0.github.io/top-projects/)
 
 This is a collection of my project solutions throughout _[The Odin Project](https://www.theodinproject.com)_
 
@@ -17,6 +17,7 @@ This is a collection of my project solutions throughout _[The Odin Project](http
 #### Intermediate HTML & CSS
 
 1. [Sign-Up Form](./fullstack-js/intermediate-html-css/signup-form/)
+2. [Admin Dashboard](./fullstack-js/intermediate-html-css/admin-dashboard/)
 
 #### JavaScript
 
