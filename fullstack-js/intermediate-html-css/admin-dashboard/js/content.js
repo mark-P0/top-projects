@@ -1,5 +1,5 @@
 import { Element, ClassList, buildDOM } from './build-dom.js';
-import { UserData, AnnouncementData, TrendData } from './__data__.js';
+import { UserData, AnnouncementData, TrendData } from '../data.js';
 
 const ContentSection = (heading, contentClass, content) => {
   const nameAffix = heading.split(' ').at(-1).toLowerCase();

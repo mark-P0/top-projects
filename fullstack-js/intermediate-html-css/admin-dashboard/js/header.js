@@ -1,5 +1,5 @@
 import { Element, ClassList, buildDOM } from './build-dom.js';
-import { UserData } from './__data__.js';
+import { UserData } from '../data.js';
 
 const HeaderSection = (...children) => {
   return Element('div', { class: 'header-section' }, null, children);
