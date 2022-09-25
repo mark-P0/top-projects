@@ -1,4 +1,4 @@
-# Admin Dashboard
+# [Admin Dashboard](https://mark-p0.github.io/top-projects/fullstack-js/intermediate-html-css/admin-dashboard/)
 
 Implementation of an administrator dashboard design for showcasing skills on CSS grid layout.
 
@@ -16,3 +16,4 @@ Implementation of an administrator dashboard design for showcasing skills on CSS
 
 - [ ] Grid items move on refresh
   - Happened after page content addition was moved to JavaScript
+- [ ] Icon button on-click feedback misshapen on Firefox
