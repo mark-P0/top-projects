@@ -1,0 +1,49 @@
+name: GitHub Pages
+
+on:
+  push:
+    branches:
+      - 'main'
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      ## Implicitly sets remote `origin` to GitHub repo
+      - name: Allow access to repository
+        uses: actions/checkout@v3
+
+      ## `pandoc README.md -s -o index.html --shift-heading-level-by=-1`
+      ## Following Pandoc's example:
+      ## https://github.com/pandoc/pandoc-action-example#simple-usage
+      - name: Build `index.html` from README
+        uses: docker://pandoc/core:2.19.2
+        with:
+          args: >-
+            README.md
+            -s
+            -o index.html
+            --shift-heading-level-by=-1
+
+      ## Following the `actions/checkout` example
+      ## https://github.com/actions/checkout#push-a-commit-using-the-built-in-token
+      - name: Configure GitHub Actions credentials
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+
+      - name: Commit HTML index temporarily
+        run: |
+          git add index.html
+          git commit -am "Build page"
+
+      - name: Deploy to GitHub Pages branch
+        run: |
+          git push origin main:gh-pages --force
+
+      - name: Revert temporary commit (Unnecessary?)
+        run: |
+          git reset HEAD~1

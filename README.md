@@ -85,7 +85,7 @@ What this did was:
 
 ## Conversion
 
-This README file is converted from Markdown to HTML format using [Pandoc](https://pandoc.org/) `v2.19.2` with the following command:
+The repo README is converted into an index page using [Pandoc](https://pandoc.org/) `v2.19.2` with a **GitHub Actions workflow** equivalent to the following command:
 
 ```sh
 pandoc README.md -s -o index.html --shift-heading-level-by=-1
