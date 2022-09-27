@@ -76,7 +76,7 @@ function Book(title: string, author: string, pages: number, isRead: boolean) {
       );
 
       this.__element__ = buildElementTree(
-        E('div', { class: 'card book' }, null, [
+        E('div', { class: 'card book shadow' }, null, [
           E('div', { class: 'card-body' }, null, [titleElement, descElement]),
           E('div', { class: 'card-footer' }, null, [isReadElement]),
         ])
