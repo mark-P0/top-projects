@@ -1,0 +1,18 @@
+{
+  "name": "library",
+  "version": "1.0.0",
+  "description": "Track your book reading in a simple web application!",
+  "main": "index.js",
+  "scripts": {
+    "dev": "grunt"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^1.5.3",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^4.0.0",
+    "grunt-contrib-watch": "^1.1.0"
+  }
+}
