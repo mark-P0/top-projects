@@ -33,12 +33,20 @@ module.exports = function (grunt) {
         tasks: ['build'],
       },
     },
+    /*  https://github.com/TypeStrong/grunt-ts
+     */
+    ts: {
+      default: {
+        tsconfig: './tsconfig.json',
+      },
+    },
   });
 
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-ts');
 
   grunt.registerTask('default', ['watch']);
-  grunt.registerTask('build', ['cssmin', 'copy']);
+  grunt.registerTask('build', ['cssmin', 'copy', 'ts']);
 };
