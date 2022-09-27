@@ -5,7 +5,8 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(var(--book-width), 1fr));
   grid-auto-rows: min-content;
-  place-items: center;
+  align-items: start;
+  justify-items: center;
   overflow-y: auto;
 
   gap: var(--shelf-spacing);
@@ -31,4 +32,47 @@
   font-size: 3rem;
   color: gray;
   background-color: white;
+}
+
+.book .card-title {
+  /* Limit lines to 4 */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.book .card-text {
+  /* Limit lines to 3 */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.book button.read-indicator {
+  background-image: var(--button-icon);
+  background-repeat: no-repeat;
+  background-position: center;
+
+  display: block;
+  margin-left: auto;
+
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+}
+.book button.read-indicator:active {
+  background-color: rgb(255 255 255 / 50%);
+}
+.book button.read-indicator[data-state='read'] {
+  --button-icon: url('../.exclude/local/bootstrap-icons@1.9.1/eye-fill.svg');
+}
+.book button.read-indicator[data-state='unread'] {
+  --button-icon: url('../.exclude/local/bootstrap-icons@1.9.1/eye-slash.svg');
+}
+.book button.read-indicator,
+.book button.read-indicator:active {
+  /* Disable Bootstrap button borders */
+  border: none;
 }
