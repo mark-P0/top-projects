@@ -75,10 +75,20 @@ function Book(title: string, author: string, pages: number, isRead: boolean) {
         null
       );
 
+      const removeElement = E(
+        'button',
+        { type: 'button', class: 'btn-close', 'aria-label': 'Remove' },
+        null,
+        null
+      );
+
       this.__element__ = buildElementTree(
         E('div', { class: 'card book shadow' }, null, [
           E('div', { class: 'card-body' }, null, [titleElement, descElement]),
-          E('div', { class: 'card-footer' }, null, [isReadElement]),
+          E('div', { class: 'card-footer' }, null, [
+            isReadElement,
+            removeElement,
+          ]),
         ])
       );
 

@@ -51,15 +51,24 @@
   text-overflow: ellipsis;
 }
 
+.book .card-footer {
+  display: flex;
+  justify-content: end;
+  gap: 0.5rem;
+}
+
+.book button.btn-close {
+  padding: 0;
+}
+
 .book button.read-indicator {
   background-image: var(--button-icon);
   background-repeat: no-repeat;
   background-position: center;
-
-  display: block;
-  margin-left: auto;
+  padding: 0;
 
   aspect-ratio: 1 / 1;
+  height: 100%;
   border-radius: 50%;
 }
 .book button.read-indicator:active {

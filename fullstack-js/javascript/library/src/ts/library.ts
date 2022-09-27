@@ -33,4 +33,13 @@ Library.__element__.addEventListener('click', (event) => {
   target.dataset.state = newAttrState;
 });
 
+/* Hook for removing books */
+Library.__element__.addEventListener('click', (event) => {
+  const target = event.target as HTMLElement;
+  if (!target?.classList.contains('btn-close')) return;
+
+  const bookElement = target.closest('.book') as any;
+  Library.__element__.removeChild(bookElement);
+});
+
 export { Library };
