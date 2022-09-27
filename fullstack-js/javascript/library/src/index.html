@@ -1,14 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+  <!-- prettier-ignore -->
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!--  Bootstrap
+      --  Has its own resetting stylesheet (Reboot.css)
+      -->
+    <link rel="stylesheet" href="../.exclude/local/bootstrap@5.2.1/dist/css/bootstrap.min.css" />
+    <script defer src="../.exclude/local/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Combined app stylesheets  -->
+    <link rel="stylesheet" href="./styles.css">
+
     <title>📔📕📖📗📘📙🧾📑</title>
   </head>
 
-  <body>
-    Hello, world!
+  <body id="bookshelf">
+    <div id="cap">cap</div>
+
+    <div id="shelves">
+      <div class="card book" id="book-new">
+        <button type="button" class="btn stretched-link">+</button>
+      </div>
+    </div>
+
+    <div id="base">base</div>
   </body>
 </html>

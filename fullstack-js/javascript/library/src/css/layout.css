@@ -1,0 +1,19 @@
+html,
+body {
+  height: 100vh;
+  user-select: none;
+}
+
+#bookshelf {
+  display: flex;
+  flex-direction: column;
+}
+#bookshelf > div:first-child,
+#bookshelf > div:last-child {
+  height: 6rem;
+  background-color: white;
+}
+#bookshelf > div:nth-child(2) {
+  flex: 1;
+  background-color: gainsboro;
+}
