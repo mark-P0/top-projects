@@ -1,5 +1,6 @@
 html,
-body {
+body,
+#bookshelf {
   height: 100vh;
   user-select: none;
 }

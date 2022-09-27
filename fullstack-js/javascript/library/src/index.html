@@ -18,15 +18,107 @@
     <title>📔📕📖📗📘📙🧾📑</title>
   </head>
 
-  <body id="bookshelf">
-    <div id="cap">cap</div>
+  <body>
+    <div id="bookshelf">
+      <div id="cap">cap</div>
+      <div id="shelves">
+        <div class="card book" id="book-new">
+          <button
+            type="button"
+            class="btn stretched-link"
+            data-bs-toggle="modal"
+            data-bs-target="#add-book-modal"
+          >
+            +
+          </button>
+        </div>
+      </div>
+      <div id="base">base</div>
+    </div>
 
-    <div id="shelves">
-      <div class="card book" id="book-new">
-        <button type="button" class="btn stretched-link">+</button>
+    <!--  Following the example on:
+      --  https://getbootstrap.com/docs/5.2/components/modal/
+      -->
+    <!-- prettier-ignore -->
+    <div class="modal fade" id="add-book-modal" tabindex="-1" aria-labelledby="add-book-modal-label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="add-book-modal-label">
+              Add a New Book
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body d-flex flex-column gap-3">
+            <form action="#" method="post" id="add-book-form" class="d-flex flex-column gap-3 needs-validation" novalidate>
+               <div>
+                  <label class="form-label" for="add-book-title">
+                    Title <span aria-label="required" class="form-required-hint">*</span>
+                  </label>
+                  <input class="form-control" type="text" id="add-book-title" name="bookTitle" required>
+                  <div class="invalid-feedback">Please enter a book title.</div>
+               </div>
+               <div>
+                  <label class="form-label" for="add-book-author">Author</label>
+                  <input class="form-control" type="text" id="add-book-author" name="bookAuthor">
+                </div>
+               <div>
+                  <label class="form-label" for="add-book-pages">No. of Pages</label>
+                  <input class="form-control" type="number" id="add-book-pages" name="bookPageCt">
+                </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="add-book-read" name="bookIsRead" value="true" form="add-book-form">
+                <label class="form-check-label" for="add-book-read">I have already read this book</label>
+              </div>
+            </form>
+          </div>
+
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" form="add-book-form">
+              Add
+            </button>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div id="base">base</div>
+    <script>
+      /*  Enable form validation powered by Bootstrap
+       *  As officially exampled:
+       *  https://getbootstrap.com/docs/5.2/forms/validation/
+       */
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      function bootstrapEnableFormValidation() {
+        'use strict';
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll('.needs-validation');
+
+        // Loop over them and prevent submission
+        Array.from(forms).forEach((form) => {
+          form.addEventListener(
+            'submit',
+            (event) => {
+              if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+
+              form.classList.add('was-validated');
+            },
+            false
+          );
+        });
+      }
+
+      /*  Mimic deferred scripts
+       *  Run only when the page has fully loaded
+       *  https://stackoverflow.com/questions/41394983/how-to-defer-inline-javascript
+       */
+      document.addEventListener('DOMContentLoaded', () => {
+        bootstrapEnableFormValidation();
+      });
+    </script>
   </body>
 </html>
