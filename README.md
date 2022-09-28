@@ -21,6 +21,10 @@ This is a collection of my project solutions throughout _[The Odin Project](http
 
 #### JavaScript
 
+##### Organizing your JavaScript Code
+
+1. [Library](./fullstack-js//javascript/library/)
+
 ##### Computer Science
 
 > These are scripts only and do not have a live preview.
