@@ -4,7 +4,8 @@
   "description": "Track your book reading in a simple web application!",
   "main": "index.js",
   "scripts": {
-    "dev": "grunt"
+    "dev": "grunt",
+    "build": "grunt build"
   },
   "keywords": [],
   "author": "",
