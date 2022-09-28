@@ -75,10 +75,10 @@
   background-color: rgb(255 255 255 / 50%);
 }
 .book button.read-indicator[data-state='read'] {
-  --button-icon: url('../.exclude/local/bootstrap-icons@1.9.1/eye-fill.svg');
+  --button-icon: url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/icons/eye-fill.svg');
 }
 .book button.read-indicator[data-state='unread'] {
-  --button-icon: url('../.exclude/local/bootstrap-icons@1.9.1/eye-slash.svg');
+  --button-icon: url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/icons/eye-slash.svg');
 }
 .book button.read-indicator,
 .book button.read-indicator:active {
