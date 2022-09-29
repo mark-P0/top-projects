@@ -28,6 +28,14 @@ jobs:
             -o index.html
             --shift-heading-level-by=-1
 
+      - name: Disable Jekyll to allow filenames with leading underscores
+        run: |
+          touch .nojekyll
+
+      - name: Remove GitHub-specific files from the build
+        run: |
+          rm -rf ./.github
+
       ## Following the `actions/checkout` example
       ## https://github.com/actions/checkout#push-a-commit-using-the-built-in-token
       - name: Configure GitHub Actions credentials
@@ -35,9 +43,9 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
 
-      - name: Commit HTML index temporarily
+      - name: Commit changes to the page build
         run: |
-          git add index.html
+          git add .
           git commit -am "Build page"
 
       - name: Deploy to GitHub Pages branch
@@ -47,7 +55,3 @@ jobs:
       - name: Revert temporary commit (Unnecessary?)
         run: |
           git reset HEAD~1
-
-      - name: Disable Jekyll to allow filenames with leading underscores
-        run: |
-          touch .nojekyll
