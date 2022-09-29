@@ -47,3 +47,7 @@ jobs:
       - name: Revert temporary commit (Unnecessary?)
         run: |
           git reset HEAD~1
+
+      - name: Disable Jekyll to allow filenames with leading underscores
+        run: |
+          touch .nojekyll
