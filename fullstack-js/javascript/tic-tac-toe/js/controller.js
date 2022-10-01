@@ -2,6 +2,9 @@ import { Game } from './core/game.js';
 import { PlayerLabels } from './dom/player-labels.js';
 import { tttGrid } from './dom/ttt-grid.js';
 
+/* Set randomized page title */
+document.title = Game.title;
+
 /* Initialize player labels */
 PlayerLabels.initialize(Game.players);
 

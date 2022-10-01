@@ -1,4 +1,4 @@
-import { getDivMod } from '../utils.js';
+import { getChoices, getDivMod } from '../utils.js';
 import { PlayerFactory } from './player.js';
 
 const Game = (() => {
@@ -14,6 +14,7 @@ const Game = (() => {
   const grid = Array.from({ length: __.gridSize }, () =>
     Array(__.gridSize).fill(marks._)
   );
+  const title = getChoices(Object.values(marks).slice(0, -1), 3).join('');
 
   /* Player-related code */
   const players = Object.values(marks)
@@ -35,6 +36,7 @@ const Game = (() => {
   return {
     marks,
     grid,
+    title,
 
     players,
     get currentPlayer() {
