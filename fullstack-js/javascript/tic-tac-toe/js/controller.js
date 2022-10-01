@@ -10,3 +10,8 @@ const players = [
 
 /* Initialize player labels */
 PlayerLabels.initialize(players);
+
+/* Enable TTT grid */
+for (const tttCell of tttGrid.__element__.children) {
+  tttCell.disabled = false;
+}
