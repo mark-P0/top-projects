@@ -1,4 +1,4 @@
-import { PlayerFactory } from './core/player-factory.js';
+import { PlayerFactory } from './core/player.js';
 import { PlayerLabels } from './dom/player-labels.js';
 import { tttGrid } from './dom/ttt-grid.js';
 
