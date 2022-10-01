@@ -11,6 +11,7 @@
     <script src="./.exclude/local/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
 
     <link rel="stylesheet" href="./styles.css" />
+    <script defer type="module" src="./js/controller.js"></script>
 
     <title>❌⭕❌</title>
   </head>
@@ -23,26 +24,7 @@
         <h1 class="card-title text-center">Tic-Tac-Toe</h1>
 
         <div class="d-flex" id="player-labels">
-          <div class="input-group visible">
-            <span class="input-group-text" id="player-1-mark">❌</span>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Player 1"
-              aria-label="Player 1"
-              aria-describedby="player-1-mark"
-            />
-          </div>
-          <div class="input-group invisible">
-            <span class="input-group-text" id="player-2-mark">⭕</span>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Player 2"
-              aria-label="Player 2"
-              aria-describedby="player-2-mark"
-            />
-          </div>
+          <!-- To be populated via JS -->
         </div>
 
         <div id="ttt-grid">
