@@ -63,10 +63,4 @@ const PlayerLabels = {
   },
 };
 
-/* Add hook for toggling visibility */
-tttGrid.__element__.addEventListener('click', (event) => {
-  if (!event.target.classList.contains('ttt-cell')) return;
-  PlayerLabels.toggleVisibility();
-});
-
-export { PlayerLabels, PlayerLabel };
+export { PlayerLabels };
