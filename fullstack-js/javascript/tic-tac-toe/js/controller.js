@@ -30,10 +30,10 @@ const GameLoopListener = (event) => {
   const currentPlayerMark = Game.makeMove(targetX, targetY);
   target.textContent = currentPlayerMark;
 
-  if (Game.hasEnded) tttGrid.__element__.dispatchEvent(GameEvents.end);
-
   /* Indicate turn finish by making next player's label visible */
   PlayerLabels.toggleVisibility();
+
+  if (Game.hasEnded) tttGrid.__element__.dispatchEvent(GameEvents.end);
 };
 tttGrid.__element__.addEventListener('click', GameLoopListener);
 
