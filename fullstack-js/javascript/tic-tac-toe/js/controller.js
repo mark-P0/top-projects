@@ -32,6 +32,10 @@ tttGrid.__element__.addEventListener('click', GameLoopListener);
 
 /* Listen for end-game state */
 const GameEndListener = (event) => {
+  /* Assure `target` is a grid cell */
+  const { target } = event;
+  if (!target.classList.contains('ttt-cell')) return;
+
   /* Run only when the game has ended */
   if (!Game.hasEnded) return;
 
@@ -43,5 +47,9 @@ const GameEndListener = (event) => {
 
   /* Get the game winner */
   console.log(Game.winner);
+
+  for (const tttCell of tttGrid.__element__.children) {
+    tttCell.disabled = true;
+  }
 };
 tttGrid.__element__.addEventListener('click', GameEndListener);
