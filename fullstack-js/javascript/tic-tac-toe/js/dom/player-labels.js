@@ -54,12 +54,23 @@ const PlayerLabels = {
     const { children } = __element__;
     this.visibleIdx = (visibleIdx + 1) % children.length;
 
-    for (const label of children) {
+    this.hideAll();
+    children[visibleIdx].classList.add('visible');
+    children[visibleIdx].classList.remove('invisible');
+  },
+
+  showAll() {
+    for (const label of this.__element__.children) {
+      label.classList.remove('invisible');
+      label.classList.add('visible');
+    }
+  },
+
+  hideAll() {
+    for (const label of this.__element__.children) {
       label.classList.add('invisible');
       label.classList.remove('visible');
     }
-    children[visibleIdx].classList.add('visible');
-    children[visibleIdx].classList.remove('invisible');
   },
 };
 

@@ -37,4 +37,43 @@ function transpose(arr) {
   return transposed;
 }
 
-export { getChoices, getDivMod, transpose };
+function getDiagonals(arr) {
+  const size = arr.length;
+  if (!arr.every((row) => row.length === size))
+    throw 'Given 2-dimensional array is not a square!';
+
+  const diags = {
+    forward: {
+      items: Array(size),
+      idx: 0,
+      moveIdx() {
+        this.idx++;
+      },
+    },
+    backward: {
+      items: Array(size),
+      idx: -1,
+      moveIdx() {
+        this.idx--;
+      },
+    },
+  };
+
+  let rowIdx = 0;
+  for (const row of arr) {
+    for (const orientation of Object.values(diags)) {
+      const { items, idx } = orientation;
+      items[rowIdx] = row.at(idx);
+      orientation.moveIdx();
+    }
+    rowIdx++;
+  }
+  return Object.values(diags).map((orientation) => orientation.items);
+}
+
+function getSameItem(arr) {
+  if (arr.every((item) => item === arr[0])) return arr[0];
+  return null;
+}
+
+export { getChoices, getDivMod, transpose, getDiagonals, getSameItem };

@@ -14,7 +14,7 @@ for (const tttCell of tttGrid.__element__.children) {
 }
 
 /* Start game loop by listening to grid cell clicks */
-tttGrid.__element__.addEventListener('click', (event) => {
+const GameLoopListener = (event) => {
   /* Assure `target` is a grid cell */
   const { target } = event;
   if (!target.classList.contains('ttt-cell')) return;
@@ -27,4 +27,21 @@ tttGrid.__element__.addEventListener('click', (event) => {
 
   /* Indicate turn finish by making next player's label visible */
   PlayerLabels.toggleVisibility();
-});
+};
+tttGrid.__element__.addEventListener('click', GameLoopListener);
+
+/* Listen for end-game state */
+const GameEndListener = (event) => {
+  /* Run only when the game has ended */
+  if (!Game.hasEnded) return;
+
+  /* Remove the game loop hook */
+  tttGrid.__element__.removeEventListener('click', GameLoopListener);
+
+  /* Show all player labels */
+  PlayerLabels.showAll();
+
+  /* Get the game winner */
+  console.log(Game.winner);
+};
+tttGrid.__element__.addEventListener('click', GameEndListener);
