@@ -17,34 +17,33 @@
   </head>
 
   <body>
-    <div class="card shadow" id="app">
-      <div
-        class="card-body d-flex flex-column justify-content-between px-4 py-5"
-      >
-        <h1 class="card-title fw-semibold text-center">Tic-Tac-Toe</h1>
-
-        <div class="d-flex" id="player-labels">
-          <!-- To be populated via JS -->
+    <div id="app">
+      <div class="card shadow" id="main">
+        <div
+          class="card-body d-flex flex-column justify-content-between px-4 py-5"
+        >
+          <h1 class="card-title fw-semibold text-center">Tic-Tac-Toe</h1>
+          <div class="d-flex" id="player-labels">
+            <!-- To be populated via JS -->
+          </div>
+          <div id="ttt-grid">
+            <button class="btn btn-light ttt-cell" disabled></button>
+            <button class="btn btn-light ttt-cell" disabled></button>
+            <button class="btn btn-light ttt-cell" disabled></button>
+            <button class="btn btn-light ttt-cell" disabled></button>
+            <button class="btn btn-light ttt-cell" disabled></button>
+            <button class="btn btn-light ttt-cell" disabled></button>
+            <button class="btn btn-light ttt-cell" disabled></button>
+            <button class="btn btn-light ttt-cell" disabled></button>
+            <button class="btn btn-light ttt-cell" disabled></button>
+          </div>
         </div>
-
-        <div id="ttt-grid">
-          <button class="btn btn-light ttt-cell" disabled></button>
-          <button class="btn btn-light ttt-cell" disabled></button>
-          <button class="btn btn-light ttt-cell" disabled></button>
-          <button class="btn btn-light ttt-cell" disabled></button>
-          <button class="btn btn-light ttt-cell" disabled></button>
-          <button class="btn btn-light ttt-cell" disabled></button>
-          <button class="btn btn-light ttt-cell" disabled></button>
-          <button class="btn btn-light ttt-cell" disabled></button>
-          <button class="btn btn-light ttt-cell" disabled></button>
+        <!-- prettier-ignore -->
+        <div class="card-footer text-center">
+          <em>Created by Mark</em>
+          • <a href="https://mark-p0.github.io/">Website</a>
+          • <a href="https://github.com/mark-P0/">GitHub</a>
         </div>
-      </div>
-
-      <!-- prettier-ignore -->
-      <div class="card-footer text-center">
-        <em>Created by Mark</em>
-        • <a href="https://mark-p0.github.io/">Website</a>
-        • <a href="https://github.com/mark-P0/">GitHub</a>
       </div>
     </div>
   </body>

@@ -1,15 +1,15 @@
-body {
+#app {
   height: 100vh;
   padding: 1rem;
 }
 
-#app {
+#main {
   height: 100%;
   aspect-ratio: 9 / 16;
   margin: auto;
 }
 
-#app .card-footer {
+#main .card-footer {
   font-size: small;
 }
 
