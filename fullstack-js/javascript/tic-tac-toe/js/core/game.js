@@ -22,6 +22,10 @@ const Grid = (() => {
     grid[y][x] = mark;
   };
 
+  const transformIndexToCoords = (idx) => {
+    return getDivMod(idx, size);
+  };
+
   return {
     size,
     get rows() {
@@ -36,11 +40,16 @@ const Grid = (() => {
     get axes() {
       return [this.rows, this.columns, this.diagonals];
     },
+    get items() {
+      return grid.flat();
+    },
 
     markCell,
     get hasBlankCells() {
       return grid.flat().some((cell) => cell === Marks._);
     },
+
+    transformIndexToCoords,
   };
 })();
 
@@ -62,15 +71,10 @@ const Game = (() => {
 
     return mark;
   };
-  const transformIndexToCoords = (idx) => {
-    return getDivMod(idx, Grid.size);
-  };
 
   return {
     marks: Marks,
-    get grid() {
-      return Grid.rows;
-    },
+    grid: Grid,
     title,
 
     players,
@@ -78,7 +82,6 @@ const Game = (() => {
       return players[__.currentPlayerIdx];
     },
     makeMove,
-    transformIndexToCoords,
 
     get hasEnded() {
       /* Game will end if someone already won, or if the grid has already been filled up */

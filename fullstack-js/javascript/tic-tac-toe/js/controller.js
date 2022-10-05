@@ -8,13 +8,13 @@ document.title = Game.title;
 
 /* Outline game flow as events */
 document.dispatchEvent(
-  new CustomEvent(GameEvents.INIT, { detail: { gridItems: Game.grid.flat() } })
+  new CustomEvent(GameEvents.INIT, { detail: { gridItems: Game.grid.items } })
 );
 document.dispatchEvent(
   new CustomEvent(GameEvents.START, { detail: { players: Game.players } })
 );
 document.addEventListener(GameEvents.TURN, ({ detail: { idx, callback } }) => {
-  const [y, x] = Game.transformIndexToCoords(idx);
+  const [y, x] = Game.grid.transformIndexToCoords(idx);
   const moveMark = Game.makeMove(x, y);
   callback(moveMark);
 
