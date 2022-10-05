@@ -1,5 +1,4 @@
 import { E, buildElementTree } from './__dom__.js';
-import { tttGrid } from './ttt-grid.js';
 
 /* Uses an object created by the `PlayerFactory` */
 const PlayerLabel = (player) => {

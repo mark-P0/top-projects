@@ -8,6 +8,9 @@ document.title = Game.title;
 /* Initialize player labels */
 PlayerLabels.initialize(Game.players);
 
+/* Initialize TTT grid */
+tttGrid.initialize(Game.grid.flat());
+
 /* Enable TTT grid */
 for (const tttCell of tttGrid.__element__.children) {
   tttCell.disabled = false;
