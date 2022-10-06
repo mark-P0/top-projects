@@ -11,7 +11,9 @@ document.dispatchEvent(
   new CustomEvent(GameEvents.INIT, { detail: { gridItems: Game.grid.items } })
 );
 document.dispatchEvent(
-  new CustomEvent(GameEvents.START, { detail: { players: Game.players } })
+  new CustomEvent(GameEvents.START, {
+    detail: { players: Game.players, firstPlayer: Game.currentPlayer },
+  })
 );
 document.addEventListener(
   GameEvents.TURN_TRIGGER,
@@ -20,7 +22,7 @@ document.addEventListener(
     const moveMark = Game.makeMove(x, y);
 
     const providerEvent = new CustomEvent(GameEvents.TURN_PROVIDER, {
-      detail: { moveIdx, moveMark },
+      detail: { moveIdx, moveMark, currentPlayer: Game.currentPlayer },
     });
     document.dispatchEvent(providerEvent);
 

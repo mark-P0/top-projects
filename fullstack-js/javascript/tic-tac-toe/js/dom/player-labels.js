@@ -33,63 +33,74 @@ const PlayerLabel = (player) => {
     return element;
   })();
 
+  const show = () => {
+    __element__.classList.add('visible');
+    __element__.classList.remove('invisible');
+  };
+  const hide = () => {
+    __element__.classList.add('invisible');
+    __element__.classList.remove('visible');
+  };
+
   return {
     __element__,
+    show,
+    hide,
+
+    mark: player.mark,
   };
 };
 
 const PlayerLabels = {
   __element__: document.getElementById('player-labels'),
-  visibleIdx: 0,
+  labels: undefined, // Will be an array of `PlayerLabel`
 
   initialize(players) {
     /* Create player labels via program */
-    for (const player of players) {
-      this.__element__.append(PlayerLabel(player).__element__);
-    }
-
-    /* Set label visibility */
-    this.toggleVisibility();
+    this.labels = players.map((player) => {
+      const label = PlayerLabel(player);
+      this.__element__.append(label.__element__);
+      return label;
+    });
   },
 
-  toggleVisibility() {
-    const { __element__, visibleIdx } = this;
-    const { children } = __element__;
-    this.visibleIdx = (visibleIdx + 1) % children.length;
+  findLabelViaMark(mark) {
+    return this.labels.find((label) => label.mark === mark);
+  },
+  show(desiredLabel) {
+    /*  Show only the `desiredLabel` out of all the labels
+     *  Will hide all if `desiredLabel` is unknown
+     */
 
     this.hideAll();
-    children[visibleIdx].classList.add('visible');
-    children[visibleIdx].classList.remove('invisible');
+    this.labels.find((label) => label === desiredLabel)?.show();
   },
 
   showAll() {
-    for (const label of this.__element__.children) {
-      label.classList.remove('invisible');
-      label.classList.add('visible');
-    }
+    for (const label of this.labels) label.show();
   },
-
   hideAll() {
-    for (const label of this.__element__.children) {
-      label.classList.add('invisible');
-      label.classList.remove('visible');
-    }
+    for (const label of this.labels) label.hide();
   },
 };
 
 /* Initialize player labels on game loop */
 document.addEventListener(
   GameEvents.START,
-  ({ detail: { players } }) => {
+  ({ detail: { players, firstPlayer } }) => {
     PlayerLabels.initialize(players);
+    PlayerLabels.show(PlayerLabels.findLabelViaMark(firstPlayer.mark));
   },
   { once: true }
 );
 
 /* Toggle player labels on every turn */
-document.addEventListener(GameEvents.TURN_PROVIDER, () => {
-  PlayerLabels.toggleVisibility();
-});
+document.addEventListener(
+  GameEvents.TURN_PROVIDER,
+  ({ detail: { currentPlayer } }) => {
+    PlayerLabels.show(PlayerLabels.findLabelViaMark(currentPlayer.mark));
+  }
+);
 
 /* Show all player labels on game end */
 document.addEventListener(
