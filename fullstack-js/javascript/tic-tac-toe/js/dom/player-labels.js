@@ -87,7 +87,7 @@ document.addEventListener(
 );
 
 /* Toggle player labels on every turn */
-document.addEventListener(GameEvents.TURN, () => {
+document.addEventListener(GameEvents.TURN_PROVIDER, () => {
   PlayerLabels.toggleVisibility();
 });
 

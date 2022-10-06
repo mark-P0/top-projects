@@ -6,7 +6,8 @@
 const GameEvents = {
   INIT: 'game-init',
   START: 'game-start',
-  TURN: 'game-turn',
+  TURN_TRIGGER: 'game-turn-trigger',
+  TURN_PROVIDER: 'game-turn-provider',
   END: 'game-end',
 };
 
