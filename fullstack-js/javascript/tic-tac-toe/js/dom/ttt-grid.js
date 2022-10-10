@@ -61,7 +61,7 @@ const tttGrid = {
 
 /* Add grid cell buttons on game initialization */
 document.addEventListener(
-  GameEvents.INIT,
+  GameEvents.INIT_TRIGGER,
   ({ detail: { gridItems } }) => {
     tttGrid.initialize(gridItems);
   },

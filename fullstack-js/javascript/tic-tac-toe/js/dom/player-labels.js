@@ -20,6 +20,7 @@ const PlayerLabel = (player) => {
         'aria-label': genericName.regular,
         'aria-describedby': genericName.mark,
         value: player.name ?? '',
+        disabled: true,
       },
     };
 

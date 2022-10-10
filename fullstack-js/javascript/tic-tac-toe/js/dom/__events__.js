@@ -1,10 +1,11 @@
-/*  Event Strings
+/*  Event Types
  *  To be used with `new Event()`, `new CustomEvent()`,
- *  and/or `.addEventListener()`
+ *  `.dispatchEvent()`, and/or `.addEventListener()`
  */
 
 const GameEvents = {
-  INIT: 'game-init',
+  INIT_TRIGGER: 'game-init-trigger',
+  INIT_PROVIDER: 'game-init-provider',
   START: 'game-start',
   TURN_TRIGGER: 'game-turn-trigger',
   TURN_PROVIDER: 'game-turn-provider',

@@ -5,6 +5,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  user-select: none;
 }
 
 #main {
@@ -12,7 +14,7 @@
   aspect-ratio: 9 / 16;
 }
 
-#main .card-footer {
+.small-text {
   font-size: small;
 }
 
@@ -24,4 +26,63 @@
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   gap: 1rem;
+}
+
+/* Initial modal styles */
+
+.btn-group.equal-sizes {
+  display: flex;
+}
+.btn-group.equal-sizes > * {
+  flex: 1;
+}
+
+.input-group .form-select {
+  /* Override Bootstrap settings */
+
+  /*  Use minimal width of element
+   *  Found by accident... (through Intellisense)
+   */
+  max-width: fit-content;
+
+  /*  Use `input-group-text` background color
+   *  According to source files and documentation,
+   *  this is equal to `$input-group-addon-bg`, or `$gray-200`.
+   *  Bootstrap exposes the latter as a regular CSS property.
+   *  https://getbootstrap.com/docs/5.2/forms/input-group/
+   */
+  background-color: var(--bs-gray-200);
+}
+
+/* Show modal elements based on selected game mode */
+.modal form[data-game-mode=''] > *[data-setting-for],
+.modal
+  form[data-game-mode='game-mode-pvp']
+  > *[data-setting-for]:not([data-setting-for='game-mode-pvp']),
+.modal
+  form[data-game-mode='game-mode-pvc']
+  > *[data-setting-for]:not([data-setting-for='game-mode-pvc']) {
+  display: none;
+}
+
+/* Hide unnecessary player label inputs depending on game mode */
+.modal form[data-game-mode=''] #game-players {
+  display: none;
+}
+/* Hide plural text on single-player game mode */
+.modal
+  form[data-game-mode='game-mode-pvc']
+  #game-players
+  label
+  > span:nth-child(2) {
+  display: none;
+}
+/*  Hide `.input-group` elements starting from the second
+ *  i.e. show only the first `.input-group` (for the player)
+ */
+.modal
+  form[data-game-mode='game-mode-pvc']
+  #game-players
+  .input-group:nth-child(n + 2) {
+  display: none;
 }

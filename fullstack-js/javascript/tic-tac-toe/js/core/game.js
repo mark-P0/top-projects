@@ -11,6 +11,11 @@ const Marks = {
   X: '❌',
   O: '⭕',
   _: '🔲', // Unmarked cell
+
+  get playable() {
+    const { X, O } = this;
+    return [X, O];
+  },
 };
 
 const Grid = (() => {
@@ -54,14 +59,20 @@ const Grid = (() => {
 })();
 
 const Game = (() => {
+  const MAX_PLAYER_CT = Marks.playable.length;
+  const Mode = { PVP: 'game-mode-pvp', PVC: 'game-mode-pvc' };
+  const AIDifficulty = {
+    EASY: 'ai-difficulty-easy',
+    DIFFICULT: 'ai-difficulty-difficult',
+    IMPOSSIBLE: 'ai-difficulty-impossible',
+  };
+
   /* Holder for private variables; really unnecessary, but arguably makes code more clean */
   const __ = {};
-  const title = getChoices(Object.values(Marks).slice(0, -1), 3).join('');
+  const title = getChoices(Marks.playable, 3).join('');
 
   /* Player-related code */
-  const players = Object.values(Marks)
-    .slice(0, -1)
-    .map((mark) => PlayerFactory.create(null, mark));
+  let players = undefined;
   __.currentPlayerIdx = 0;
   const makeMove = (x, y) => {
     const { mark } = players[__.currentPlayerIdx];
@@ -71,17 +82,29 @@ const Game = (() => {
 
     return mark;
   };
+  const init = (playerData) => {
+    players = playerData.map(({ name, mark }) =>
+      PlayerFactory.create(name, mark)
+    );
+  };
 
   return {
-    marks: Marks,
+    MAX_PLAYER_CT,
+    Mode,
+    AIDifficulty,
+
+    marks: Marks.playable,
     grid: Grid,
     title,
 
-    players,
+    get players() {
+      return players;
+    },
     get currentPlayer() {
       return players[__.currentPlayerIdx];
     },
     makeMove,
+    init,
 
     get hasEnded() {
       /* Game will end if someone already won, or if the grid has already been filled up */

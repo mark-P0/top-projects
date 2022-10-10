@@ -1,5 +1,6 @@
 import { Game } from './core/game.js';
 import { GameEvents } from './dom/__events__.js';
+import './dom/popup.js';
 import './dom/player-labels.js';
 import './dom/ttt-grid.js';
 
@@ -8,12 +9,27 @@ document.title = Game.title;
 
 /* Outline game flow as events */
 document.dispatchEvent(
-  new CustomEvent(GameEvents.INIT, { detail: { gridItems: Game.grid.items } })
-);
-document.dispatchEvent(
-  new CustomEvent(GameEvents.START, {
-    detail: { players: Game.players, firstPlayer: Game.currentPlayer },
+  new CustomEvent(GameEvents.INIT_TRIGGER, {
+    detail: {
+      gridItems: Game.grid.items,
+      gameMode: Game.Mode,
+      playerMarks: Game.marks,
+      playerCtMax: Game.MAX_PLAYER_CT,
+      aiDifficulty: Game.AIDifficulty,
+    },
   })
+);
+document.addEventListener(
+  GameEvents.INIT_PROVIDER,
+  ({ detail: { playerData } }) => {
+    Game.init(playerData);
+    document.dispatchEvent(
+      new CustomEvent(GameEvents.START, {
+        detail: { players: Game.players, firstPlayer: Game.currentPlayer },
+      })
+    );
+  },
+  { once: true }
 );
 document.addEventListener(
   GameEvents.TURN_TRIGGER,

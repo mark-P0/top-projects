@@ -76,4 +76,38 @@ function getSameItem(arr) {
   return null;
 }
 
-export { getChoices, getDivMod, transpose, getDiagonals, getSameItem };
+function convertArrayColumnsToObjectRows(columns) {
+  /*  Transform object of column arrays to array of object rows, e.g.
+   *  {
+   *    prop1: [a1, a2, a3],
+   *    prop2: [b1, b2, b3],
+   *    prop3: [c1, c2, c3],
+   *  }
+   *  to
+   *  [
+   *    {prop1: a1, prop2: b1, prop3: c1},
+   *    {prop1: a2, prop2: b2, prop3: c2},
+   *    {prop1: a3, prop2: b3, prop3: c3},
+   *  ]
+   */
+  const ctMax = Math.max(
+    ...Object.values(columns).map((values) => values.length)
+  );
+  const keys = Object.keys(columns);
+
+  return Array.from({ length: ctMax }, (_, idx) =>
+    keys.reduce((acml, key) => {
+      acml[key] = columns[key][idx] ?? null;
+      return acml;
+    }, {})
+  );
+}
+
+export {
+  getChoices,
+  getDivMod,
+  transpose,
+  getDiagonals,
+  getSameItem,
+  convertArrayColumnsToObjectRows,
+};

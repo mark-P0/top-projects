@@ -13,17 +13,15 @@
     <link rel="stylesheet" href="./styles.css" />
     <script defer type="module" src="./js/controller.js"></script>
 
-    <title><!-- Will be randomized via JS --></title>
+    <title><!-- To be randomized via JS --></title>
   </head>
 
   <body>
     <div id="app">
       <div class="card shadow" id="main">
-        <div
-          class="card-body d-flex flex-column justify-content-between px-4 py-5"
-        >
+        <div class="card-body vstack justify-content-between px-4 py-5">
           <h1 class="card-title fw-semibold text-center">Tic-Tac-Toe</h1>
-          <div class="d-flex" id="player-labels">
+          <div class="hstack gap-3" id="player-labels">
             <!-- To be populated via JS -->
           </div>
           <div id="ttt-grid">
@@ -31,10 +29,24 @@
           </div>
         </div>
         <!-- prettier-ignore -->
-        <div class="card-footer text-center">
+        <div class="card-footer text-center small-text">
           <em>Created by Mark</em>
           • <a href="https://mark-p0.github.io/">Website</a>
           • <a href="https://github.com/mark-P0/">GitHub</a>
+        </div>
+      </div>
+
+      <div
+        class="modal fade"
+        id="popup"
+        tabindex="-1"
+        aria-labelledby="popup-label"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <!-- To be populated via JS -->
+          </div>
         </div>
       </div>
     </div>
