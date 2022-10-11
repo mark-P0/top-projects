@@ -106,27 +106,27 @@ const InitPopupElements = (
     };
 
     const gameModeSelector = (() => {
+      /* prettier-ignore */
       const gameModeMap = {
-        [gameMode.PVP]: { text: 'Another Player' },
-        [gameMode.PVC]: { text: 'vs. AI' },
+        [gameMode.PVP]: { text: 'Another Player', disabled: false },
+        [gameMode.PVC]: { text: 'vs. AI',         disabled: true },
       };
 
       return (mode) => {
-        const { text } = gameModeMap[mode];
+        const { text, disabled } = gameModeMap[mode];
 
         /* prettier-ignore */
-        const button = buildElementTree(
-          E('input', {type: 'radio', class: 'btn-check', name: formVars.GAME_MODE, value: mode, id: mode, autocomplete: 'off'}, null, null)
-        );
+        const buttonAttr = { type: 'radio', class: 'btn-check', name: formVars.GAME_MODE, value: mode, id: mode, autocomplete: 'off' }
+        if (disabled) Object.assign(buttonAttr, { disabled });
+        const button = buildElementTree(E('input', buttonAttr, null, null));
         button.addEventListener('click', () => {
           button.form.dataset.gameMode = mode;
-          formCrossProps.submitter.disabled = false;
         });
 
         /* prettier-ignore */
         return [
           E(button, null, null, null),
-          E('label', {class: 'btn btn-outline-dark', for: mode}, text, null),
+          E('label', { class: 'btn btn-outline-dark', for: mode }, text, null),
         ]
       };
     })();
@@ -140,30 +140,30 @@ const InitPopupElements = (
 
     /* prettier-ignore */
     const playerNameInputGroup = (ct) => {
-      return E('div', {class: 'input-group'}, null, [
-        E('select', {class: 'form-select', name: formVars.PLAYER_MARK}, null, playerMarkSelectionOptions(ct - 1)),
-        E('input', {type: 'text', class: 'form-control', placeholder: `Player ${ct}`, 'aria-label': `Player ${ct}`, 'aria-describedby': `player-${ct}`, name: formVars.PLAYER_NAME}, null, null),
+      return E('div', { class: 'input-group' }, null, [
+        E('select', { class: 'form-select', name: formVars.PLAYER_MARK }, null, playerMarkSelectionOptions(ct - 1)),
+        E('input', { type: 'text', class: 'form-control', placeholder: `Player ${ct}`, 'aria-label': `Player ${ct}`, 'aria-describedby': `player-${ct}`, name: formVars.PLAYER_NAME }, null, null),
       ])
     };
 
     const aiDifficultySetting = (() => {
       /* prettier-ignore */
       const difficultySettingMap = {
-        [aiDifficulty.EASY]:       {text: 'Easy',       type: 'btn-outline-success', disabled: false},
-        [aiDifficulty.DIFFICULT]:  {text: 'Difficult',  type: 'btn-outline-warning', disabled: true},
-        [aiDifficulty.IMPOSSIBLE]: {text: 'Impossible', type: 'btn-outline-danger',  disabled: true},
+        [aiDifficulty.EASY]:       { text: 'Easy',       type: 'btn-outline-success', disabled: true },
+        [aiDifficulty.DIFFICULT]:  { text: 'Difficult',  type: 'btn-outline-warning', disabled: true },
+        [aiDifficulty.IMPOSSIBLE]: { text: 'Impossible', type: 'btn-outline-danger',  disabled: true },
       }
 
       return (difficulty) => {
         /* prettier-ignore */
-        const buttonAttr = {type: 'radio', class: 'btn-check', name: formVars.AI_DIFFICULTY, 'value': difficulty, id: difficulty, autocomplete: 'off'}
+        const buttonAttr = { type: 'radio', class: 'btn-check', name: formVars.AI_DIFFICULTY, 'value': difficulty, id: difficulty, autocomplete: 'off' }
         const { text, type, disabled } = difficultySettingMap[difficulty];
         if (disabled) Object.assign(buttonAttr, { disabled });
 
         /* prettier-ignore */
         return [
           E('input', buttonAttr, null, null),
-          E('label', {class: `btn ${type}`, for: difficulty}, text, null),
+          E('label', { class: `btn ${type}`, for: difficulty }, text, null),
         ]
       };
     })();
@@ -174,34 +174,35 @@ const InitPopupElements = (
         /* Game Mode Selection */
         E('div', { class: 'vstack' }, null, [
           E('label', { class: 'form-label fw-semibold', for: 'game-mode-selectors' }, 'Play Against...', null),
-          E('div', {class: 'btn-group equal-sizes', id: 'game-mode-selectors', role: 'group', 'aria-label': 'Game mode selector'}, null,
+          E('div', { class: 'btn-group equal-sizes', id: 'game-mode-selectors', role: 'group', 'aria-label': 'Game mode selector' }, null,
             Object.values(gameMode).map((mode) => gameModeSelector(mode)).flat()
           ),
         ]),
 
         /* Player Names */
-        E('div', {class: 'vstack', id: 'game-players'}, null, [
-          E('label', {class:'form-label fw-semibold', for: 'game-player-data'}, null, [
+        E('div', { class: 'vstack', id: 'game-players' }, null, [
+          E('label', { class:'form-label fw-semibold', for: 'game-player-data' }, null, [
             E('span', null, 'Player Name', null),
             E('span', null, 's', null),
-            E('span', {class: 'text-secondary fw-normal'}, ' (Optional)', null),
+            E('span', { class: 'text-secondary fw-normal' }, ' (Optional)', null),
           ]),
-          E('div', {class: 'hstack gap-3', id: 'game-player-data'}, null,
-            Array.from({length: playerCtMax}, (_, idx) => playerNameInputGroup(idx + 1))
+          E('div', { class: 'hstack gap-3', id: 'game-player-data' }, null,
+            Array.from({ length: playerCtMax }, (_, idx) => playerNameInputGroup(idx + 1))
           ),
         ]),
 
         /* AI Difficulty Setting */
-        E('div', {class: 'vstack', 'data-setting-for': gameMode.PVC}, null, [
-          E('label', {class:'form-label fw-semibold', for: 'game-mode-pvc-difficulty'}, 'AI Difficulty', null),
-          E('div', {class: 'btn-group equal-sizes', id: 'game-mode-pvc-difficulty', role: 'group', 'aria-label': 'AI difficulty setting'}, null,
+        E('div', { class: 'vstack', 'data-setting-for': gameMode.PVC }, null, [
+          E('label', { class:'form-label fw-semibold', for: 'game-mode-pvc-difficulty' }, 'AI Difficulty', null),
+          E('div', { class: 'btn-group equal-sizes', id: 'game-mode-pvc-difficulty', role: 'group', 'aria-label': 'AI difficulty setting' }, null,
             Object.values(aiDifficulty).map((difficulty) => aiDifficultySetting(difficulty)).flat()
           ),
         ]),
       ])
     )
-    form.addEventListener('submit', () => {
-      const data = Array.from(new FormData(form)).reduce((acml, data) => {
+
+    function collectFormData() {
+      return Array.from(new FormData(form)).reduce((acml, data) => {
         const [name, value] = data;
 
         if (Array.isArray(acml[name])) acml[name].push(value);
@@ -210,26 +211,46 @@ const InitPopupElements = (
 
         return acml;
       }, {});
+    }
 
-      if (getSameItem(data[formVars.PLAYER_MARK]) !== null) return;
+    form.addEventListener('change', () => {
+      const data = collectFormData();
+
+      /* Validations-ish */
       if (
-        data[formVars.GAME_MODE] === gameMode.PVC &&
-        !data[formVars.AI_DIFFICULTY]
-      )
+        Object.values({
+          areSameMarks:
+            data[formVars.GAME_MODE] === gameMode.PVP &&
+            getSameItem(data[formVars.PLAYER_MARK]) !== null,
+          noDifficultyChosen:
+            data[formVars.GAME_MODE] === gameMode.PVC &&
+            !data[formVars.AI_DIFFICULTY],
+        }).some((isTrue) => isTrue)
+      ) {
+        formCrossProps.submitter.disabled = true;
         return;
+      }
 
-      const playerData = convertArrayColumnsToObjectRows({
-        mark: data[formVars.PLAYER_MARK],
-        name: data[formVars.PLAYER_NAME],
-      });
-
-      const event = new CustomEvent(GameEvents.INIT_PROVIDER, {
-        detail: { playerData },
-      });
-      document.dispatchEvent(event);
-
-      Popup.hide();
+      formCrossProps.submitter.disabled = false;
     });
+    form.addEventListener(
+      'submit',
+      () => {
+        const data = collectFormData();
+        const playerData = convertArrayColumnsToObjectRows({
+          mark: data[formVars.PLAYER_MARK],
+          name: data[formVars.PLAYER_NAME],
+        });
+
+        const event = new CustomEvent(GameEvents.INIT_PROVIDER, {
+          detail: { playerData },
+        });
+        document.dispatchEvent(event);
+
+        Popup.hide();
+      },
+      { once: true }
+    );
 
     return buildElementTree(
       E('div', { class: 'modal-body' }, null, [E(form, null, null, null)])
