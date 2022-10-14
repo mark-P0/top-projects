@@ -59,19 +59,11 @@ const tttGrid = {
   },
 };
 
-/* Add grid cell buttons on game initialization */
-document.addEventListener(
-  GameEvents.INIT_TRIGGER,
-  ({ detail: { gridItems } }) => {
-    tttGrid.initialize(gridItems);
-  },
-  { once: true }
-);
-
 /* Enable grid cell buttons for game loop */
 document.addEventListener(
   GameEvents.START,
-  () => {
+  ({ detail: { gridItems } }) => {
+    tttGrid.initialize(gridItems);
     tttGrid.enable();
   },
   { once: true }

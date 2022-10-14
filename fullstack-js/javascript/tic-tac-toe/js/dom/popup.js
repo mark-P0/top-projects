@@ -242,10 +242,10 @@ const InitPopupElements = (
           name: data[formVars.PLAYER_NAME],
         });
 
-        const event = new CustomEvent(GameEvents.INIT_PROVIDER, {
+        const providerEvent = new CustomEvent(GameEvents.INIT_PROVIDER, {
           detail: { playerData },
         });
-        document.dispatchEvent(event);
+        document.dispatchEvent(providerEvent);
 
         Popup.hide();
       },
