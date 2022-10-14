@@ -16,10 +16,12 @@ const AIDifficulty = {
 };
 
 const Game = (playerData) => {
+  let idxCurrentPlayer = 0;
+  let winningMark = undefined;
+
   const grid = Grid(3);
 
   const players = playerData.map(({ name, mark }) => Player(name, mark));
-  let idxCurrentPlayer = 0;
   const makeMove = (idx) => {
     const { mark } = players[idxCurrentPlayer];
     grid.markCell(idx, mark);
@@ -29,14 +31,10 @@ const Game = (playerData) => {
     return mark;
   };
 
-  let winningMark = undefined;
-
   return {
     grid,
 
-    get players() {
-      return players;
-    },
+    players,
     get currentPlayer() {
       return players[idxCurrentPlayer];
     },
