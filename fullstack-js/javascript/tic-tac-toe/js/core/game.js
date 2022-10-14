@@ -17,7 +17,7 @@ const Game = (gameMode, playerData, aiDifficulty) => {
   }
 
   let idxCurrentPlayer = 0;
-  let winningMark = undefined;
+  let winningProperties = undefined;
 
   const grid = Grid(3);
 
@@ -34,6 +34,11 @@ const Game = (gameMode, playerData, aiDifficulty) => {
     if (gameMode === Modes.PVC && idx === 1) {
       /* Find the first playable mark that is not the human player's */
       mark = Marks.playable.find((mark) => mark !== playerData[0].mark);
+    }
+
+    /* Derive AI name */
+    if (gameMode === Modes.PVC && idx === 1) {
+      name = 'Computer';
     }
 
     return Player(mark, name, type, aiLevel);
@@ -63,7 +68,13 @@ const Game = (gameMode, playerData, aiDifficulty) => {
           const mark = Utils.getSameItem(items);
           if (!mark || mark === Marks._) continue;
 
-          winningMark = mark;
+          winningProperties = {
+            grid: grid.items,
+            axis,
+            items,
+            mark,
+            player: players.find((player) => player.mark === mark),
+          };
           return true;
         }
       }
@@ -71,8 +82,8 @@ const Game = (gameMode, playerData, aiDifficulty) => {
       return false;
     },
     get winner() {
-      if (!winningMark) return null;
-      return players.find((player) => player.mark === winningMark);
+      if (!winningProperties) return null;
+      return winningProperties.player;
     },
   };
 };

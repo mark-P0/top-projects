@@ -1,3 +1,5 @@
+import Utils from '../utils.js';
+
 const Types = {
   HUMAN: 'player-type-human',
   AI: 'player-type-ai',
@@ -8,8 +10,39 @@ const AIDifficulties = {
   IMPOSSIBLE: 'ai-difficulty-impossible',
 };
 
+/*  Derive `makeMove()` method of `Player` objects' based on their type.
+ *  The `this` in the following methods should be
+ *  bound to the `Player` objects that retrieves them.
+ */
+const makeMoveMapping = {
+  [Types.HUMAN]: function ({ grid, idx }) {
+    const { mark } = this;
+    grid.markCell(idx, mark);
+    return { idx, mark };
+  },
+  [Types.AI]: function ({ grid }) {
+    const { mark, aiLevel } = this;
+    const idx = makeMoveMappingAIIdx[aiLevel](grid, mark);
+    grid.markCell(idx, mark);
+    return { idx, mark };
+  },
+};
+/* Derive a `grid` index to be used on AI `Player` moves. */
+const makeMoveMappingAIIdx = {
+  [AIDifficulties.EASY]: function (grid, mark) {
+    /* Simply randomly choose from the indices of the grid's blank cells */
+    return Utils.getChoice(grid.blankCellIdcs);
+  },
+  [AIDifficulties.DIFFICULT]: function (grid, mark) {
+    throw new ReferenceError('This function has not been implemented yet!');
+  },
+  [AIDifficulties.IMPOSSIBLE]: function (grid, mark) {
+    throw new ReferenceError('This function has not been implemented yet!');
+  },
+};
+
 let ctCreatedPlayers = 0; // Track number of players created
-const Player = (name, mark, type, aiLevel = null) => {
+const Player = (mark, name, type, aiLevel) => {
   if (!Object.values(Types).includes(type)) {
     throw new TypeError(`Given player type \`${type}\` invalid.`);
   }
@@ -19,15 +52,15 @@ const Player = (name, mark, type, aiLevel = null) => {
 
   ctCreatedPlayers++;
 
-  const makeMove = (grid, idx) => {
-    grid.markCell(idx, mark);
-  };
-
   return {
     num: ctCreatedPlayers,
-    name,
     mark,
-    makeMove,
+    name,
+    type,
+    aiLevel,
+    get makeMove() {
+      return makeMoveMapping[type].bind(this);
+    },
   };
 };
 

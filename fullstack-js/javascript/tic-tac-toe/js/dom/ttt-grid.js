@@ -2,22 +2,27 @@ import { E, buildElementTree } from './__dom__.js';
 import { GameEvents } from './__events__.js';
 
 const tttCell = (idx, content) => {
+  let isSet = false;
+
   const attrs = { class: 'btn btn-light fs-1 ttt-cell', disabled: true };
   const __element__ = buildElementTree(E('button', attrs, content, null));
 
   /* Route each cell click as a game turn */
-  const turnEvent = new CustomEvent(GameEvents.TURN_TRIGGER, {
-    detail: { moveIdx: idx },
-  });
   __element__.addEventListener(
     'click',
     () => {
+      const eventType = GameEvents.TURN_TRIGGER;
+      const detail = { moveIdx: idx };
+      const turnEvent = new CustomEvent(eventType, { detail });
       document.dispatchEvent(turnEvent);
     },
     { once: true }
   );
 
   const enable = () => {
+    /* Once set, button cannot be enabled again */
+    if (isSet) return;
+
     __element__.disabled = false;
   };
   const disable = () => {
@@ -35,6 +40,7 @@ const tttCell = (idx, content) => {
     set mark(moveMark) {
       __element__.textContent = moveMark;
       __element__.disabled = true;
+      isSet = true;
     },
   };
 };
@@ -74,8 +80,14 @@ document.addEventListener(
   GameEvents.TURN_PROVIDER,
   ({ detail: { moveIdx, moveMark } }) => {
     tttGrid.cells[moveIdx].mark = moveMark;
+    tttGrid.enable(); // Ensure grid is enabled (particularly when temporarily disabled for AI turn)
   }
 );
+
+/* Prevent user interaction on AI turn */
+document.addEventListener(GameEvents.TURN_AI, () => {
+  tttGrid.disable();
+});
 
 /* Disable grid cell buttons on game end */
 document.addEventListener(

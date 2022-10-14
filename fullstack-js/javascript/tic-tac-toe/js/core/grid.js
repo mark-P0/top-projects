@@ -50,6 +50,12 @@ const Grid = (size) => {
     get hasBlankCells() {
       return items.some((cell) => cell === Marks._);
     },
+    get blankCellIdcs() {
+      return items.reduce((acml, cell, idx) => {
+        if (cell === Marks._) acml.push(idx);
+        return acml;
+      }, []);
+    },
 
     markCell,
   };

@@ -1,3 +1,5 @@
+import Utils from './utils.js';
+import * as PlayerProperties from './core/player.js';
 import Game, * as GameProperties from './core/game.js';
 import { GameEvents } from './dom/__events__.js';
 import './dom/popup.js';
@@ -36,19 +38,36 @@ document.addEventListener(
 );
 document.addEventListener(
   GameEvents.TURN_TRIGGER,
-  ({ detail: { moveIdx } }) => {
-    game.currentPlayer.makeMove(game.grid, moveIdx);
+  ({ detail: { moveIdx = null } = {} }) => {
+    const { grid, currentPlayer, nextPlayer } = game;
+    const move = currentPlayer.makeMove({
+      grid,
+      idx: moveIdx,
+    });
+    moveIdx = move.idx;
 
     const detail = {
       moveIdx,
-      moveMark: game.currentPlayer.mark,
-      labelMarkToShow: game.nextPlayer.mark,
+      moveMark: currentPlayer.mark,
+      labelMarkToShow: nextPlayer.mark,
     };
     const providerEvent = new CustomEvent(GameEvents.TURN_PROVIDER, { detail });
     document.dispatchEvent(providerEvent);
 
     if (game.hasEnded) {
       document.dispatchEvent(new Event(GameEvents.END));
+      return;
+    }
+
+    /* Trigger AI move automatically after human player move */
+    if (nextPlayer.type === PlayerProperties.Types.AI) {
+      document.dispatchEvent(new Event(GameEvents.TURN_AI));
+
+      /* Trigger after random time:  500ms - 1000ms (1 sec.) */
+      const time = Utils.getRandomInt({ from: 5, to: 10 }) * 100;
+      setTimeout(() => {
+        document.dispatchEvent(new Event(GameEvents.TURN_TRIGGER));
+      }, time);
     }
   }
 );

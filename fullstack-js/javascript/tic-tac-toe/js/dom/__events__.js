@@ -9,6 +9,7 @@ const GameEvents = {
   START: 'game-start',
   TURN_TRIGGER: 'game-turn-trigger',
   TURN_PROVIDER: 'game-turn-provider',
+  TURN_AI: 'game-turn-ai',
   END: 'game-end',
 };
 

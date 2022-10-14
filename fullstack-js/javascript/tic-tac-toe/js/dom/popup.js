@@ -104,7 +104,7 @@ const InitPopupElements = (gameModes, playerMarks, aiDifficulties) => {
       /* prettier-ignore */
       const gameModeMap = {
         [gameModes.PVP]: { text: 'Another Player', disabled: false },
-        [gameModes.PVC]: { text: 'vs. AI',         disabled: true },
+        [gameModes.PVC]: { text: 'vs. AI',         disabled: false },
       };
 
       return (mode) => {
@@ -144,7 +144,7 @@ const InitPopupElements = (gameModes, playerMarks, aiDifficulties) => {
     const aiDifficultySetting = (() => {
       /* prettier-ignore */
       const difficultySettingMap = {
-        [aiDifficulties.EASY]:       { text: 'Easy',       type: 'btn-outline-success', disabled: true },
+        [aiDifficulties.EASY]:       { text: 'Easy',       type: 'btn-outline-success', disabled: false },
         [aiDifficulties.DIFFICULT]:  { text: 'Difficult',  type: 'btn-outline-warning', disabled: true },
         [aiDifficulties.IMPOSSIBLE]: { text: 'Impossible', type: 'btn-outline-danger',  disabled: true },
       }
