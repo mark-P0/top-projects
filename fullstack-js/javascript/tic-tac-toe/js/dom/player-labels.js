@@ -20,9 +20,15 @@ const PlayerLabel = (player) => {
         'aria-label': genericName.regular,
         'aria-describedby': genericName.mark,
         value: player.name ?? '',
-        disabled: true,
       },
     };
+
+    /* Modify input label for AI player */
+    if (player.aiLevel !== null) {
+      attrs.input.placeholder = player.name;
+      attrs.input.value = '';
+      attrs.input.disabled = true;
+    }
 
     const element = buildElementTree(
       E('div', attrs.div, null, [
@@ -47,6 +53,13 @@ const PlayerLabel = (player) => {
     __element__,
     show,
     hide,
+
+    get input() {
+      return __element__.querySelector('input');
+    },
+    disable() {
+      this.input.disabled = true;
+    },
 
     mark: player.mark,
   };
@@ -83,6 +96,10 @@ const PlayerLabels = {
   hideAll() {
     for (const label of this.labels) label.hide();
   },
+
+  disable() {
+    for (const label of this.labels) label.disable();
+  },
 };
 
 /* Initialize player labels on game loop */
@@ -107,6 +124,7 @@ document.addEventListener(
 document.addEventListener(
   GameEvents.END,
   () => {
+    PlayerLabels.disable();
     PlayerLabels.showAll();
   },
   { once: true }
