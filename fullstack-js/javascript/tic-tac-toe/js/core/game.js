@@ -22,14 +22,6 @@ const Game = (playerData) => {
   const grid = Grid(3);
 
   const players = playerData.map(({ name, mark }) => Player(name, mark));
-  const makeMove = (idx) => {
-    const { mark } = players[idxCurrentPlayer];
-    grid.markCell(idx, mark);
-
-    idxCurrentPlayer = (idxCurrentPlayer + 1) % players.length;
-
-    return mark;
-  };
 
   return {
     grid,
@@ -38,7 +30,10 @@ const Game = (playerData) => {
     get currentPlayer() {
       return players[idxCurrentPlayer];
     },
-    makeMove,
+    get nextPlayer() {
+      idxCurrentPlayer = (idxCurrentPlayer + 1) % players.length;
+      return this.currentPlayer;
+    },
 
     get hasEnded() {
       /* Game will end if someone already won, or if the grid has already been filled up */

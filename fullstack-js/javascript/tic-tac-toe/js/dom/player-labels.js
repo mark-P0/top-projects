@@ -98,8 +98,8 @@ document.addEventListener(
 /* Toggle player labels on every turn */
 document.addEventListener(
   GameEvents.TURN_PROVIDER,
-  ({ detail: { currentPlayer } }) => {
-    PlayerLabels.show(PlayerLabels.findLabelViaMark(currentPlayer.mark));
+  ({ detail: { labelMarkToShow } }) => {
+    PlayerLabels.show(PlayerLabels.findLabelViaMark(labelMarkToShow));
   }
 );
 

@@ -37,9 +37,13 @@ document.addEventListener(
 document.addEventListener(
   GameEvents.TURN_TRIGGER,
   ({ detail: { moveIdx } }) => {
-    const moveMark = game.makeMove(moveIdx);
+    game.currentPlayer.makeMove(game.grid, moveIdx);
 
-    const detail = { moveIdx, moveMark, currentPlayer: game.currentPlayer };
+    const detail = {
+      moveIdx,
+      moveMark: game.currentPlayer.mark,
+      labelMarkToShow: game.nextPlayer.mark,
+    };
     const providerEvent = new CustomEvent(GameEvents.TURN_PROVIDER, { detail });
     document.dispatchEvent(providerEvent);
 
