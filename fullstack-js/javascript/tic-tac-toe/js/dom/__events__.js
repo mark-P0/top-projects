@@ -13,4 +13,8 @@ const GameEvents = {
   END: 'game-end',
 };
 
-export { GameEvents };
+const PlayerEvents = {
+  NAME_CHANGE: 'player-name-change',
+};
+
+export { GameEvents, PlayerEvents };

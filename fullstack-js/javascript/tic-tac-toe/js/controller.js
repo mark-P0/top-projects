@@ -1,7 +1,7 @@
 import Utils from './utils.js';
 import * as PlayerProperties from './core/player.js';
 import Game, * as GameProperties from './core/game.js';
-import { GameEvents } from './dom/__events__.js';
+import { GameEvents, PlayerEvents } from './dom/__events__.js';
 import './dom/popup.js';
 import './dom/player-labels.js';
 import './dom/ttt-grid.js';
@@ -35,6 +35,13 @@ document.addEventListener(
     document.dispatchEvent(providerEvent);
   },
   { once: true }
+);
+document.addEventListener(
+  PlayerEvents.NAME_CHANGE,
+  ({ detail: { newName, playerMark } }) => {
+    const player = game.players.find(({ mark }) => mark === playerMark);
+    player.name = newName;
+  }
 );
 document.addEventListener(
   GameEvents.TURN_TRIGGER,

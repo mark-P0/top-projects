@@ -1,5 +1,5 @@
 import { E, buildElementTree } from './__dom__.js';
-import { GameEvents } from './__events__.js';
+import { GameEvents, PlayerEvents } from './__events__.js';
 
 /* Uses an object created by the `PlayerFactory` */
 const PlayerLabel = (player) => {
@@ -30,10 +30,17 @@ const PlayerLabel = (player) => {
       attrs.input.disabled = true;
     }
 
+    const input = buildElementTree(E('input', attrs.input, null, null));
+    input.addEventListener('change', () => {
+      const detail = { newName: input.value, playerMark: player.mark };
+      const event = new CustomEvent(PlayerEvents.NAME_CHANGE, { detail });
+      document.dispatchEvent(event);
+    });
+
     const element = buildElementTree(
       E('div', attrs.div, null, [
         E('span', attrs.span, player.mark, null),
-        E('input', attrs.input, null, null),
+        E(input, null, null, null),
       ])
     );
 
