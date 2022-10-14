@@ -111,5 +111,3 @@ document.addEventListener(
   },
   { once: true }
 );
-
-export { PlayerLabels };

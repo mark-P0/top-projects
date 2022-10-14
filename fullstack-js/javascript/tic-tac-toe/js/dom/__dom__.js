@@ -3,9 +3,9 @@ const E = (element, attributes, content, children) => {
   return { element, attributes, content, children };
 };
 
-function buildElementTree(elementObj) {
+function buildElementTree(E) {
   /* `element` will be an actual HTML element, if it isn't already */
-  let { element, attributes, content, children } = elementObj;
+  let { element, attributes, content, children } = E;
 
   if (typeof element === 'string') {
     /* Create actual element; at this point, `element` must be a tag name string */

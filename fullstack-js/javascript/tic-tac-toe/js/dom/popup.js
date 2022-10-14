@@ -265,5 +265,3 @@ document.addEventListener(
   },
   { once: true }
 );
-
-export { Popup };

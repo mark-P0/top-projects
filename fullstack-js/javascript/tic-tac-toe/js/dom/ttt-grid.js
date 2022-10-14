@@ -97,5 +97,3 @@ document.addEventListener(
   },
   { once: true }
 );
-
-export { tttGrid };
