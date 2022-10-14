@@ -60,12 +60,7 @@ const Popup = {
   },
 };
 
-const InitPopupElements = (
-  gameMode,
-  playerMarks,
-  playerCtMax,
-  aiDifficulty
-) => {
+const InitPopupElements = (gameMode, playerMarks, aiDifficulty) => {
   /* prettier-ignore */
   const header = buildElementTree(
     E('div', { class: 'modal-header' }, null, [
@@ -131,17 +126,17 @@ const InitPopupElements = (
       };
     })();
 
-    const playerMarkSelectionOptions = (selectedIdx) => {
-      return playerMarks.map((mark, idx) => {
-        const attr = selectedIdx === idx ? { selected: true } : null;
+    const playerMarkSelectionOptions = (selectedMark) => {
+      return playerMarks.map((mark) => {
+        const attr = mark === selectedMark ? { selected: true } : null;
         return E('option', attr, mark, null);
       });
     };
 
     /* prettier-ignore */
-    const playerNameInputGroup = (ct) => {
+    const playerNameInputGroup = (mark, ct) => {
       return E('div', { class: 'input-group' }, null, [
-        E('select', { class: 'form-select', name: formVars.PLAYER_MARK }, null, playerMarkSelectionOptions(ct - 1)),
+        E('select', { class: 'form-select', name: formVars.PLAYER_MARK }, null, playerMarkSelectionOptions(mark)),
         E('input', { type: 'text', class: 'form-control', placeholder: `Player ${ct}`, 'aria-label': `Player ${ct}`, 'aria-describedby': `player-${ct}`, name: formVars.PLAYER_NAME }, null, null),
       ])
     };
@@ -187,7 +182,7 @@ const InitPopupElements = (
             E('span', { class: 'text-secondary fw-normal' }, ' (Optional)', null),
           ]),
           E('div', { class: 'hstack gap-3', id: 'game-player-data' }, null,
-            Array.from({ length: playerCtMax }, (_, idx) => playerNameInputGroup(idx + 1))
+            playerMarks.map((mark, idx) => playerNameInputGroup(mark, idx + 1))
           ),
         ]),
 
@@ -263,10 +258,8 @@ const InitPopupElements = (
 /* Show popup on game load */
 document.addEventListener(
   GameEvents.INIT_TRIGGER,
-  ({ detail: { gameMode, playerMarks, playerCtMax, aiDifficulty } }) => {
-    Popup.use(
-      InitPopupElements(gameMode, playerMarks, playerCtMax, aiDifficulty)
-    );
+  ({ detail: { gameMode, playerMarks, aiDifficulty } }) => {
+    Popup.use(InitPopupElements(gameMode, playerMarks, aiDifficulty));
     Popup.show({ asStatic: true });
   },
   { once: true }

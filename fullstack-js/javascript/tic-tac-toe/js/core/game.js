@@ -3,18 +3,17 @@ import Marks from './marks.js';
 import Grid from './grid.js';
 import Player from './player.js';
 
-const MAX_PLAYER_CT = Marks.playable.length;
-const TITLE = getChoices(Marks.playable, 3).join('');
+const Title = getChoices(Marks.playable, 3).join('');
 const Mode = {
   PVP: 'game-mode-pvp',
   PVC: 'game-mode-pvc',
 };
+const PlayableMarks = Marks.playable;
 const AIDifficulty = {
   EASY: 'ai-difficulty-easy',
   DIFFICULT: 'ai-difficulty-difficult',
   IMPOSSIBLE: 'ai-difficulty-impossible',
 };
-const PlayableMarks = Marks.playable;
 
 const Game = (playerData) => {
   const grid = Grid(3);
@@ -69,4 +68,4 @@ const Game = (playerData) => {
 };
 
 export default Game;
-export { MAX_PLAYER_CT, TITLE, Mode, AIDifficulty, PlayableMarks };
+export { Title, Mode, PlayableMarks, AIDifficulty };

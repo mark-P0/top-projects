@@ -7,7 +7,7 @@ import './dom/ttt-grid.js';
 let game = undefined;
 
 /* Set randomized page title */
-document.title = GameProperties.TITLE;
+document.title = GameProperties.Title;
 
 /* Outline game flow as events */
 document.dispatchEvent(
@@ -15,7 +15,6 @@ document.dispatchEvent(
     detail: {
       gameMode: GameProperties.Mode,
       playerMarks: GameProperties.PlayableMarks,
-      playerCtMax: GameProperties.MAX_PLAYER_CT,
       aiDifficulty: GameProperties.AIDifficulty,
     },
   })
