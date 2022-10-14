@@ -1,62 +1,7 @@
-import {
-  getChoices,
-  getDivMod,
-  transpose,
-  getDiagonals,
-  getSameItem,
-} from '../utils.js';
-import { PlayerFactory } from './player.js';
-
-const Marks = {
-  X: '❌',
-  O: '⭕',
-  _: '🔲', // Unmarked cell
-
-  get playable() {
-    const { X, O } = this;
-    return [X, O];
-  },
-};
-
-const Grid = (() => {
-  const size = 3;
-  let grid = Array.from({ length: size }, () => Array(size).fill(Marks._));
-
-  const markCell = (coords, mark) => {
-    const [x, y] = coords;
-    grid[y][x] = mark;
-  };
-
-  const transformIndexToCoords = (idx) => {
-    return getDivMod(idx, size);
-  };
-
-  return {
-    size,
-    get rows() {
-      return grid;
-    },
-    get columns() {
-      return transpose(grid);
-    },
-    get diagonals() {
-      return getDiagonals(grid);
-    },
-    get axes() {
-      return [this.rows, this.columns, this.diagonals];
-    },
-    get items() {
-      return grid.flat();
-    },
-
-    markCell,
-    get hasBlankCells() {
-      return grid.flat().some((cell) => cell === Marks._);
-    },
-
-    transformIndexToCoords,
-  };
-})();
+import { getChoices, getSameItem } from '../utils.js';
+import Marks from './marks.js';
+import Grid from './grid.js';
+import Player from './player.js';
 
 const Game = (() => {
   const MAX_PLAYER_CT = Marks.playable.length;
@@ -83,9 +28,7 @@ const Game = (() => {
     return mark;
   };
   const init = (playerData) => {
-    players = playerData.map(({ name, mark }) =>
-      PlayerFactory.create(name, mark)
-    );
+    players = playerData.map(({ name, mark }) => Player(name, mark));
   };
 
   return {

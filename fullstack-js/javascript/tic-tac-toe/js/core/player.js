@@ -1,18 +1,9 @@
-const PlayerFactory = (() => {
-  /* Variables private to the factory itself */
-  const __ = {
-    playerCt: 0, // Track number of players created
-  };
+let ctCreatedPlayers = 0; // Track number of players created
 
-  const create = (name, mark) => {
-    __.playerCt++;
+const Player = (name, mark) => {
+  ctCreatedPlayers++;
 
-    return { name, mark, num: __.playerCt };
-  };
+  return { name, mark, num: ctCreatedPlayers };
+};
 
-  return {
-    create,
-  };
-})();
-
-export { PlayerFactory };
+export default Player;
