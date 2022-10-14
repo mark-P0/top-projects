@@ -1,4 +1,4 @@
-import { getDivMod } from '../utils.js';
+import Utils from '../utils.js';
 import Marks from './marks.js';
 
 const Grid = (size) => {
@@ -15,7 +15,7 @@ const Grid = (size) => {
     get rows() {
       return items.reduce(
         (acml, cell, idx) => {
-          const [y, x] = getDivMod(idx, size);
+          const [y, x] = Utils.getDivMod(idx, size);
           acml[y][x] = cell;
           return acml;
         },
@@ -25,7 +25,7 @@ const Grid = (size) => {
     get columns() {
       return items.reduce(
         (acml, cell, idx) => {
-          const [y, x] = getDivMod(idx, size);
+          const [y, x] = Utils.getDivMod(idx, size);
           acml[x][y] = cell;
           return acml;
         },

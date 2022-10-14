@@ -1,9 +1,9 @@
-import { getChoices, getSameItem } from '../utils.js';
+import Utils from '../utils.js';
 import Marks from './marks.js';
 import Grid from './grid.js';
 import Player from './player.js';
 
-const Title = getChoices(Marks.playable, 3).join('');
+const Title = Utils.getChoices(Marks.playable, 3).join('');
 const Mode = {
   PVP: 'game-mode-pvp',
   PVC: 'game-mode-pvc',
@@ -50,7 +50,7 @@ const Game = (playerData) => {
       /* Check all axes if any of them are already filled with the same item */
       for (const axis of grid.axes) {
         for (const items of axis) {
-          const mark = getSameItem(items);
+          const mark = Utils.getSameItem(items);
           if (!mark || mark === Marks._) continue;
 
           winningMark = mark;

@@ -1,4 +1,4 @@
-import { convertArrayColumnsToObjectRows, getSameItem } from '../utils.js';
+import Utils from '../utils.js';
 import { E, buildElementTree } from './__dom__.js';
 import { GameEvents } from './__events__.js';
 
@@ -216,7 +216,7 @@ const InitPopupElements = (gameMode, playerMarks, aiDifficulty) => {
         Object.values({
           areSameMarks:
             data[formVars.GAME_MODE] === gameMode.PVP &&
-            getSameItem(data[formVars.PLAYER_MARK]) !== null,
+            Utils.getSameItem(data[formVars.PLAYER_MARK]) !== null,
           noDifficultyChosen:
             data[formVars.GAME_MODE] === gameMode.PVC &&
             !data[formVars.AI_DIFFICULTY],
@@ -232,7 +232,7 @@ const InitPopupElements = (gameMode, playerMarks, aiDifficulty) => {
       'submit',
       () => {
         const data = collectFormData();
-        const playerData = convertArrayColumnsToObjectRows({
+        const playerData = Utils.convertArrayColumnsToObjectRows({
           mark: data[formVars.PLAYER_MARK],
           name: data[formVars.PLAYER_NAME],
         });
