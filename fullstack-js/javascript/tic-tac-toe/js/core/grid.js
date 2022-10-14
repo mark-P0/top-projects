@@ -1,43 +1,57 @@
-import { getDivMod, transpose, getDiagonals } from '../utils.js';
+import { getDivMod } from '../utils.js';
 import Marks from './marks.js';
 
 const Grid = (size) => {
-  const items = Array.from({ length: size }, () => Array(size).fill(Marks._));
+  const items = Array(size ** 2).fill(Marks._);
 
-  const markCell = (coords, mark) => {
-    const [x, y] = coords;
-    items[y][x] = mark;
-  };
-
-  const transformIndexToCoords = (idx) => {
-    return getDivMod(idx, size);
+  const markCell = (idx, mark) => {
+    items[idx] = mark;
   };
 
   return {
     size,
 
+    items,
     get rows() {
-      return items;
+      return items.reduce(
+        (acml, cell, idx) => {
+          const [y, x] = getDivMod(idx, size);
+          acml[y][x] = cell;
+          return acml;
+        },
+        Array.from({ length: size }, () => Array(size))
+      );
     },
     get columns() {
-      return transpose(items);
+      return items.reduce(
+        (acml, cell, idx) => {
+          const [y, x] = getDivMod(idx, size);
+          acml[x][y] = cell;
+          return acml;
+        },
+        Array.from({ length: size }, () => Array(size))
+      );
     },
     get diagonals() {
-      return getDiagonals(items);
+      const diags = Array.from({ length: 2 }, () => Array(size));
+      const [sizeUp, sizeDn] = [size + 1, size - 1];
+
+      for (let idx = 0; idx < size; idx++) {
+        diags[0][idx] = items[sizeUp * idx];
+        diags[1][idx] = items[sizeDn * idx + sizeDn];
+      }
+
+      return diags;
     },
     get axes() {
       return [this.rows, this.columns, this.diagonals];
     },
-    get items() {
-      return items.flat();
-    },
 
     get hasBlankCells() {
-      return items.flat().some((cell) => cell === Marks._);
+      return items.some((cell) => cell === Marks._);
     },
 
     markCell,
-    transformIndexToCoords,
   };
 };
 

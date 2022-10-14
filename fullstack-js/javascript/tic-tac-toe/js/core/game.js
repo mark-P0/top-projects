@@ -20,9 +20,9 @@ const Game = (playerData) => {
 
   const players = playerData.map(({ name, mark }) => Player(name, mark));
   let idxCurrentPlayer = 0;
-  const makeMove = (x, y) => {
+  const makeMove = (idx) => {
     const { mark } = players[idxCurrentPlayer];
-    grid.markCell([x, y], mark);
+    grid.markCell(idx, mark);
 
     idxCurrentPlayer = (idxCurrentPlayer + 1) % players.length;
 
