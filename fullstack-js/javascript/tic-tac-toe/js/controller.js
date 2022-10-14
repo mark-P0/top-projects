@@ -62,7 +62,10 @@ document.addEventListener(
     document.dispatchEvent(providerEvent);
 
     if (game.hasEnded) {
-      document.dispatchEvent(new Event(GameEvents.END));
+      const { winner } = game;
+      const detail = { winner };
+      const event = new CustomEvent(GameEvents.END, { detail });
+      document.dispatchEvent(event);
       return;
     }
 
@@ -78,7 +81,3 @@ document.addEventListener(
     }
   }
 );
-document.addEventListener(GameEvents.END, () => {
-  /* Temporarily showing the game winner */
-  console.log(game.winner);
-});

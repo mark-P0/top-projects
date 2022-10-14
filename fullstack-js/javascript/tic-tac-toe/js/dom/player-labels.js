@@ -3,6 +3,8 @@ import { GameEvents, PlayerEvents } from './__events__.js';
 
 /* Uses an object created by the `PlayerFactory` */
 const PlayerLabel = (player) => {
+  let input = undefined;
+
   const __element__ = (() => {
     const genericName = {
       regular: `Player ${player.num}`,
@@ -30,7 +32,7 @@ const PlayerLabel = (player) => {
       attrs.input.disabled = true;
     }
 
-    const input = buildElementTree(E('input', attrs.input, null, null));
+    input = buildElementTree(E('input', attrs.input, null, null));
     input.addEventListener('change', () => {
       const detail = { newName: input.value, playerMark: player.mark };
       const event = new CustomEvent(PlayerEvents.NAME_CHANGE, { detail });
@@ -56,19 +58,23 @@ const PlayerLabel = (player) => {
     __element__.classList.remove('visible');
   };
 
+  const highlightAsWinner = () => {
+    input.value ||= input.placeholder;
+    input.classList.toggle('text-bg-success');
+  };
+
   return {
     __element__,
     show,
     hide,
 
-    get input() {
-      return __element__.querySelector('input');
-    },
+    mark: player.mark,
+
+    input,
     disable() {
       this.input.disabled = true;
     },
-
-    mark: player.mark,
+    highlightAsWinner,
   };
 };
 
@@ -130,9 +136,10 @@ document.addEventListener(
 /* Show all player labels on game end */
 document.addEventListener(
   GameEvents.END,
-  () => {
+  ({ detail: { winner } }) => {
     PlayerLabels.disable();
     PlayerLabels.showAll();
+    PlayerLabels.findLabelViaMark(winner.mark).highlightAsWinner();
   },
   { once: true }
 );
