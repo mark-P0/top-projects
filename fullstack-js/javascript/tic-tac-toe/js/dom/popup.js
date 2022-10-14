@@ -60,7 +60,7 @@ const Popup = {
   },
 };
 
-const InitPopupElements = (gameMode, playerMarks, aiDifficulty) => {
+const InitPopupElements = (gameModes, playerMarks, aiDifficulties) => {
   /* prettier-ignore */
   const header = buildElementTree(
     E('div', { class: 'modal-header' }, null, [
@@ -103,8 +103,8 @@ const InitPopupElements = (gameMode, playerMarks, aiDifficulty) => {
     const gameModeSelector = (() => {
       /* prettier-ignore */
       const gameModeMap = {
-        [gameMode.PVP]: { text: 'Another Player', disabled: false },
-        [gameMode.PVC]: { text: 'vs. AI',         disabled: true },
+        [gameModes.PVP]: { text: 'Another Player', disabled: false },
+        [gameModes.PVC]: { text: 'vs. AI',         disabled: true },
       };
 
       return (mode) => {
@@ -144,9 +144,9 @@ const InitPopupElements = (gameMode, playerMarks, aiDifficulty) => {
     const aiDifficultySetting = (() => {
       /* prettier-ignore */
       const difficultySettingMap = {
-        [aiDifficulty.EASY]:       { text: 'Easy',       type: 'btn-outline-success', disabled: true },
-        [aiDifficulty.DIFFICULT]:  { text: 'Difficult',  type: 'btn-outline-warning', disabled: true },
-        [aiDifficulty.IMPOSSIBLE]: { text: 'Impossible', type: 'btn-outline-danger',  disabled: true },
+        [aiDifficulties.EASY]:       { text: 'Easy',       type: 'btn-outline-success', disabled: true },
+        [aiDifficulties.DIFFICULT]:  { text: 'Difficult',  type: 'btn-outline-warning', disabled: true },
+        [aiDifficulties.IMPOSSIBLE]: { text: 'Impossible', type: 'btn-outline-danger',  disabled: true },
       }
 
       return (difficulty) => {
@@ -170,7 +170,7 @@ const InitPopupElements = (gameMode, playerMarks, aiDifficulty) => {
         E('div', { class: 'vstack' }, null, [
           E('label', { class: 'form-label fw-semibold', for: 'game-mode-selectors' }, 'Play Against...', null),
           E('div', { class: 'btn-group equal-sizes', id: 'game-mode-selectors', role: 'group', 'aria-label': 'Game mode selector' }, null,
-            Object.values(gameMode).map((mode) => gameModeSelector(mode)).flat()
+            Object.values(gameModes).map((mode) => gameModeSelector(mode)).flat()
           ),
         ]),
 
@@ -187,10 +187,10 @@ const InitPopupElements = (gameMode, playerMarks, aiDifficulty) => {
         ]),
 
         /* AI Difficulty Setting */
-        E('div', { class: 'vstack', 'data-setting-for': gameMode.PVC }, null, [
+        E('div', { class: 'vstack', 'data-setting-for': gameModes.PVC }, null, [
           E('label', { class:'form-label fw-semibold', for: 'game-mode-pvc-difficulty' }, 'AI Difficulty', null),
           E('div', { class: 'btn-group equal-sizes', id: 'game-mode-pvc-difficulty', role: 'group', 'aria-label': 'AI difficulty setting' }, null,
-            Object.values(aiDifficulty).map((difficulty) => aiDifficultySetting(difficulty)).flat()
+            Object.values(aiDifficulties).map((difficulty) => aiDifficultySetting(difficulty)).flat()
           ),
         ]),
       ])
@@ -215,10 +215,10 @@ const InitPopupElements = (gameMode, playerMarks, aiDifficulty) => {
       if (
         Object.values({
           areSameMarks:
-            data[formVars.GAME_MODE] === gameMode.PVP &&
+            data[formVars.GAME_MODE] === gameModes.PVP &&
             Utils.getSameItem(data[formVars.PLAYER_MARK]) !== null,
           noDifficultyChosen:
-            data[formVars.GAME_MODE] === gameMode.PVC &&
+            data[formVars.GAME_MODE] === gameModes.PVC &&
             !data[formVars.AI_DIFFICULTY],
         }).some((isTrue) => isTrue)
       ) {
@@ -232,14 +232,15 @@ const InitPopupElements = (gameMode, playerMarks, aiDifficulty) => {
       'submit',
       () => {
         const data = collectFormData();
+        const { gameMode, aiDifficulty } = data;
         const playerData = Utils.convertArrayColumnsToObjectRows({
           mark: data[formVars.PLAYER_MARK],
           name: data[formVars.PLAYER_NAME],
         });
 
-        const providerEvent = new CustomEvent(GameEvents.INIT_PROVIDER, {
-          detail: { playerData },
-        });
+        const eventType = GameEvents.INIT_PROVIDER;
+        const detail = { gameMode, playerData, aiDifficulty };
+        const providerEvent = new CustomEvent(eventType, { detail });
         document.dispatchEvent(providerEvent);
 
         Popup.hide();
@@ -258,8 +259,8 @@ const InitPopupElements = (gameMode, playerMarks, aiDifficulty) => {
 /* Show popup on game load */
 document.addEventListener(
   GameEvents.INIT_TRIGGER,
-  ({ detail: { gameMode, playerMarks, aiDifficulty } }) => {
-    Popup.use(InitPopupElements(gameMode, playerMarks, aiDifficulty));
+  ({ detail: { gameModes, playerMarks, aiDifficulties } }) => {
+    Popup.use(InitPopupElements(gameModes, playerMarks, aiDifficulties));
     Popup.show({ asStatic: true });
   },
   { once: true }

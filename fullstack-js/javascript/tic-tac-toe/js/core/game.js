@@ -1,29 +1,46 @@
 import Utils from '../utils.js';
 import Marks from './marks.js';
 import Grid from './grid.js';
-import Player from './player.js';
+import Player, * as PlayerProperties from './player.js';
 
 const Title = Utils.getChoices(Marks.playable, 3).join('');
-const Mode = {
+const Modes = {
   PVP: 'game-mode-pvp',
   PVC: 'game-mode-pvc',
 };
 const PlayableMarks = Marks.playable;
-const AIDifficulty = {
-  EASY: 'ai-difficulty-easy',
-  DIFFICULT: 'ai-difficulty-difficult',
-  IMPOSSIBLE: 'ai-difficulty-impossible',
-};
+const { AIDifficulties } = PlayerProperties;
 
-const Game = (playerData) => {
+const Game = (gameMode, playerData, aiDifficulty) => {
+  if (!Object.values(Modes).includes(gameMode)) {
+    throw new TypeError(`Given game mode \`${gameMode}\` invalid.`);
+  }
+
   let idxCurrentPlayer = 0;
   let winningMark = undefined;
 
   const grid = Grid(3);
 
-  const players = playerData.map(({ name, mark }) => Player(name, mark));
+  const players = playerData.map(({ mark, name }, idx) => {
+    /* Derive player type */
+    let type = PlayerProperties.Types.HUMAN;
+    if (gameMode === Modes.PVC && idx === 1) type = PlayerProperties.Types.AI;
+
+    /* Derive AI level */
+    let aiLevel = null;
+    if (gameMode === Modes.PVC && idx === 1) aiLevel = aiDifficulty;
+
+    /* Derive AI mark */
+    if (gameMode === Modes.PVC && idx === 1) {
+      /* Find the first playable mark that is not the human player's */
+      mark = Marks.playable.find((mark) => mark !== playerData[0].mark);
+    }
+
+    return Player(mark, name, type, aiLevel);
+  });
 
   return {
+    mode: gameMode,
     grid,
 
     players,
@@ -61,4 +78,4 @@ const Game = (playerData) => {
 };
 
 export default Game;
-export { Title, Mode, PlayableMarks, AIDifficulty };
+export { Title, Modes, PlayableMarks, AIDifficulties };

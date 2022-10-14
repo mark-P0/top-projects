@@ -13,16 +13,16 @@ document.title = GameProperties.Title;
 document.dispatchEvent(
   new CustomEvent(GameEvents.INIT_TRIGGER, {
     detail: {
-      gameMode: GameProperties.Mode,
+      gameModes: GameProperties.Modes,
       playerMarks: GameProperties.PlayableMarks,
-      aiDifficulty: GameProperties.AIDifficulty,
+      aiDifficulties: GameProperties.AIDifficulties,
     },
   })
 );
 document.addEventListener(
   GameEvents.INIT_PROVIDER,
-  ({ detail: { playerData } }) => {
-    game = Game(playerData);
+  ({ detail: { gameMode, playerData, aiDifficulty } }) => {
+    game = Game(gameMode, playerData, aiDifficulty);
 
     const detail = {
       gridItems: game.grid.items,
