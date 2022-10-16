@@ -58,6 +58,10 @@ const Grid = (size) => {
     },
 
     markCell,
+
+    toString() {
+      return this.rows.map((row) => row.join(' ')).join('\n');
+    },
   };
 };
 

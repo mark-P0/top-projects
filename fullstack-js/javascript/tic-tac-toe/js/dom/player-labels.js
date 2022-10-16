@@ -139,7 +139,10 @@ document.addEventListener(
   ({ detail: { winner } }) => {
     PlayerLabels.disable();
     PlayerLabels.showAll();
-    PlayerLabels.findLabelViaMark(winner.mark).highlightAsWinner();
+
+    if (winner) {
+      PlayerLabels.findLabelViaMark(winner.mark).highlightAsWinner();
+    }
   },
   { once: true }
 );

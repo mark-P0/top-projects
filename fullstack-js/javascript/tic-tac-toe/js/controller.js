@@ -46,13 +46,13 @@ document.addEventListener(
 document.addEventListener(
   GameEvents.TURN_TRIGGER,
   ({ detail: { moveIdx = null } = {} }) => {
-    const { grid, currentPlayer, nextPlayer } = game;
-    const move = currentPlayer.makeMove({
-      grid,
+    const move = game.currentPlayer.makeMove({
+      game,
       idx: moveIdx,
     });
     moveIdx = move.idx;
 
+    const { currentPlayer, nextPlayer } = game;
     const detail = {
       moveIdx,
       moveMark: currentPlayer.mark,

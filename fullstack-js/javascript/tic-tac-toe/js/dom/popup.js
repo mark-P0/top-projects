@@ -146,7 +146,7 @@ const InitPopupElements = (gameModes, playerMarks, aiDifficulties) => {
       const difficultySettingMap = {
         [aiDifficulties.EASY]:       { text: 'Easy',       type: 'btn-outline-success', disabled: false },
         [aiDifficulties.DIFFICULT]:  { text: 'Difficult',  type: 'btn-outline-warning', disabled: true },
-        [aiDifficulties.IMPOSSIBLE]: { text: 'Impossible', type: 'btn-outline-danger',  disabled: true },
+        [aiDifficulties.IMPOSSIBLE]: { text: 'Impossible', type: 'btn-outline-danger',  disabled: false },
       }
 
       return (difficulty) => {

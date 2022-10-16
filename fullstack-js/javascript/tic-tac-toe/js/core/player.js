@@ -1,4 +1,5 @@
 import Utils from '../utils.js';
+import { minimax } from './minimax.js';
 
 const Types = {
   HUMAN: 'player-type-human',
@@ -15,29 +16,29 @@ const AIDifficulties = {
  *  bound to the `Player` objects that retrieves them.
  */
 const makeMoveMapping = {
-  [Types.HUMAN]: function ({ grid, idx }) {
+  [Types.HUMAN]: function ({ game, idx }) {
     const { mark } = this;
-    grid.markCell(idx, mark);
+    game.grid.markCell(idx, mark);
     return { idx, mark };
   },
-  [Types.AI]: function ({ grid }) {
+  [Types.AI]: function ({ game }) {
     const { mark, aiLevel } = this;
-    const idx = makeMoveMappingAIIdx[aiLevel](grid, mark);
-    grid.markCell(idx, mark);
+    const idx = makeMoveMappingAIIdx[aiLevel]({ game, playerObject: this });
+    game.grid.markCell(idx, mark);
     return { idx, mark };
   },
 };
 /* Derive a `grid` index to be used on AI `Player` moves. */
 const makeMoveMappingAIIdx = {
-  [AIDifficulties.EASY]: function (grid, mark) {
+  [AIDifficulties.EASY]: function ({ game }) {
     /* Simply randomly choose from the indices of the grid's blank cells */
-    return Utils.getChoice(grid.blankCellIdcs);
+    return Utils.getChoice(game.grid.blankCellIdcs);
   },
-  [AIDifficulties.DIFFICULT]: function (grid, mark) {
+  [AIDifficulties.DIFFICULT]: function ({ game }) {
     throw new ReferenceError('This function has not been implemented yet!');
   },
-  [AIDifficulties.IMPOSSIBLE]: function (grid, mark) {
-    throw new ReferenceError('This function has not been implemented yet!');
+  [AIDifficulties.IMPOSSIBLE]: function ({ game, playerObject }) {
+    return minimax(game, playerObject);
   },
 };
 
