@@ -34,10 +34,14 @@ const makeMoveMappingAIIdx = {
     /* Simply randomly choose from the indices of the grid's blank cells */
     return Utils.getChoice(game.grid.blankCellIdcs);
   },
-  [AIDifficulties.DIFFICULT]: function ({ game }) {
-    throw new ReferenceError('This function has not been implemented yet!');
+  [AIDifficulties.DIFFICULT]: function ({ game, playerObject }) {
+    /* AI will fail to make the ideal move 20% of the time */
+    const { EASY, IMPOSSIBLE } = AIDifficulties;
+    const type = Utils.getRandomInt({ to: 10 }) < 8 ? IMPOSSIBLE : EASY;
+    return this[type]({ game, playerObject });
   },
   [AIDifficulties.IMPOSSIBLE]: function ({ game, playerObject }) {
+    /* Use the minimax algorithm to make the ideal move every time */
     return minimax(game, playerObject);
   },
 };
