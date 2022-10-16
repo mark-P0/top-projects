@@ -86,3 +86,7 @@
   .input-group:nth-child(n + 2) {
   display: none;
 }
+
+.loading {
+  cursor: wait;
+}
