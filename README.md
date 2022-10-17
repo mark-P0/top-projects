@@ -23,7 +23,8 @@ This is a collection of my project solutions throughout _[The Odin Project](http
 
 ##### Organizing your JavaScript Code
 
-1. [Library](./fullstack-js//javascript/library/)
+1. [Library](./fullstack-js/javascript/library/)
+2. [Tic-Tac-Toe](./fullstack-js/javascript/tic-tac-toe/)
 
 ##### Computer Science
 
