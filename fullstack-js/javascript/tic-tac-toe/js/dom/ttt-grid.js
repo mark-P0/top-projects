@@ -69,6 +69,11 @@ const tttGrid = {
   },
 };
 
+/* Ensure grid is at default (blank) state, as per the base HTML */
+document.addEventListener(GameEvents.INIT_TRIGGER, () => {
+  tttGrid.reset();
+});
+
 /* Enable grid cell buttons for game loop */
 document.addEventListener(GameEvents.START, ({ detail: { gridItems } }) => {
   tttGrid.reset();

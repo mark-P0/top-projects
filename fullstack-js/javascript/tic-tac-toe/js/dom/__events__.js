@@ -7,11 +7,12 @@ const GameEvents = {
   INIT_TRIGGER: 'game-init-trigger',
   INIT_PROVIDER: 'game-init-provider',
   START: 'game-start',
+  CONTROL_RESTART: 'game-control-restart',
+  CONTROL_RESET: 'game-control-reset',
   TURN_TRIGGER: 'game-turn-trigger',
   TURN_PROVIDER: 'game-turn-provider',
   TURN_AI: 'game-turn-ai',
   END: 'game-end',
-  CONTROL_RESTART: 'game-control-restart',
 };
 
 const PlayerEvents = {

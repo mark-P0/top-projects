@@ -3,7 +3,10 @@ import Marks from './marks.js';
 import Grid from './grid.js';
 import Player, * as PlayerProperties from './player.js';
 
-const Title = Utils.getChoices(Marks.playable, 3).join('');
+const RandomizedTitle = () => {
+  /* Could just be a getter of the/a properties "object"... */
+  return Utils.getChoices(Marks.playable, 3).join('');
+};
 const Modes = {
   PVP: 'game-mode-pvp',
   PVC: 'game-mode-pvc',
@@ -143,4 +146,4 @@ const Game = (gameMode, playerData, aiDifficulty) => {
 };
 
 export default Game;
-export { Title, Modes, PlayableMarks, AIDifficulties, generateGameClone };
+export { RandomizedTitle, Modes, PlayableMarks, AIDifficulties };

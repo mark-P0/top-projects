@@ -20,6 +20,7 @@ const Control = {
 
   initialize() {
     this.buttons ??= [
+      ['arrow-repeat', 'Reset application', GameEvents.CONTROL_RESET],
       ['arrow-clockwise', 'Restart game', GameEvents.CONTROL_RESTART],
     ].map((args) => {
       const button = ControlButton(...args);

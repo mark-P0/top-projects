@@ -119,6 +119,11 @@ const PlayerLabels = {
   },
 };
 
+/* Ensure label holder is at default (blank) state, as per the base HTML */
+document.addEventListener(GameEvents.INIT_TRIGGER, () => {
+  PlayerLabels.reset();
+});
+
 /* Initialize player labels on game loop */
 document.addEventListener(
   GameEvents.START,

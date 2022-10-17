@@ -262,6 +262,5 @@ document.addEventListener(
   ({ detail: { gameModes, playerMarks, aiDifficulties } }) => {
     Popup.use(InitPopupElements(gameModes, playerMarks, aiDifficulties));
     Popup.show({ asStatic: true });
-  },
-  { once: true }
+  }
 );

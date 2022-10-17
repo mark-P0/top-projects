@@ -2,31 +2,33 @@ import Utils from './utils.js';
 import * as PlayerProperties from './core/player.js';
 import Game, * as GameProperties from './core/game.js';
 import { GameEvents, PlayerEvents } from './dom/__events__.js';
+import './dom/control.js';
 import './dom/popup.js';
 import './dom/player-labels.js';
 import './dom/ttt-grid.js';
-import './dom/control.js';
 import './dom/main.js';
 
-let game = undefined;
+let game; // Define game state reference at module-scope
+function performInitialSteps() {
+  /* Reset game state object */
+  game = undefined;
+  PlayerProperties.PlayerCounter.reset();
 
-/* Set randomized page title */
-document.title = GameProperties.Title;
+  /* Set randomized page title */
+  document.title = GameProperties.RandomizedTitle();
+
+  /* Dispatch initialization events to concerned elements */
+  const eventType = GameEvents.INIT_TRIGGER;
+  const detail = {
+    gameModes: GameProperties.Modes,
+    playerMarks: GameProperties.PlayableMarks,
+    aiDifficulties: GameProperties.AIDifficulties,
+  };
+  document.dispatchEvent(new CustomEvent(eventType, { detail }));
+}
 
 /* Outline game flow as events */
-document.dispatchEvent(
-  new CustomEvent(GameEvents.INIT_TRIGGER, {
-    detail: {
-      gameModes: GameProperties.Modes,
-      playerMarks: GameProperties.PlayableMarks,
-      aiDifficulties: GameProperties.AIDifficulties,
-    },
-  })
-);
-document.addEventListener(GameEvents.CONTROL_RESTART, () => {
-  game.restart();
-  document.dispatchEvent(new Event(GameEvents.INIT_PROVIDER));
-});
+performInitialSteps();
 document.addEventListener(
   GameEvents.INIT_PROVIDER,
   ({ detail: { gameMode, playerData, aiDifficulty } = {} }) => {
@@ -41,6 +43,13 @@ document.addEventListener(
     document.dispatchEvent(providerEvent);
   }
 );
+document.addEventListener(GameEvents.CONTROL_RESET, () => {
+  performInitialSteps();
+});
+document.addEventListener(GameEvents.CONTROL_RESTART, () => {
+  game.restart();
+  document.dispatchEvent(new Event(GameEvents.INIT_PROVIDER));
+});
 document.addEventListener(
   PlayerEvents.NAME_CHANGE,
   ({ detail: { newName, playerMark } }) => {

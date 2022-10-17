@@ -46,7 +46,22 @@ const makeMoveMappingAIIdx = {
   },
 };
 
-let ctCreatedPlayers = 0; // Track number of players created
+const PlayerCounter = (() => {
+  let ct = 0;
+
+  const reset = () => {
+    ct = 0;
+  };
+
+  return {
+    get ct() {
+      ct++;
+      return ct;
+    },
+    reset,
+  };
+})();
+
 const Player = (mark, name, type, aiLevel) => {
   if (!Object.values(Types).includes(type)) {
     throw new TypeError(`Given player type \`${type}\` invalid.`);
@@ -55,10 +70,8 @@ const Player = (mark, name, type, aiLevel) => {
     throw new TypeError(`Given AI difficulty \`${aiLevel}\` invalid.`);
   }
 
-  ctCreatedPlayers++;
-
   return {
-    num: ctCreatedPlayers,
+    num: PlayerCounter.ct,
     mark,
     name,
     type,
@@ -70,4 +83,4 @@ const Player = (mark, name, type, aiLevel) => {
 };
 
 export default Player;
-export { Types, AIDifficulties };
+export { Types, AIDifficulties, PlayerCounter };
