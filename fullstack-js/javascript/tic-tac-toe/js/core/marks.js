@@ -1,7 +1,7 @@
 const Marks = {
   X: '❌',
   O: '⭕',
-  _: '⬜', // Unmarked cell
+  _: ' ', // Unmarked cell
 
   get playable() {
     const { X, O } = this;

@@ -8,6 +8,10 @@ const Grid = (size) => {
     items[idx] = mark;
   };
 
+  const restart = () => {
+    items.fill(Marks._);
+  };
+
   return {
     size,
 
@@ -58,6 +62,7 @@ const Grid = (size) => {
     },
 
     markCell,
+    restart,
 
     toString() {
       return this.rows.map((row) => row.join(' ')).join('\n');

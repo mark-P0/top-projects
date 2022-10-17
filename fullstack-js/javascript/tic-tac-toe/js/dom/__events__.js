@@ -11,6 +11,7 @@ const GameEvents = {
   TURN_PROVIDER: 'game-turn-provider',
   TURN_AI: 'game-turn-ai',
   END: 'game-end',
+  CONTROL_RESTART: 'game-control-restart',
 };
 
 const PlayerEvents = {

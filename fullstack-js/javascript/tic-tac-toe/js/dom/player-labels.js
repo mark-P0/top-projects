@@ -90,6 +90,10 @@ const PlayerLabels = {
       return label;
     });
   },
+  reset() {
+    this.labels = undefined;
+    this.__element__.replaceChildren();
+  },
 
   findLabelViaMark(mark) {
     return this.labels.find((label) => label.mark === mark);
@@ -119,10 +123,10 @@ const PlayerLabels = {
 document.addEventListener(
   GameEvents.START,
   ({ detail: { players, firstPlayer } }) => {
+    PlayerLabels.reset();
     PlayerLabels.initialize(players);
     PlayerLabels.show(PlayerLabels.findLabelViaMark(firstPlayer.mark));
-  },
-  { once: true }
+  }
 );
 
 /* Toggle player labels on every turn */
@@ -134,15 +138,11 @@ document.addEventListener(
 );
 
 /* Show all player labels on game end */
-document.addEventListener(
-  GameEvents.END,
-  ({ detail: { winner } }) => {
-    PlayerLabels.disable();
-    PlayerLabels.showAll();
+document.addEventListener(GameEvents.END, ({ detail: { winner } }) => {
+  PlayerLabels.disable();
+  PlayerLabels.showAll();
 
-    if (winner) {
-      PlayerLabels.findLabelViaMark(winner.mark).highlightAsWinner();
-    }
-  },
-  { once: true }
-);
+  if (winner) {
+    PlayerLabels.findLabelViaMark(winner.mark).highlightAsWinner();
+  }
+});

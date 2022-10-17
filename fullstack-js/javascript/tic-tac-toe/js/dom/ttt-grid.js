@@ -56,6 +56,10 @@ const tttGrid = {
       return cell;
     });
   },
+  reset() {
+    this.cells = undefined;
+    this.__element__.replaceChildren();
+  },
 
   enable() {
     for (const cell of this.cells) cell.enable();
@@ -66,14 +70,11 @@ const tttGrid = {
 };
 
 /* Enable grid cell buttons for game loop */
-document.addEventListener(
-  GameEvents.START,
-  ({ detail: { gridItems } }) => {
-    tttGrid.initialize(gridItems);
-    tttGrid.enable();
-  },
-  { once: true }
-);
+document.addEventListener(GameEvents.START, ({ detail: { gridItems } }) => {
+  tttGrid.reset();
+  tttGrid.initialize(gridItems);
+  tttGrid.enable();
+});
 
 /* Consume details of provider event of each turn */
 document.addEventListener(
@@ -90,10 +91,6 @@ document.addEventListener(GameEvents.TURN_AI, () => {
 });
 
 /* Disable grid cell buttons on game end */
-document.addEventListener(
-  GameEvents.END,
-  () => {
-    tttGrid.disable();
-  },
-  { once: true }
-);
+document.addEventListener(GameEvents.END, () => {
+  tttGrid.disable();
+});

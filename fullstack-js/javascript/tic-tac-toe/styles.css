@@ -1,6 +1,5 @@
 #app {
   height: 100vh;
-  padding: 1rem;
 
   display: flex;
   justify-content: center;
@@ -14,8 +13,14 @@
   aspect-ratio: 9 / 16;
 }
 
+/*  Fixed font sizes
+ *  More or less static, in contrast with Bootstrap's responsive font sizes
+ */
 .small-text {
   font-size: small;
+}
+.large-text {
+  font-size: clamp(2.25rem, 5vw, 2.5rem);
 }
 
 #ttt-grid {
@@ -89,4 +94,17 @@
 
 .loading {
   cursor: wait;
+}
+
+button.bi {
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  padding: 0.5rem;
+
+  /*  Properly makes button square/circle
+   *  Why? I do not know...
+   */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

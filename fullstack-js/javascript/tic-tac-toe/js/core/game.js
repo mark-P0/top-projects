@@ -85,6 +85,12 @@ const Game = (gameMode, playerData, aiDifficulty) => {
     return Player(mark, name, type, aiLevel);
   });
 
+  const restart = () => {
+    idxCurrentPlayer = 0;
+    winningProperties = undefined;
+    grid.restart();
+  };
+
   return {
     mode: gameMode,
     grid,
@@ -131,6 +137,8 @@ const Game = (gameMode, playerData, aiDifficulty) => {
       /* Will always produce fresh objects on each access */
       return generateGameClone(this);
     },
+
+    restart,
   };
 };
 

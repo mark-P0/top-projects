@@ -5,6 +5,7 @@ import { GameEvents, PlayerEvents } from './dom/__events__.js';
 import './dom/popup.js';
 import './dom/player-labels.js';
 import './dom/ttt-grid.js';
+import './dom/control.js';
 import './dom/main.js';
 
 let game = undefined;
@@ -22,10 +23,14 @@ document.dispatchEvent(
     },
   })
 );
+document.addEventListener(GameEvents.CONTROL_RESTART, () => {
+  game.restart();
+  document.dispatchEvent(new Event(GameEvents.INIT_PROVIDER));
+});
 document.addEventListener(
   GameEvents.INIT_PROVIDER,
-  ({ detail: { gameMode, playerData, aiDifficulty } }) => {
-    game = Game(gameMode, playerData, aiDifficulty);
+  ({ detail: { gameMode, playerData, aiDifficulty } = {} }) => {
+    game ??= Game(gameMode, playerData, aiDifficulty);
 
     const detail = {
       gridItems: game.grid.items,
@@ -34,8 +39,7 @@ document.addEventListener(
     };
     const providerEvent = new CustomEvent(GameEvents.START, { detail });
     document.dispatchEvent(providerEvent);
-  },
-  { once: true }
+  }
 );
 document.addEventListener(
   PlayerEvents.NAME_CHANGE,

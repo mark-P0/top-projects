@@ -9,6 +9,7 @@
     <!-- Bootstrap, for reset and components -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
     <link rel="stylesheet" href="./styles.css" />
     <script defer type="module" src="./js/controller.js"></script>
@@ -17,10 +18,17 @@
   </head>
 
   <body>
-    <div id="app">
+    <div class="p-3" id="app">
       <div class="card shadow" id="main">
-        <div class="card-body vstack justify-content-between px-4 py-5">
-          <h1 class="card-title fw-semibold text-center">Tic-Tac-Toe</h1>
+        <div class="card-body vstack justify-content-between p-4 pb-5">
+          <div class="vstack flex-grow-0 gap-3">
+            <div class="hstack justify-content-end gap-1" id="control">
+              <!-- To be populated via JS -->
+            </div>
+            <!-- prettier-ignore -->
+            <h1 class="card-title large-text fw-semibold text-center m-0">Tic-Tac-Toe</h1>
+          </div>
+
           <div class="hstack gap-3" id="player-labels">
             <!-- To be populated via JS -->
           </div>
@@ -28,6 +36,7 @@
             <!-- To be populated via JS -->
           </div>
         </div>
+
         <!-- prettier-ignore -->
         <div class="card-footer text-center small-text">
           <em>Created by Mark</em>
