@@ -108,3 +108,30 @@ button.bi {
   justify-content: center;
   align-items: center;
 }
+
+#loading {
+  /* Color settings based on Bootstrap's light button variant */
+  --overlay-bg: var(--bs-gray-200); /* Button background */
+  --overlay-opacity: 0.65; /* Disabled button opacity */
+  --overlay-fg: #c6c7c8; /* Active button background (BG + 20%) */
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--overlay-bg);
+  opacity: var(--overlay-opacity);
+}
+#loading > div {
+  aspect-ratio: 1 / 1;
+  width: calc(100% / 3);
+}
+#loading .spinner-grow {
+  width: 100%;
+  height: 100%;
+
+  color: var(--overlay-fg);
+}

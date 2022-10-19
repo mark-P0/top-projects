@@ -19,7 +19,7 @@
 
   <body>
     <div class="p-3" id="app">
-      <div class="card shadow" id="main">
+      <div class="position-relative card shadow" id="main">
         <div class="card-body vstack justify-content-between p-4 pb-5">
           <div class="vstack flex-grow-0 gap-3">
             <div class="hstack justify-content-end gap-1" id="control">
@@ -32,6 +32,7 @@
           <div class="hstack gap-3" id="player-labels">
             <!-- To be populated via JS -->
           </div>
+
           <div id="ttt-grid">
             <!-- To be populated via JS -->
           </div>
@@ -42,6 +43,10 @@
           <em>Created by Mark</em>
           • <a href="https://mark-p0.github.io/">Website</a>
           • <a href="https://github.com/mark-P0/">GitHub</a>
+        </div>
+
+        <div class="position-absolute card invisible" id="loading">
+          <div><!-- To be populated via JS --></div>
         </div>
       </div>
 

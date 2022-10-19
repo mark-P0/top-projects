@@ -4,6 +4,7 @@ import Game, * as GameProperties from './core/game.js';
 import { GameEvents, PlayerEvents } from './dom/__events__.js';
 import './dom/control.js';
 import './dom/popup.js';
+import './dom/loading.js';
 import './dom/player-labels.js';
 import './dom/ttt-grid.js';
 import './dom/main.js';

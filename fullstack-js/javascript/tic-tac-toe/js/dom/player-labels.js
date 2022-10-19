@@ -50,12 +50,10 @@ const PlayerLabel = (player) => {
   })();
 
   const show = () => {
-    __element__.classList.add('visible');
     __element__.classList.remove('invisible');
   };
   const hide = () => {
     __element__.classList.add('invisible');
-    __element__.classList.remove('visible');
   };
 
   const highlightAsWinner = () => {
