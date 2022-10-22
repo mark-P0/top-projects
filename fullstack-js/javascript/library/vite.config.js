@@ -13,4 +13,8 @@ export default defineConfig({
     outDir: '../dist',
     emptyOutDir: true,
   },
+
+  /*  Make built `index.html` use adjacent `assets` folder as a relative path
+   */
+  base: './',
 });
