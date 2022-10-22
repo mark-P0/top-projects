@@ -1,10 +1,8 @@
 import { Book } from './book.js';
 import { Library } from './library.js';
 
-const addBookButton = document.querySelector('.modal .modal-footer button');
-const form = document.getElementById(
-  addBookButton.getAttribute('form')
-) as HTMLFormElement;
+const addBookButton = document.querySelector('.modal .modal-footer button')!;
+const form = document.getElementById('add-book-form') as HTMLFormElement;
 
 addBookButton.addEventListener('click', () => {
   const formIsValid = form.checkValidity();

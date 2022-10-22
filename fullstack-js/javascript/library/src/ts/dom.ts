@@ -14,10 +14,10 @@ const E = (
   return { element, attributes, content, children };
 };
 
-function buildElementTree(elementObj: E): Element {
+function buildElementTree(e: E): Element {
   /* `element` will be an actual HTML element, if it isn't already */
-  let { element } = elementObj;
-  const { attributes, content, children } = elementObj;
+  let { element } = e;
+  const { attributes, content, children } = e;
 
   if (typeof element === 'string') {
     /* Create actual element; at this point, `element` must be a tag name string */

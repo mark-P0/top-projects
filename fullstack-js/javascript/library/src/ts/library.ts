@@ -8,7 +8,7 @@ type Library = {
 };
 
 const Library: Library = {
-  __element__: document.querySelector('#shelves'),
+  __element__: document.querySelector('#shelves')!,
   get books() {
     return Array.from(this.__element__.children)
       .slice(1)
@@ -29,7 +29,9 @@ Library.__element__.addEventListener('click', (event) => {
   const bookObj = bookElement.__jsObj__ as Book;
   bookObj.toggleStatus();
 
-  const newAttrState: BookState = bookObj.isRead ? 'read' : 'unread';
+  const newAttrState: BookState = bookObj.isRead
+    ? BookState.READ
+    : BookState.UNREAD;
   target.dataset.state = newAttrState;
 });
 
