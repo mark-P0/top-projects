@@ -12,17 +12,19 @@ interface BookElement extends Element {
 class Book {
   __element__: BookElement;
 
-  title: string;
-  author: string | null;
-  pages: number | null;
-  isRead: boolean;
-
-  constructor(title: string, author: string, pages: number, isRead: boolean) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.isRead = isRead;
-
+  constructor(
+    /*  Parameter Properties
+     *  https://www.typescriptlang.org/docs/handbook/2/classes.html#parameter-properties
+     *
+     *  Arguments to the following parameters are automatically converted into
+     *  properties of the new object instance. Shorthand for manual `this` assignment, e.g.
+     *  `this.title = title`
+     */
+    public title: string,
+    public author: string,
+    public pages: number,
+    public isRead: boolean
+  ) {
     this.__element__ = (() => {
       /* prettier-ignore */
       const titleElement = E( 'h6', { class: 'card-title fw-semibold' }, this.title, null );

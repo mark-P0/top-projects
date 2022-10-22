@@ -13,6 +13,14 @@ const E = (
 ): E => {
   return { element, attributes, content, children };
 };
+// class E {
+//   constructor(
+//     public element: string | Element,
+//     public attributes: object | null,
+//     public content: string | null,
+//     public children: E[] | null
+//   ) {}
+// }
 
 function buildElementTree(e: E): Element {
   /* `element` will be an actual HTML element, if it isn't already */
