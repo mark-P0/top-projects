@@ -26,7 +26,7 @@ function minimax(game, perspective, depth = 0) {
     }
 
     depth += 1;
-    const isEvenDepth = depth % 2 === 0;
+    const isOddDepth = depth % 2 !== 0;
 
     /* Map each possible move index to a computed score */
     const stat = game.grid.blankCellIdcs.map((moveIdx) => {
@@ -34,17 +34,16 @@ function minimax(game, perspective, depth = 0) {
       const newGameState = game.clone;
 
       /*  Correct clone's reference of the current player.
-       *  At even tree depths (e.g. 0 [root], 2, 4),
-       *  the current player generated game states must be the given `perspective`.
-       *  Vice versa, at odd tree depths, it must be the other player.
+       *  At odd tree depths, the current player generated game states must be the given `perspective`.
+       *  Vice versa, at even tree depths, it must be the other player.
        *  If neither of this is true, cycle the player reference to correct it.
        *
        *  Can be simplified to a XOR operation, but that would seem to obfuscate the intention too much...
        */
       /* prettier-ignore */
       if (!(
-        ( isEvenDepth && game.currentPlayer.mark === perspective.mark) ||
-        (!isEvenDepth && game.currentPlayer.mark !== perspective.mark)
+        ( isOddDepth && newGameState.currentPlayer.mark === perspective.mark) ||
+        (!isOddDepth && newGameState.currentPlayer.mark !== perspective.mark)
       )) newGameState.nextPlayer;
 
       /* Actual setting of new game state */

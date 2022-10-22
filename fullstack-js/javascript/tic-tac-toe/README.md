@@ -2,6 +2,8 @@
 
 Play a game of tic-tac-toe, either with a friend, or with the computer!
 
----
+_Powered by [Bootstrap](https://getbootstrap.com/) & [Bootstrap Icons](https://icons.getbootstrap.com/)_
 
-Powered by [Bootstrap](https://getbootstrap.com/) & [Bootstrap Icons](https://icons.getbootstrap.com/).
+## Known Issues
+
+- [ ] Impossible-level AI does not perform the best [first] move
