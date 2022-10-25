@@ -1,0 +1,52 @@
+:root {
+  --bg-primary: #ffed63;
+  --bg-secondary: rgb(0 0 0);
+  --text-primary: rgb(0 0 0);
+  --text-secondary: rgb(255 255 255);
+}
+
+#main {
+  background-color: var(--bg-primary);
+}
+#main > div {
+  width: 24rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: rgb(0 0 0 / 50%); */
+}
+
+.btn-check + .btn::after {
+  /*  Workaround for bold text increasing the element size
+   *  https://stackoverflow.com/a/32570813
+   */
+  display: block;
+  content: attr(data-text);
+  font-weight: bold;
+  height: 0;
+  color: transparent;
+  overflow: hidden;
+  visibility: hidden;
+}
+.btn-check + .btn {
+  opacity: 66%;
+  border: none;
+}
+.btn-check:checked + .btn,
+.btn-check:hover + .btn,
+_ {
+  opacity: 100%;
+  font-weight: bold;
+  transition: 0.1s;
+}
+
+.btn-group[data-nav='home-nav'] ~ [data-nav='home-nav'],
+.btn-group[data-nav='menu-nav'] ~ [data-nav='menu-nav'],
+.btn-group[data-nav='contact-nav'] ~ [data-nav='contact-nav'],
+_ {
+  display: unset !important;
+}
+
+#home-nav {
+  background-color: red;
+}

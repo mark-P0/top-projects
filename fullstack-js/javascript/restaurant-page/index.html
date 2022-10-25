@@ -1,13 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+  <!-- prettier-ignore -->
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap, for reset and components -->
+    <link rel="stylesheet" href="./.exclude/extres/bootstrap@5.2.1/dist/css/bootstrap.min.css">
+    <script src="./.exclude/extres/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="./styles.css" />
+    <script defer type="module" src="./script.js"></script>
+
     <title>13th Shawarma</title>
   </head>
 
   <body>
-    Hello, world!
+    <div class="vh-100 d-flex justify-content-center pt-5" id="main">
+      <div>
+        <!-- prettier-ignore -->
+        <nav class="btn-group" role="group" aria-label="Content navigation" id="content-nav" data-nav>
+          <input type="radio" class="btn-check" name="content-nav" id="home-nav" autocomplete="off" checked />
+          <label class="btn" for="home-nav" data-text="Home">Home</label>
+
+          <input type="radio" class="btn-check" name="content-nav" id="menu-nav" autocomplete="off"  />
+          <label class="btn" for="menu-nav" data-text="Menu">Menu</label>
+
+          <input type="radio" class="btn-check" name="content-nav" id="contact-nav" autocomplete="off" />
+          <label class="btn" for="contact-nav" data-text="Contact">Contact</label>
+        </nav>
+
+        <div class="d-none" data-nav="home-nav">home-content</div>
+        <div class="d-none" data-nav="menu-nav">menu-content</div>
+        <div class="d-none" data-nav="contact-nav">contact-content</div>
+      </div>
+    </div>
   </body>
 </html>
