@@ -3,17 +3,26 @@
   --bg-secondary: rgb(0 0 0);
   --text-primary: rgb(0 0 0);
   --text-secondary: rgb(255 255 255);
+
+  --bs-primary-rgb: 255, 237, 99;
+  --bs-dark-rgb: 0, 0, 0;
 }
 
-#main {
-  background-color: var(--bg-primary);
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.flex-maximize {
+  display: flex;
+}
+.flex-maximize > * {
+  flex: 1;
+}
+
 #main > div {
   width: 24rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* background-color: rgb(0 0 0 / 50%); */
 }
 
 .btn-check + .btn::after {
@@ -29,7 +38,7 @@
   visibility: hidden;
 }
 .btn-check + .btn {
-  opacity: 66%;
+  opacity: calc(100% * calc(2 / 3));
   border: none;
 }
 .btn-check:checked + .btn,
@@ -47,6 +56,31 @@ _ {
   display: unset !important;
 }
 
-#home-nav {
-  background-color: red;
+.content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.content > * {
+  flex: 1;
+}
+
+[data-nav='home-nav'] .content .logo {
+  margin-top: -6rem;
+}
+[data-nav='home-nav'] .content .flex-maximize {
+  margin-top: -4rem;
+}
+[data-nav='home-nav'] .content .food-entry img {
+  width: 50%;
+}
+[data-nav='home-nav'] .content .food-entry > *:last-child::first-letter {
+  font-size: 2rem;
+}
+[data-nav='home-nav'] .content footer {
+  flex: unset;
+  height: 6rem;
+}
+[data-nav='home-nav'] .content footer p {
+  font-size: small;
 }
