@@ -1,0 +1,7 @@
+[data-nav='menu-nav'] .content .logo {
+  width: calc(100% / 3);
+}
+[data-nav='menu-nav'] .content .carousel {
+  min-width: 0;
+  min-height: 0;
+}

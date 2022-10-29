@@ -1,20 +1,7 @@
 import './styles.css';
 import { E } from '../__dom__.js';
 import Images from '../images.js';
-
-const Logo = (() => {
-  const attributes = { class: 'px-3 logo' };
-  const children = [
-    E('img', {
-      attributes: {
-        class: 'img-fluid',
-        src: Images.LOGO,
-      },
-    }),
-  ];
-
-  return E('div', { attributes, children });
-})();
+import Logo from '../logo.js';
 
 const FoodEntry = (name, image) => {
   const attributes = { class: 'vstack gap-2 align-items-center food-entry' };
