@@ -26,5 +26,11 @@
 }
 
 .font-stylized {
+  --font-size: 1.25rem;
+
   font-family: 'Aloja';
+  font-size: var(--font-size);
+}
+.font-stylized::first-letter {
+  font-size: calc(var(--font-size) * 1.75);
 }
