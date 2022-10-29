@@ -1,0 +1,22 @@
+:root {
+  --bg-primary: #ffed63;
+  --bg-secondary: rgb(0 0 0);
+  --text-primary: rgb(0 0 0);
+  --text-secondary: rgb(255 255 255);
+
+  --bs-primary-rgb: 255, 237, 99;
+  --bs-dark-rgb: 0, 0, 0;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-maximize {
+  display: flex;
+}
+.flex-maximize > * {
+  flex: 1;
+}

@@ -1,0 +1,14 @@
+#main > div {
+  width: 24rem;
+  z-index: 1000;
+}
+
+/*  Set this in JS?
+ *  CSS-in-JS?
+ */
+.btn-group[data-nav='home-nav'] ~ [data-nav='home-nav'],
+.btn-group[data-nav='menu-nav'] ~ [data-nav='menu-nav'],
+.btn-group[data-nav='contact-nav'] ~ [data-nav='contact-nav'],
+_ {
+  display: unset !important;
+}

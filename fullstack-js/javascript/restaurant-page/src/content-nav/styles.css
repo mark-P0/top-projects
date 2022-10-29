@@ -1,0 +1,27 @@
+.btn-group {
+  z-index: 2000;
+}
+
+.btn-check + .btn::after {
+  /*  Workaround for bold text increasing the element size
+   *  https://stackoverflow.com/a/32570813
+   */
+  display: block;
+  content: attr(data-text);
+  font-weight: bold;
+  height: 0;
+  color: transparent;
+  overflow: hidden;
+  visibility: hidden;
+}
+.btn-check + .btn {
+  opacity: calc(100% * calc(2 / 3));
+  border: none;
+}
+.btn-check:checked + .btn,
+.btn-check:hover + .btn,
+_ {
+  opacity: 100%;
+  font-weight: bold;
+  transition: 0.1s;
+}
