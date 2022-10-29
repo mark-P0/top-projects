@@ -1,0 +1,36 @@
+/*  Font sources
+ *
+ *  https://www.cdnfonts.com/din-1451-std.font
+ *  https://www.cdnfonts.com/tgl-0-1451-engschrift.font
+ *
+ *  https://www.behance.net/gallery/64965959/Aloja-Free-Handwritten-Font
+ *  https://wildpicks.design/product/aloja-free-handwritting-font/
+ */
+
+@import url('https://fonts.cdnfonts.com/css/din-1451-std');
+@import url('https://fonts.cdnfonts.com/css/tgl-0-1451-engschrift');
+@font-face {
+  font-family: 'Aloja';
+  src: url('../assets/Aloja-Light.woff');
+}
+
+.font-regular {
+  font-family: 'DIN 1451 Std';
+}
+
+.font-condensed {
+  font-family: 'TGL 0-1451 Engschrift';
+  line-height: 100%;
+  letter-spacing: 0.5px;
+  font-size: 1.1rem;
+}
+
+.font-stylized {
+  --font-size: 1.25rem;
+
+  font-family: 'Aloja';
+  font-size: var(--font-size);
+}
+.font-stylized::first-letter {
+  font-size: calc(var(--font-size) * 1.75);
+}

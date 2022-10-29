@@ -9,6 +9,7 @@
 import './styles.css';
 import { E, buildElementTree } from '../__dom__.js';
 import ContentNav from '../content-nav';
+import Home from '../home';
 
 const navData = ['Home', 'Menu', 'Contact'].map((text) => ({
   text,
@@ -18,7 +19,7 @@ const navData = ['Home', 'Menu', 'Contact'].map((text) => ({
 const __inner__ = (() => {
   const attributes = { class: 'flex-center flex-column' };
 
-  const dummyContent = navData.map(({ id }) => {
+  const dummyContent = navData.slice(1).map(({ id }) => {
     const attributes = {
       class: 'd-none h-100',
       'data-nav': id,
@@ -28,6 +29,7 @@ const __inner__ = (() => {
   /* prettier-ignore */
   const children = [
     E(ContentNav(navData)),
+    Home,
     ...dummyContent,
   ];
 

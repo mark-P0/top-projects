@@ -1,0 +1,19 @@
+[data-nav='home-nav'] .content .logo {
+  margin-top: -6rem;
+}
+[data-nav='home-nav'] .content .flex-maximize {
+  margin-top: -3rem;
+}
+[data-nav='home-nav'] .content .food-entry img {
+  width: 50%;
+}
+[data-nav='home-nav'] .content .food-entry > *:last-child::first-letter {
+  font-size: 2rem;
+}
+[data-nav='home-nav'] .content footer {
+  flex: unset;
+  height: 6rem;
+}
+[data-nav='home-nav'] .content footer p {
+  font-size: small;
+}
