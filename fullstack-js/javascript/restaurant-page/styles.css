@@ -23,6 +23,10 @@
 
 #main > div {
   width: 24rem;
+  z-index: 1000;
+}
+.btn-group {
+  z-index: 2000;
 }
 
 .btn-check + .btn::after {
