@@ -52,4 +52,12 @@ export default {
       },
     ],
   },
+
+  /* `import` shorthands */
+  resolve: {
+    alias: {
+      res: path.resolve(process.cwd(), 'res'), // Resource files
+      src: path.resolve(process.cwd(), 'src'), // Source code files
+    },
+  },
 };

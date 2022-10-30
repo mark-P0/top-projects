@@ -1,14 +1,14 @@
 import './styles.css';
-import { E } from '../../__dom__.js';
-import Logo from '../Logo';
-import Images from '../../images';
+import { E } from 'src/__dom__.js';
+import Logo from 'src/components/Logo';
+import images from 'res/images';
 
 const CAROUSEL_INTERVAL_MS = 3000;
 const CAROUSEL_ACTIVE_IDX = 1;
 const CAROUSEL_DATA = [
-  { label: 'Shawarma rice bowl selection', image: Images.BOWL_MENU },
-  { label: 'Shawarma pita doner selection', image: Images.DONER_MENU },
-  { label: 'Shawarma rice box selection', image: Images.BOX_MENU },
+  { label: 'Shawarma rice bowl selection', image: images.BOWL_MENU },
+  { label: 'Shawarma pita doner selection', image: images.DONER_MENU },
+  { label: 'Shawarma rice box selection', image: images.BOX_MENU },
 ];
 
 const CarouselIndicatorButton = (label, idx, target) => {

@@ -1,11 +1,11 @@
-import { E } from '../__dom__.js';
-import Images from '../images.js';
+import { E } from 'src/__dom__.js';
+import images from 'res/images.js';
 
 const Logo = (() => {
   const attributes = { class: 'px-3 logo' };
 
   const img = E('img', {
-    attributes: { class: 'img-fluid', src: Images.LOGO },
+    attributes: { class: 'img-fluid', src: images.LOGO },
   });
   const children = [img];
 

@@ -1,7 +1,7 @@
 import './styles.css';
-import { E } from '../../__dom__.js';
-import Images from '../../images.js';
-import Logo from '../Logo';
+import { E } from 'src/__dom__.js';
+import Logo from 'src/components/Logo';
+import images from 'res/images.js';
 
 const FoodEntry = (name, image) => {
   const attributes = { class: 'vstack gap-2 align-items-center food-entry' };
@@ -20,9 +20,9 @@ const FoodEntry = (name, image) => {
 const FoodEntries = (() => {
   const attributes = { class: 'flex-maximize text-center user-select-none' };
   const children = [
-    FoodEntry('Bowl', Images.BOWL_ICON),
-    FoodEntry('Doner', Images.DONER_ICON),
-    FoodEntry('Box', Images.BOX_ICON),
+    FoodEntry('Bowl', images.BOWL_ICON),
+    FoodEntry('Doner', images.DONER_ICON),
+    FoodEntry('Box', images.BOX_ICON),
   ];
 
   return E('div', { attributes, children });
