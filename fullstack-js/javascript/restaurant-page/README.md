@@ -1,4 +1,4 @@
-# Restaurant Page
+# [Restaurant Page](https://mark-p0.github.io/top-projects/fullstack-js/javascript/restaurant-page)
 
 A single-page website for my favorite local food shop
 
