@@ -1,7 +1,7 @@
 import './styles.css';
-import { E } from '../__dom__.js';
-import Logo from '../logo.js';
-import Images from '../images';
+import { E } from '../../__dom__.js';
+import Logo from '../Logo';
+import Images from '../../images';
 
 const CAROUSEL_INTERVAL_MS = 3000;
 const CAROUSEL_ACTIVE_IDX = 1;

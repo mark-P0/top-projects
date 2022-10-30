@@ -1,7 +1,7 @@
 import './styles.css';
-import { E } from '../__dom__.js';
-import Images from '../images.js';
-import Logo from '../logo.js';
+import { E } from '../../__dom__.js';
+import Images from '../../images.js';
+import Logo from '../Logo';
 
 const FoodEntry = (name, image) => {
   const attributes = { class: 'vstack gap-2 align-items-center food-entry' };

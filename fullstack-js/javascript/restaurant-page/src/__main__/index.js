@@ -8,10 +8,10 @@
 
 import './styles.css';
 import { E, buildElementTree } from '../__dom__.js';
-import ContentNav from '../content-nav';
-import Home from '../home';
-import Menu from '../menu';
-import Contact from '../contact';
+import ContentNav from '../components/ContentNav';
+import Home from '../components/Home';
+import Menu from '../components/Menu';
+import Contact from '../components/Contact';
 
 const navData = ['Home', 'Menu', 'Contact'].map((text) => ({
   text,

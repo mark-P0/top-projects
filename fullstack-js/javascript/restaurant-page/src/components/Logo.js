@@ -1,5 +1,5 @@
-import { E } from './__dom__.js';
-import Images from './images.js';
+import { E } from '../__dom__.js';
+import Images from '../images.js';
 
 const Logo = (() => {
   const attributes = { class: 'px-3 logo' };

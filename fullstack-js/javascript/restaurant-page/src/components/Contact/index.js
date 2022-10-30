@@ -1,6 +1,6 @@
 import './styles.css';
-import { E } from '../__dom__.js';
-import Logo from '../logo.js';
+import { E } from '../../__dom__.js';
+import Logo from '../Logo';
 
 const ContactSectionText = (cls, content) => {
   const options = { attributes: { class: cls } };

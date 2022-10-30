@@ -12,7 +12,7 @@
  */
 
 import './styles.css';
-import { E, buildElementTree } from '../__dom__.js';
+import { E, buildElementTree } from '../../__dom__.js';
 
 const NavButtonLink = (text, id, groupName, isDefault = false) => {
   const input = (() => {
