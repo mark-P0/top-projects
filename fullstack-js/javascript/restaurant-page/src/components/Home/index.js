@@ -2,6 +2,7 @@ import './styles.css';
 import { E } from 'src/__dom__.js';
 import Logo from 'src/components/Logo';
 import images from 'res/images.js';
+import strings, { decode } from 'res/strings.js';
 
 const FoodEntry = (name, image) => {
   const attributes = { class: 'vstack gap-2 align-items-center food-entry' };
@@ -20,9 +21,9 @@ const FoodEntry = (name, image) => {
 const FoodEntries = (() => {
   const attributes = { class: 'flex-maximize text-center user-select-none' };
   const children = [
-    FoodEntry('Bowl', images.BOWL_ICON),
-    FoodEntry('Doner', images.DONER_ICON),
-    FoodEntry('Box', images.BOX_ICON),
+    FoodEntry(decode(strings.ITEMS[0]), images.BOWL_ICON),
+    FoodEntry(decode(strings.ITEMS[1]), images.DONER_ICON),
+    FoodEntry(decode(strings.ITEMS[2]), images.BOX_ICON),
   ];
 
   return E('div', { attributes, children });
@@ -42,8 +43,7 @@ const Footer = (() => {
     const attributes = {
       class: 'position-absolute h-100 text-white flex-center text-center',
     };
-    const content =
-      '13th Shawarma is a small local food business established by a young couple aspiring to become entrepreneurs.';
+    const content = decode(strings.DESCRIPTION);
 
     return E('p', { attributes, content });
   })();

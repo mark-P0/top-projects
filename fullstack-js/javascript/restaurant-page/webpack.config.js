@@ -7,6 +7,8 @@ import path from 'node:path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
+import strings, { decode } from './res/strings.js';
+
 export default {
   /* Essentials */
   entry: './src/index.js',
@@ -28,7 +30,7 @@ export default {
 
   /* Plugins | Modules | Loaders */
   plugins: [
-    new HtmlWebpackPlugin({ title: '13th Shawarma' }),
+    new HtmlWebpackPlugin({ title: decode(strings.PAGE_TITLE) }),
     new MiniCssExtractPlugin(),
   ],
   module: {

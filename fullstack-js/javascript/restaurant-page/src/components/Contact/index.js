@@ -1,6 +1,7 @@
 import './styles.css';
 import { E } from 'src/__dom__.js';
 import Logo from 'src/components/Logo';
+import strings, { decode } from 'res/strings';
 
 const ContactSectionText = (cls, content) => {
   const options = { attributes: { class: cls } };
@@ -28,29 +29,35 @@ const ContactDetails = (() => {
     class: 'vstack justify-content-center',
   };
 
-  const hours = ContactSection('Hours', 'Mondays to Fridays', '1pm — 7pm');
-  const address = ContactSection(
-    'Address',
-    /* cspell:disable */
-    [
-      E('span', { content: 'B49 L28, CHRV Ph. 2,' }),
-      E('br'),
-      E('span', { content: 'Langkaan II, Dasmariñas' }),
-    ],
-    [
-      E('span', { content: 'Beside ' }),
-      E('span', {
-        content: 'Redy Hardware',
-        attributes: { class: 'fw-bold text-uppercase' },
-      }),
-    ]
-    /* cspell:enable */
-  );
+  const hours = (() => {
+    const text = strings.TIME.map(decode);
+    return ContactSection(...text);
+  })();
+  const address = (() => {
+    const text = strings.LOCATION.map(decode);
+    return ContactSection(
+      text[0],
+      /* cspell:disable */
+      [
+        E('span', { content: text[1] }),
+        E('br'),
+        E('span', { content: text[2] }),
+      ],
+      [
+        E('span', { content: text[3] }),
+        E('span', {
+          content: text[4],
+          attributes: { class: 'fw-bold text-uppercase' },
+        }),
+      ]
+      /* cspell:enable */
+    );
+  })();
   const socials = ContactSection('Social', null, [
     E('a', {
       attributes: {
         class: 'bi bi-facebook link-dark',
-        href: 'https://facebook.com/13thShawarma',
+        href: decode(strings.LINK),
       },
     }),
   ]);
