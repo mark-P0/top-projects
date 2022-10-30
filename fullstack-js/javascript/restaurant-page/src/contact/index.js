@@ -25,7 +25,7 @@ const ContactSection = (header, subheader, text) => {
 const ContactDetails = (() => {
   const attributes = {
     id: 'contact-details',
-    class: 'vstack justify-content-center mx-5',
+    class: 'vstack justify-content-center',
   };
 
   const hours = ContactSection('Hours', 'Mondays to Fridays', '1pm — 7pm');
