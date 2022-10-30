@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "A single-page website for my favorite local food shop",
   "private": "true",
+  "type": "module",
   "scripts": {
     "dev": "webpack serve --mode=development",
     "build": "webpack --mode=production",
