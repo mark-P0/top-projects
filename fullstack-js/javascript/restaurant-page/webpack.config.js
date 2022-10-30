@@ -14,6 +14,7 @@ module.exports = {
   /* Development Server */
   devServer: {
     static: './dist',
+    host: '0.0.0.0',
   },
 
   /* Plugins | Modules | Loaders */
