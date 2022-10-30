@@ -1,0 +1,41 @@
+[data-nav='contact-nav'] .content {
+  flex-direction: row;
+}
+[data-nav='contact-nav'] .content .vstack {
+  min-width: max-content;
+  gap: 1.5rem;
+}
+[data-nav='contact-nav'] .content .vstack .font-stylized {
+  --font-size: 1.75rem;
+}
+[data-nav='contact-nav'] .content .vstack .font-condensed br {
+  display: none;
+}
+[data-nav='contact-nav'] .content .vstack .font-regular span {
+  font-size: smaller;
+  letter-spacing: 0.5px;
+}
+[data-nav='contact-nav'] .content .vstack a::after {
+  content: attr(href);
+  margin-left: 0.75rem;
+  font-size: smaller;
+}
+@media (max-width: 720px) {
+  [data-nav='contact-nav'] .content {
+    flex-direction: column;
+  }
+  [data-nav='contact-nav'] .content .logo {
+    display: none;
+  }
+  [data-nav='contact-nav'] .content .vstack {
+    align-self: unset;
+    min-width: unset;
+    gap: 3rem;
+  }
+  [data-nav='contact-nav'] .content .vstack .font-condensed br {
+    display: unset;
+  }
+  [data-nav='contact-nav'] .content .vstack a {
+    font-size: smaller;
+  }
+}
