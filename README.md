@@ -27,6 +27,7 @@ This is a collection of my project solutions throughout _[The Odin Project](http
 2. [Tic-Tac-Toe](./fullstack-js/javascript/tic-tac-toe/)
 3. [Restaurant Page](./fullstack-js/javascript/restaurant-page/)
 4. [Todo List](./fullstack-js/javascript/todo/)
+5. [Weather App](./fullstack-js/javascript/weather/)
 
 ##### Computer Science
 
