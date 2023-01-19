@@ -1,0 +1,19 @@
+{
+  "name": "testing-practice",
+  "version": "0.0.1",
+  "description": "Practice with testing JavaScript development using Jest",
+  "author": "Mark",
+  "license": "AGPL-3.0-or-later",
+  "private": "true",
+  "type": "module",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "devDependencies": {
+    "@babel/core": "^7.20.12",
+    "@babel/preset-env": "^7.20.2",
+    "babel-jest": "^29.3.1",
+    "jest": "^29.3.1"
+  }
+}
