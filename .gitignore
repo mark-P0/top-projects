@@ -1,2 +1,4 @@
 ## Other miscellaneous files used locally are stored here
-.exclude
+.exclude/
+
+node_modules/
