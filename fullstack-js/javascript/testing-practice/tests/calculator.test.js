@@ -169,3 +169,83 @@ describe('Behavior of `subtract` operation', () => {
     expect(calculator.subtract(-1.1, 2.2, -3.3)).toBeCloseTo(-3.3);
   });
 });
+
+describe('Behavior of `multiply` operation', () => {
+  test('Multiplies 2 numbers', () => {
+    expect(calculator.multiply(-1, -2)).toBe(2);
+    expect(calculator.multiply(0, 0)).toBe(0);
+    expect(calculator.multiply(1, 2)).toBe(2);
+    expect(calculator.multiply(1, -2)).toBe(-2);
+    expect(calculator.multiply(-1, 2)).toBe(-2);
+    expect(calculator.multiply(-1.1, -2.2)).toBeCloseTo(2.42);
+    expect(calculator.multiply(0.3, 0.4)).toBeCloseTo(0.12);
+    expect(calculator.multiply(1.5, 2.6)).toBeCloseTo(3.9);
+  });
+
+  describe('Only accepts numbers', () => {
+    test('Accepts integers', () => {
+      expect(() => calculator.multiply(-123, -123)).not.toThrow();
+      expect(() => calculator.multiply(0, 0)).not.toThrow();
+      expect(() => calculator.multiply(123, 123)).not.toThrow();
+      expect(() => calculator.multiply(123, -123)).not.toThrow();
+      expect(() => calculator.multiply(-123, 123)).not.toThrow();
+    });
+
+    test('Accepts floats', () => {
+      expect(() => calculator.multiply(-123.456, -123.456)).not.toThrow();
+      expect(() => calculator.multiply(0.0, 0.0)).not.toThrow();
+      expect(() => calculator.multiply(123.456, 123.456)).not.toThrow();
+      expect(() => calculator.multiply(-123.456, 123.456)).not.toThrow();
+      expect(() => calculator.multiply(123.456, -123.456)).not.toThrow();
+    });
+
+    test('Does not accept strings', () => {
+      expect(() => calculator.multiply('string', 'another string')).toThrow();
+    });
+
+    test('Does not accept booleans', () => {
+      expect(() => calculator.multiply(true, false)).toThrow();
+      expect(() => calculator.multiply(false, true)).toThrow();
+    });
+
+    test('Does not accept nullish values', () => {
+      expect(() => calculator.multiply(null, undefined)).toThrow();
+      expect(() => calculator.multiply(undefined, null)).toThrow();
+      expect(() => calculator.multiply()).toThrow(); // Arguments defaults to `undefined`
+    });
+
+    test('Does not accept arrays', () => {
+      expect(() => calculator.multiply([], [])).toThrow();
+      expect(() => calculator.multiply(['', 0], [false, null])).toThrow();
+    });
+
+    test('Does not accept objects', () => {
+      expect(() => calculator.multiply({})).toThrow();
+      expect(() =>
+        calculator.multiply({ length: 0 }, { null: undefined })
+      ).toThrow();
+    });
+  });
+
+  test('Must provide 2 numbers', () => {
+    expect(() => calculator.multiply(-1)).toThrow();
+    expect(() => calculator.multiply(0)).toThrow();
+    expect(() => calculator.multiply(1)).toThrow();
+    expect(() => calculator.multiply(-1.1)).toThrow();
+    expect(() => calculator.multiply(0.2)).toThrow();
+    expect(() => calculator.multiply(1.3)).toThrow();
+  });
+
+  test('Only considers 2 numbers', () => {
+    expect(calculator.multiply(-1, -2, -3)).toBe(2);
+    expect(calculator.multiply(0, 0, 0)).toBe(0);
+    expect(calculator.multiply(1, 2, 3)).toBe(2);
+    expect(calculator.multiply(1, -2, 3)).toBe(-2);
+    expect(calculator.multiply(-1, 2, -3)).toBe(-2);
+    expect(calculator.multiply(-1.1, -2.2, -3.3)).toBeCloseTo(2.42);
+    expect(calculator.multiply(0.1, 0.2, 0.3)).toBeCloseTo(0.02);
+    expect(calculator.multiply(1.1, 2.2, 3.3)).toBeCloseTo(2.42);
+    expect(calculator.multiply(1.1, -2.2, 3.3)).toBeCloseTo(-2.42);
+    expect(calculator.multiply(-1.1, 2.2, -3.3)).toBeCloseTo(-2.42);
+  });
+});
