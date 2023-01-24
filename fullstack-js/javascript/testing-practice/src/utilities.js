@@ -10,3 +10,12 @@ export function isString(str) {
 export function isNumber(num) {
   return Number.isFinite(num);
 }
+
+/**
+ * `%` operation in JS is "remainder", and does not work for negative numbers.
+ * For that, it must be "modulo", and this is MDN's endorsed implementation.
+ * @type {(n: number, d: number) => number}
+ */
+export function modulo(n, d) {
+  return ((n % d) + d) % d;
+}
