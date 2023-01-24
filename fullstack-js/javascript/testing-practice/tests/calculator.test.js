@@ -89,3 +89,83 @@ describe('Behavior of `add` operation', () => {
     expect(calculator.add(-1.1, 2.2, -3.3)).toBeCloseTo(1.1);
   });
 });
+
+describe('Behavior of `subtract` operation', () => {
+  test('Subtracts 2 numbers', () => {
+    expect(calculator.subtract(-1, -2)).toBe(1);
+    expect(calculator.subtract(0, 0)).toBe(0);
+    expect(calculator.subtract(1, 2)).toBe(-1);
+    expect(calculator.subtract(1, -2)).toBe(3);
+    expect(calculator.subtract(-1, 2)).toBe(-3);
+    expect(calculator.subtract(-1.1, -2.2)).toBeCloseTo(1.1);
+    expect(calculator.subtract(0.3, 0.4)).toBeCloseTo(-0.1);
+    expect(calculator.subtract(1.5, 2.6)).toBeCloseTo(-1.1);
+  });
+
+  describe('Only accepts numbers', () => {
+    test('Accepts integers', () => {
+      expect(() => calculator.subtract(-123, -123)).not.toThrow();
+      expect(() => calculator.subtract(0, 0)).not.toThrow();
+      expect(() => calculator.subtract(123, 123)).not.toThrow();
+      expect(() => calculator.subtract(123, -123)).not.toThrow();
+      expect(() => calculator.subtract(-123, 123)).not.toThrow();
+    });
+
+    test('Accepts floats', () => {
+      expect(() => calculator.subtract(-123.456, -123.456)).not.toThrow();
+      expect(() => calculator.subtract(0.0, 0.0)).not.toThrow();
+      expect(() => calculator.subtract(123.456, 123.456)).not.toThrow();
+      expect(() => calculator.subtract(-123.456, 123.456)).not.toThrow();
+      expect(() => calculator.subtract(123.456, -123.456)).not.toThrow();
+    });
+
+    test('Does not accept strings', () => {
+      expect(() => calculator.subtract('string', 'another string')).toThrow();
+    });
+
+    test('Does not accept booleans', () => {
+      expect(() => calculator.subtract(true, false)).toThrow();
+      expect(() => calculator.subtract(false, true)).toThrow();
+    });
+
+    test('Does not accept nullish values', () => {
+      expect(() => calculator.subtract(null, undefined)).toThrow();
+      expect(() => calculator.subtract(undefined, null)).toThrow();
+      expect(() => calculator.subtract()).toThrow(); // Arguments defaults to `undefined`
+    });
+
+    test('Does not accept arrays', () => {
+      expect(() => calculator.subtract([], [])).toThrow();
+      expect(() => calculator.subtract(['', 0], [false, null])).toThrow();
+    });
+
+    test('Does not accept objects', () => {
+      expect(() => calculator.subtract({})).toThrow();
+      expect(() =>
+        calculator.subtract({ length: 0 }, { null: undefined })
+      ).toThrow();
+    });
+  });
+
+  test('Must provide 2 numbers', () => {
+    expect(() => calculator.subtract(-1)).toThrow();
+    expect(() => calculator.subtract(0)).toThrow();
+    expect(() => calculator.subtract(1)).toThrow();
+    expect(() => calculator.subtract(-1.1)).toThrow();
+    expect(() => calculator.subtract(0.2)).toThrow();
+    expect(() => calculator.subtract(1.3)).toThrow();
+  });
+
+  test('Only considers 2 numbers', () => {
+    expect(calculator.subtract(-1, -2, -3)).toBe(1);
+    expect(calculator.subtract(0, 0, 0)).toBe(0);
+    expect(calculator.subtract(1, 2, 3)).toBe(-1);
+    expect(calculator.subtract(1, -2, 3)).toBe(3);
+    expect(calculator.subtract(-1, 2, -3)).toBe(-3);
+    expect(calculator.subtract(-1.1, -2.2, -3.3)).toBeCloseTo(1.1);
+    expect(calculator.subtract(0.1, 0.2, 0.3)).toBeCloseTo(-0.1);
+    expect(calculator.subtract(1.1, 2.2, 3.3)).toBeCloseTo(-1.1);
+    expect(calculator.subtract(1.1, -2.2, 3.3)).toBeCloseTo(3.3);
+    expect(calculator.subtract(-1.1, 2.2, -3.3)).toBeCloseTo(-3.3);
+  });
+});
