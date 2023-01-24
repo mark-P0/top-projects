@@ -30,7 +30,7 @@ describe('Behavior of `add` operation', () => {
       expect(() => calculator.add(123.456, 123.456)).not.toThrow();
     });
 
-    test('Does not accepts strings', () => {
+    test('Does not accept strings', () => {
       expect(() => calculator.add('string', 'another string')).toThrow();
     });
 
