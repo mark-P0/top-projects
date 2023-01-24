@@ -15,6 +15,8 @@ describe('Behavior of `add` operation', () => {
     expect(calculator.add(-1, -2)).toBe(-3);
     expect(calculator.add(0, 0)).toBe(0);
     expect(calculator.add(1, 2)).toBe(3);
+    expect(calculator.add(1, -2)).toBe(-1);
+    expect(calculator.add(-1, 2)).toBe(1);
     expect(calculator.add(-1.1, -2.2)).toBeCloseTo(-3.3);
     expect(calculator.add(0.3, 0.4)).toBeCloseTo(0.7);
     expect(calculator.add(1.5, 2.6)).toBeCloseTo(4.1);
@@ -25,12 +27,16 @@ describe('Behavior of `add` operation', () => {
       expect(() => calculator.add(-123, -123)).not.toThrow();
       expect(() => calculator.add(0, 0)).not.toThrow();
       expect(() => calculator.add(123, 123)).not.toThrow();
+      expect(() => calculator.add(123, -123)).not.toThrow();
+      expect(() => calculator.add(-123, 123)).not.toThrow();
     });
 
     test('Accepts floats', () => {
       expect(() => calculator.add(-123.456, -123.456)).not.toThrow();
       expect(() => calculator.add(0.0, 0.0)).not.toThrow();
       expect(() => calculator.add(123.456, 123.456)).not.toThrow();
+      expect(() => calculator.add(-123.456, 123.456)).not.toThrow();
+      expect(() => calculator.add(123.456, -123.456)).not.toThrow();
     });
 
     test('Does not accept strings', () => {
@@ -74,8 +80,12 @@ describe('Behavior of `add` operation', () => {
     expect(calculator.add(-1, -2, -3)).toBe(-3);
     expect(calculator.add(0, 0, 0)).toBe(0);
     expect(calculator.add(1, 2, 3)).toBe(3);
+    expect(calculator.add(1, -2, 3)).toBe(-1);
+    expect(calculator.add(-1, 2, -3)).toBe(1);
     expect(calculator.add(-1.1, -2.2, -3.3)).toBeCloseTo(-3.3);
     expect(calculator.add(0.1, 0.2, 0.3)).toBeCloseTo(0.3);
     expect(calculator.add(1.1, 2.2, 3.3)).toBeCloseTo(3.3);
+    expect(calculator.add(1.1, -2.2, 3.3)).toBeCloseTo(-1.1);
+    expect(calculator.add(-1.1, 2.2, -3.3)).toBeCloseTo(1.1);
   });
 });
