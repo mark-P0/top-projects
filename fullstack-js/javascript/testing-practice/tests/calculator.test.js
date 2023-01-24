@@ -15,6 +15,9 @@ describe('Behavior of `add` operation', () => {
     expect(calculator.add(-1, -2)).toBe(-3);
     expect(calculator.add(0, 0)).toBe(0);
     expect(calculator.add(1, 2)).toBe(3);
+    expect(calculator.add(-1.1, -2.2)).toBeCloseTo(-3.3);
+    expect(calculator.add(0.3, 0.4)).toBeCloseTo(0.7);
+    expect(calculator.add(1.5, 2.6)).toBeCloseTo(4.1);
   });
 
   describe('Only accepts numbers', () => {
