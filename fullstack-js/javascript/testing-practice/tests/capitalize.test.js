@@ -14,7 +14,7 @@ describe('Data types', () => {
 
   test('Does not accept floats', () => {
     expect(() => capitalize(-123.456)).toThrow();
-    expect(() => capitalize(0.0)).toThrow();
+    expect(() => capitalize(0.1)).toThrow();
     expect(() => capitalize(123.456)).toThrow();
   });
 

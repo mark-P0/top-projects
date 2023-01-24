@@ -33,7 +33,7 @@ describe('Behavior of `add` operation', () => {
 
     test('Accepts floats', () => {
       expect(() => calculator.add(-123.456, -123.456)).not.toThrow();
-      expect(() => calculator.add(0.0, 0.0)).not.toThrow();
+      expect(() => calculator.add(0.123, 0.456)).not.toThrow();
       expect(() => calculator.add(123.456, 123.456)).not.toThrow();
       expect(() => calculator.add(-123.456, 123.456)).not.toThrow();
       expect(() => calculator.add(123.456, -123.456)).not.toThrow();
@@ -113,7 +113,7 @@ describe('Behavior of `subtract` operation', () => {
 
     test('Accepts floats', () => {
       expect(() => calculator.subtract(-123.456, -123.456)).not.toThrow();
-      expect(() => calculator.subtract(0.0, 0.0)).not.toThrow();
+      expect(() => calculator.subtract(0.123, 0.456)).not.toThrow();
       expect(() => calculator.subtract(123.456, 123.456)).not.toThrow();
       expect(() => calculator.subtract(-123.456, 123.456)).not.toThrow();
       expect(() => calculator.subtract(123.456, -123.456)).not.toThrow();
@@ -193,7 +193,7 @@ describe('Behavior of `multiply` operation', () => {
 
     test('Accepts floats', () => {
       expect(() => calculator.multiply(-123.456, -123.456)).not.toThrow();
-      expect(() => calculator.multiply(0.0, 0.0)).not.toThrow();
+      expect(() => calculator.multiply(0.123, 0.456)).not.toThrow();
       expect(() => calculator.multiply(123.456, 123.456)).not.toThrow();
       expect(() => calculator.multiply(-123.456, 123.456)).not.toThrow();
       expect(() => calculator.multiply(123.456, -123.456)).not.toThrow();
@@ -300,7 +300,7 @@ describe('Behavior of `divide` operation', () => {
 
     test('Accepts floats', () => {
       expect(() => calculator.divide(-123.456, -123.456)).not.toThrow();
-      expect(() => calculator.divide(0.0, 0.0)).not.toThrow();
+      expect(() => calculator.divide(0.123, 0.456)).not.toThrow();
       expect(() => calculator.divide(123.456, 123.456)).not.toThrow();
       expect(() => calculator.divide(-123.456, 123.456)).not.toThrow();
       expect(() => calculator.divide(123.456, -123.456)).not.toThrow();

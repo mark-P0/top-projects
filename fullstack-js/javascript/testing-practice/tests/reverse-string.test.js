@@ -18,7 +18,7 @@ describe('Data types', () => {
 
   test('Does not accept floats', () => {
     expect(() => reverseString(-123.456)).toThrow();
-    expect(() => reverseString(0.0)).toThrow();
+    expect(() => reverseString(0.1)).toThrow();
     expect(() => reverseString(123.456)).toThrow();
   });
 
