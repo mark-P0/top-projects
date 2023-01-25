@@ -38,6 +38,10 @@ This is a collection of my project solutions throughout _[The Odin Project](http
 3. [Binary Search Trees](./fullstack-js/javascript/binary-search-trees/)
 4. [Knights Travails](./fullstack-js/javascript/knights-travails/)
 
+##### Testing JavaScript
+
+1. [Testing Practice](./fullstack-js/javascript/testing-practice/)
+
 #### NodeJS
 
 1. [Basic Informational Site](./fullstack-js/node-js/basic-informational-site/)
