@@ -57,8 +57,11 @@ tests/
 
 ### Run tests with Jest
 
-Jest automatically picks /up all tests in `tests/`
+Jest automatically picks up all tests in `tests/`
 
 ```sh
 npx jest  # Or call within an NPM script
+
+# Or automatically run tests on every change
+npx jest --watch
 ```
