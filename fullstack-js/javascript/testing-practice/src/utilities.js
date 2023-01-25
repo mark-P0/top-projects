@@ -8,7 +8,7 @@ export function isString(str) {
 
 /** @type {(num: number) => boolean} */
 export function isNumber(num) {
-  return Number.isFinite(num);
+  return typeof num === 'number' || num instanceof Number;
 }
 
 /**
