@@ -1,5 +1,5 @@
 export class ShipInvalidLengthError extends Error {
-  name = 'InvalidShipLengthError';
+  name = 'ShipInvalidLengthError';
 }
 export class ShipTooSmallError extends Error {
   name = 'ShipTooSmallError';
