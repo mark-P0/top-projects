@@ -12,13 +12,14 @@ export class Ship {
   static minLength = 2;
   static maxLength = 5;
 
+  length: number;
   #hitCt: number;
 
   /**
    * Ship sizes range from 2 to 5
    * (https://en.wikipedia.org/wiki/Battleship_(game))
    */
-  constructor(public length: number) {
+  constructor(length: number) {
     const { minLength, maxLength } = Ship;
     if (!Number.isInteger(length))
       throw new InvalidShipLengthError(
