@@ -4,7 +4,7 @@ import {
   ShipTooSmallError,
   ShipTooLargeError,
   InvalidShipLengthError,
-} from './ship.js';
+} from './ship';
 import { range, randomInt } from '../utilities.js';
 
 describe('Class Signature', () => {
