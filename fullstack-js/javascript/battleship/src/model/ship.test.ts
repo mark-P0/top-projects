@@ -56,10 +56,10 @@ describe('Instance Signature', () => {
 
   test('Has expected properties', () => {
     expect(ship.length).toBe(length); // Mirrors given length
+    expect(typeof ship.isSunk).toBe('boolean');
   });
   test('Has expected methods', () => {
     expect(typeof ship.hit).toBe('function');
-    expect(typeof ship.isSunk).toBe('function');
   });
 });
 
@@ -89,7 +89,7 @@ describe('Instance Methods', () => {
     test('Ships are not sunk BEFORE being fully hit', () => {
       const { ship } = createValidShip();
       for (let _ = 0; _ < ship.length; _++) {
-        expect(ship.isSunk()).toBe(false);
+        expect(ship.isSunk).toBe(false);
         ship.hit();
       }
     });
@@ -98,7 +98,7 @@ describe('Instance Methods', () => {
       for (let _ = 0; _ < ship.length; _++) {
         ship.hit();
       }
-      expect(ship.isSunk()).toBe(true);
+      expect(ship.isSunk).toBe(true);
     });
   });
 });
