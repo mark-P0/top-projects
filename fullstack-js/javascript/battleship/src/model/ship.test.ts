@@ -4,8 +4,15 @@ import {
   ShipTooSmallError,
   ShipTooLargeError,
   InvalidShipLengthError,
+  ShipHitBeyondLengthError,
 } from './ship';
 import { range, randomInt } from '../utilities.js';
+
+function createValidShip() {
+  const { minLength, maxLength } = Ship;
+  const length = randomInt(minLength, maxLength);
+  return { ship: new Ship(length), length };
+}
 
 describe('Class Signature', () => {
   test('Has expected properties', () => {
@@ -45,9 +52,7 @@ describe('Instantiation', () => {
 });
 
 describe('Instance Signature', () => {
-  const { minLength, maxLength } = Ship;
-  const length = randomInt(minLength, maxLength);
-  const ship = new Ship(length);
+  const { ship, length } = createValidShip();
 
   test('Has expected properties', () => {
     expect(ship.length).toBe(length); // Mirrors given length
@@ -55,5 +60,28 @@ describe('Instance Signature', () => {
   test('Has expected methods', () => {
     expect(typeof ship.hit).toBe('function');
     expect(typeof ship.isSunk).toBe('function');
+  });
+});
+
+describe('Instance Methods', () => {
+  describe('`.hit()` ', () => {
+    test('Ships can be hit up to their lengths', () => {
+      const hitting = () => {
+        const { ship } = createValidShip();
+        for (let _ = 0; _ < ship.length; _++) {
+          ship.hit();
+        }
+      };
+      expect(hitting).not.toThrow();
+    });
+    test('Ships can NOT be hit BEYOND their lengths', () => {
+      const hitting = () => {
+        const { ship } = createValidShip();
+        for (let _ = 0; _ < ship.length + 1; _++) {
+          ship.hit();
+        }
+      };
+      expect(hitting).toThrow(ShipHitBeyondLengthError);
+    });
   });
 });
