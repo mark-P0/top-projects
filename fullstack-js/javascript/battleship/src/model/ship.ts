@@ -1,4 +1,4 @@
-export class InvalidShipLengthError extends Error {
+export class ShipInvalidLengthError extends Error {
   name = 'InvalidShipLengthError';
 }
 export class ShipTooSmallError extends Error {
@@ -25,7 +25,7 @@ export class Ship {
   constructor(length: number) {
     const { minLength, maxLength } = Ship;
     if (!Number.isInteger(length))
-      throw new InvalidShipLengthError(
+      throw new ShipInvalidLengthError(
         `Ship lengths must be integers; received ${length}`
       );
     if (length < minLength)

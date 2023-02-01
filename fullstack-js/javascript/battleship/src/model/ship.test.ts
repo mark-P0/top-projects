@@ -3,7 +3,7 @@ import {
   Ship,
   ShipTooSmallError,
   ShipTooLargeError,
-  InvalidShipLengthError,
+  ShipInvalidLengthError,
   ShipHitBeyondLengthError,
 } from './ship';
 import { range, randomInt } from '../utilities.js';
@@ -29,15 +29,15 @@ describe('Instantiation', () => {
     }
   });
   test('Disallow floating ship sizes', () => {
-    expect(() => new Ship(-1.1)).toThrow(InvalidShipLengthError);
-    expect(() => new Ship(0.2)).toThrow(InvalidShipLengthError);
-    expect(() => new Ship(1.3)).toThrow(InvalidShipLengthError);
-    expect(() => new Ship(2.4)).toThrow(InvalidShipLengthError);
-    expect(() => new Ship(3.5)).toThrow(InvalidShipLengthError);
-    expect(() => new Ship(4.6)).toThrow(InvalidShipLengthError);
-    expect(() => new Ship(5.7)).toThrow(InvalidShipLengthError);
-    expect(() => new Ship(6.8)).toThrow(InvalidShipLengthError);
-    expect(() => new Ship(100.9)).toThrow(InvalidShipLengthError);
+    expect(() => new Ship(-1.1)).toThrow(ShipInvalidLengthError);
+    expect(() => new Ship(0.2)).toThrow(ShipInvalidLengthError);
+    expect(() => new Ship(1.3)).toThrow(ShipInvalidLengthError);
+    expect(() => new Ship(2.4)).toThrow(ShipInvalidLengthError);
+    expect(() => new Ship(3.5)).toThrow(ShipInvalidLengthError);
+    expect(() => new Ship(4.6)).toThrow(ShipInvalidLengthError);
+    expect(() => new Ship(5.7)).toThrow(ShipInvalidLengthError);
+    expect(() => new Ship(6.8)).toThrow(ShipInvalidLengthError);
+    expect(() => new Ship(100.9)).toThrow(ShipInvalidLengthError);
   });
   test('Disallow too-small ships', () => {
     expect(() => new Ship(1)).toThrow(ShipTooSmallError);
