@@ -84,4 +84,21 @@ describe('Instance Methods', () => {
       expect(hitting).toThrow(ShipHitBeyondLengthError);
     });
   });
+
+  describe('`.isSunk()` ', () => {
+    test('Ships are not sunk BEFORE being fully hit', () => {
+      const { ship } = createValidShip();
+      for (let _ = 0; _ < ship.length; _++) {
+        expect(ship.isSunk()).toBe(false);
+        ship.hit();
+      }
+    });
+    test('Ships are sunk AFTER being fully hit', () => {
+      const { ship } = createValidShip();
+      for (let _ = 0; _ < ship.length; _++) {
+        ship.hit();
+      }
+      expect(ship.isSunk()).toBe(true);
+    });
+  });
 });

@@ -50,7 +50,11 @@ export class Ship {
     this.#hitCt++;
   }
 
+  /**
+   * Calculates whether ships have been sunk
+   * based on their lengths and number of _hits_
+   */
   isSunk() {
-    /*  */
+    return this.#hitCt === this.length;
   }
 }
