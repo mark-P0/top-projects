@@ -4,7 +4,7 @@ import {
   ShipTooSmallError,
   ShipTooLargeError,
   ShipInvalidLengthError,
-  ShipHitBeyondLengthError,
+  ShipHitAfterSinkingError,
 } from './ship';
 import { range, randomInt } from '../utilities.js';
 
@@ -81,7 +81,7 @@ describe('Instance Methods', () => {
           ship.hit();
         }
       };
-      expect(hitting).toThrow(ShipHitBeyondLengthError);
+      expect(hitting).toThrow(ShipHitAfterSinkingError);
     });
   });
 

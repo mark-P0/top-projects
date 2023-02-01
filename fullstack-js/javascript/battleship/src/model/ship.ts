@@ -7,7 +7,7 @@ export class ShipTooSmallError extends Error {
 export class ShipTooLargeError extends Error {
   name = 'ShipTooLargeError';
 }
-export class ShipHitBeyondLengthError extends Error {
+export class ShipHitAfterSinkingError extends Error {
   name = 'ShipHitBeyondLengthError';
 }
 
@@ -45,7 +45,7 @@ export class Ship {
    */
   hit() {
     if (this.#hitCt === this.length)
-      throw new ShipHitBeyondLengthError('Ship has already been destroyed!');
+      throw new ShipHitAfterSinkingError('Ship has already been destroyed!');
 
     this.#hitCt++;
   }
