@@ -1,104 +1,157 @@
 import { describe, test, expect } from '@jest/globals';
 import {
   Ship,
-  ShipTooSmallError,
-  ShipTooLargeError,
-  ShipInvalidLengthError,
+  Carrier,
+  Battleship,
+  Destroyer,
+  Submarine,
+  PatrolBoat,
   ShipHitAfterSinkingError,
 } from './ship';
-import { range, randomInt } from '../utilities.js';
-
-function createValidShip() {
-  const { minLength, maxLength } = Ship;
-  const length = randomInt(minLength, maxLength);
-  return { ship: new Ship(length), length };
-}
-
-describe('Class Signature', () => {
-  test('Has expected properties', () => {
-    expect(Ship.minLength).toBe(2);
-    expect(Ship.maxLength).toBe(5);
-  });
-});
 
 describe('Instantiation', () => {
-  test('Supported ship sizes', () => {
-    const { minLength, maxLength } = Ship;
-    for (const length of range(minLength, maxLength)) {
-      expect(() => new Ship(length)).not.toThrow();
-    }
+  test('Creating each ship type', () => {
+    expect(() => new Carrier()).not.toThrow();
+    expect(() => new Battleship()).not.toThrow();
+    expect(() => new Destroyer()).not.toThrow();
+    expect(() => new Submarine()).not.toThrow();
+    expect(() => new PatrolBoat()).not.toThrow();
   });
-  test('Disallow floating ship sizes', () => {
-    expect(() => new Ship(-1.1)).toThrow(ShipInvalidLengthError);
-    expect(() => new Ship(0.2)).toThrow(ShipInvalidLengthError);
-    expect(() => new Ship(1.3)).toThrow(ShipInvalidLengthError);
-    expect(() => new Ship(2.4)).toThrow(ShipInvalidLengthError);
-    expect(() => new Ship(3.5)).toThrow(ShipInvalidLengthError);
-    expect(() => new Ship(4.6)).toThrow(ShipInvalidLengthError);
-    expect(() => new Ship(5.7)).toThrow(ShipInvalidLengthError);
-    expect(() => new Ship(6.8)).toThrow(ShipInvalidLengthError);
-    expect(() => new Ship(100.9)).toThrow(ShipInvalidLengthError);
-  });
-  test('Disallow too-small ships', () => {
-    expect(() => new Ship(1)).toThrow(ShipTooSmallError);
-    expect(() => new Ship(0)).toThrow(ShipTooSmallError);
-    expect(() => new Ship(-1)).toThrow(ShipTooSmallError);
-  });
-  test('Disallow too-large ships', () => {
-    expect(() => new Ship(6)).toThrow(ShipTooLargeError);
-    expect(() => new Ship(100)).toThrow(ShipTooLargeError);
-    expect(() => new Ship(65535)).toThrow(ShipTooLargeError);
+  test('Derived from common class', () => {
+    expect(new Carrier() instanceof Ship).toBe(true);
+    expect(new Battleship() instanceof Ship).toBe(true);
+    expect(new Destroyer() instanceof Ship).toBe(true);
+    expect(new Submarine() instanceof Ship).toBe(true);
+    expect(new PatrolBoat() instanceof Ship).toBe(true);
   });
 });
 
 describe('Instance Signature', () => {
-  const { ship, length } = createValidShip();
-
-  test('Has expected properties', () => {
-    expect(ship.length).toBe(length); // Mirrors given length
-    expect(typeof ship.isSunk).toBe('boolean');
+  test('Expected properties', () => {
+    const properties = ['length', 'isSunk', 'code'];
+    for (const property of properties) {
+      expect(new Carrier()[property]).not.toBe(undefined);
+      expect(new Battleship()[property]).not.toBe(undefined);
+      expect(new Destroyer()[property]).not.toBe(undefined);
+      expect(new Submarine()[property]).not.toBe(undefined);
+      expect(new PatrolBoat()[property]).not.toBe(undefined);
+    }
   });
-  test('Has expected methods', () => {
-    expect(typeof ship.hit).toBe('function');
+  test('Expected methods', () => {
+    const methods = ['hit'];
+    for (const method of methods) {
+      expect(typeof new Carrier()[method]).toBe('function');
+      expect(typeof new Battleship()[method]).toBe('function');
+      expect(typeof new Destroyer()[method]).toBe('function');
+      expect(typeof new Submarine()[method]).toBe('function');
+      expect(typeof new PatrolBoat()[method]).toBe('function');
+    }
+  });
+});
+
+describe('Instance Properties', () => {
+  describe('`.length`', () => {
+    /**
+     * The Hasbro version of _Battleship_ uses the following details
+     * - https://en.wikipedia.org/wiki/Battleship_(game)#Description
+     *
+     * |   # | Name        | Size |
+     * | --: | :---------- | :--: |
+     * |   1 | Carrier     |  5   |
+     * |   2 | Battleship  |  4   |
+     * |   3 | Destroyer   |  3   |
+     * |   4 | Submarine   |  3   |
+     * |   5 | Patrol Boat |  2   |
+     */
+    test('Lengths conform to followed spec', () => {
+      expect(new Carrier().length).toBe(5);
+      expect(new Battleship().length).toBe(4);
+      expect(new Destroyer().length).toBe(3);
+      expect(new Submarine().length).toBe(3);
+      expect(new PatrolBoat().length).toBe(2);
+    });
+  });
+  describe('`.code`', () => {
+    /**
+     * Hasbro version of ships were used to have a convenient unique code
+     */
+    test("Coded using their type's first letter", () => {
+      expect(new Carrier().code).toBe('C');
+      expect(new Battleship().code).toBe('B');
+      expect(new Destroyer().code).toBe('D');
+      expect(new Submarine().code).toBe('S');
+      expect(new PatrolBoat().code).toBe('P');
+    });
+  });
+  describe('`.isSunk`', () => {
+    test('Are not sunk BEFORE being fully hit', () => {
+      const ships = [
+        new Carrier(),
+        new Battleship(),
+        new Destroyer(),
+        new Submarine(),
+        new PatrolBoat(),
+      ];
+      for (const ship of ships) {
+        for (let _ = 0; _ < ship.length; _++) {
+          expect(ship.isSunk).toBe(false);
+          ship.hit();
+        }
+      }
+    });
+    test('Are sunk AFTER being fully hit', () => {
+      const ships = [
+        new Carrier(),
+        new Battleship(),
+        new Destroyer(),
+        new Submarine(),
+        new PatrolBoat(),
+      ];
+      for (const ship of ships) {
+        for (let _ = 0; _ < ship.length; _++) {
+          ship.hit();
+        }
+        expect(ship.isSunk).toBe(true);
+      }
+    });
   });
 });
 
 describe('Instance Methods', () => {
   describe('`.hit()` ', () => {
-    test('Ships can be hit up to their lengths', () => {
+    test("Can be hit up to ship's length", () => {
       const hitting = () => {
-        const { ship } = createValidShip();
-        for (let _ = 0; _ < ship.length; _++) {
-          ship.hit();
+        const ships = [
+          new Carrier(),
+          new Battleship(),
+          new Destroyer(),
+          new Submarine(),
+          new PatrolBoat(),
+        ];
+        for (const ship of ships) {
+          for (let _ = 0; _ < ship.length; _++) {
+            ship.hit();
+          }
         }
       };
       expect(hitting).not.toThrow();
     });
-    test('Ships can NOT be hit BEYOND their lengths', () => {
+    test("Can NOT be hit BEYOND ship's length", () => {
       const hitting = () => {
-        const { ship } = createValidShip();
-        for (let _ = 0; _ < ship.length + 1; _++) {
-          ship.hit();
+        const ships = [
+          new Carrier(),
+          new Battleship(),
+          new Destroyer(),
+          new Submarine(),
+          new PatrolBoat(),
+        ];
+        for (const ship of ships) {
+          for (let _ = 0; _ < ship.length + 1; _++) {
+            ship.hit();
+          }
         }
       };
       expect(hitting).toThrow(ShipHitAfterSinkingError);
-    });
-  });
-
-  describe('`.isSunk()` ', () => {
-    test('Ships are not sunk BEFORE being fully hit', () => {
-      const { ship } = createValidShip();
-      for (let _ = 0; _ < ship.length; _++) {
-        expect(ship.isSunk).toBe(false);
-        ship.hit();
-      }
-    });
-    test('Ships are sunk AFTER being fully hit', () => {
-      const { ship } = createValidShip();
-      for (let _ = 0; _ < ship.length; _++) {
-        ship.hit();
-      }
-      expect(ship.isSunk).toBe(true);
     });
   });
 });

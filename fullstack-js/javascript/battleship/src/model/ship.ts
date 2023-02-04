@@ -1,41 +1,31 @@
 import { NamedError } from '../utilities.js';
 
-export class ShipInvalidLengthError extends NamedError {}
-export class ShipTooSmallError extends NamedError {}
-export class ShipTooLargeError extends NamedError {}
 export class ShipHitAfterSinkingError extends NamedError {}
 
-export class Ship {
-  static minLength = 2;
-  static maxLength = 5;
+export type ShipLength = 5 | 4 | 3 | 2;
+export type ShipCode = 'C' | 'B' | 'D' | 'S' | 'P';
 
-  length: number;
+export abstract class Ship {
+  readonly length: ShipLength;
+  readonly code: ShipCode;
   #hitCt = 0;
 
   /**
-   * Ship sizes range from 2 to 5
-   * (https://en.wikipedia.org/wiki/Battleship_(game))
+   * - Each player places five (5) ships on their board
+   * (https://slate.com/culture/2012/05/how-to-win-at-battleship.html)
+   * - Ship definitions are sourced from: https://en.wikipedia.org/wiki/Battleship_(game)#Description
+   * - There are also five (5) definitions, so it may be assumed that:
+   *    - Each player gets each of the five (5) ships
+   *    - Each player must place all of the ship types on their boards
+   * - Ship codes are each ship type's first character
    */
-  constructor(length: number) {
-    const { minLength, maxLength } = Ship;
-    if (!Number.isInteger(length))
-      throw new ShipInvalidLengthError(
-        `Ship lengths must be integers; received ${length}`
-      );
-    if (length < minLength)
-      throw new ShipTooSmallError(
-        `Minimum ship size is ${minLength}; received ${length}`
-      );
-    if (length > maxLength)
-      throw new ShipTooLargeError(
-        `Maximum ship size is ${maxLength}; received ${length}`
-      );
-
+  constructor(length: ShipLength, code: ShipCode) {
     this.length = length;
+    this.code = code;
   }
 
   /**
-   * Increases the number of _hits_ in a ship
+   * Increases the number of _hits_ in a ship.
    */
   hit() {
     if (this.isSunk)
@@ -46,9 +36,39 @@ export class Ship {
 
   /**
    * Calculates whether ships have been sunk
-   * based on their lengths and number of _hits_
+   * based on their lengths and number of _hits_.
    */
   get isSunk() {
     return this.#hitCt === this.length;
+  }
+}
+
+export class Carrier extends Ship {
+  constructor() {
+    super(5, 'C');
+  }
+}
+
+export class Battleship extends Ship {
+  constructor() {
+    super(4, 'B');
+  }
+}
+
+export class Destroyer extends Ship {
+  constructor() {
+    super(3, 'D');
+  }
+}
+
+export class Submarine extends Ship {
+  constructor() {
+    super(3, 'S');
+  }
+}
+
+export class PatrolBoat extends Ship {
+  constructor() {
+    super(2, 'P');
   }
 }
