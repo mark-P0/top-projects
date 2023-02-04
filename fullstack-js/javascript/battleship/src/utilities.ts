@@ -5,7 +5,7 @@
  * https://stackoverflow.com/questions/1382107/whats-a-good-way-to-extend-error-in-javascript
  */
 export class NamedError extends Error {
-  constructor(...args) {
+  constructor(...args: ConstructorParameters<ErrorConstructor>) {
     super(...args);
     this.name = this.constructor.name;
   }

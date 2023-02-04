@@ -1,4 +1,4 @@
-import { NamedError } from '../utilities.js';
+import { NamedError } from '../utilities';
 
 export class ShipHitAfterSinkingError extends NamedError {}
 
