@@ -1,4 +1,17 @@
 /**
+ * Base error class that automatically
+ * assigns error name as class name.
+ *
+ * https://stackoverflow.com/questions/1382107/whats-a-good-way-to-extend-error-in-javascript
+ */
+export class NamedError extends Error {
+  constructor(...args) {
+    super(...args);
+    this.name = this.constructor.name;
+  }
+}
+
+/**
  * Number range generator,
  * from `start` up to **(and including)** `stop`.
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators#generator_functions

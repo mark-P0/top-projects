@@ -1,15 +1,9 @@
-export class ShipInvalidLengthError extends Error {
-  name = 'ShipInvalidLengthError';
-}
-export class ShipTooSmallError extends Error {
-  name = 'ShipTooSmallError';
-}
-export class ShipTooLargeError extends Error {
-  name = 'ShipTooLargeError';
-}
-export class ShipHitAfterSinkingError extends Error {
-  name = 'ShipHitBeyondLengthError';
-}
+import { NamedError } from '../utilities.js';
+
+export class ShipInvalidLengthError extends NamedError {}
+export class ShipTooSmallError extends NamedError {}
+export class ShipTooLargeError extends NamedError {}
+export class ShipHitAfterSinkingError extends NamedError {}
 
 export class Ship {
   static minLength = 2;
