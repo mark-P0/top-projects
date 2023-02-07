@@ -34,3 +34,11 @@ export function randomFloat(a = 0, b = 100) {
 export function randomInt(a = 0, b = 100) {
   return Math.round(randomFloat(a, b));
 }
+
+/**
+ * Choose a random element within `array`.
+ */
+export function randomChoice<T>(array: Readonly<T[]>) {
+  const idx = randomInt(0, array.length - 1);
+  return array[idx];
+}
