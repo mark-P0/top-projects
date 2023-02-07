@@ -28,8 +28,9 @@ export abstract class Ship {
    * Increases the number of _hits_ in a ship.
    */
   hit() {
-    if (this.isSunk)
+    if (this.isSunk) {
       throw new ShipHitAfterSinkingError('Ship has already been destroyed!');
+    }
 
     this.#hitCt++;
   }
